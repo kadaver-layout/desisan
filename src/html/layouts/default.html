@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ meta_description }}">
+  {% for style in libsCss %}
+  <link rel="stylesheet" href="assets/css/libs/{{ style }}.css">
+  {% endfor %}
+  <link rel="stylesheet" href="assets/css/main.css">
+  {% for lib in libsJs %}
+  <script defer src="assets/libs/{{ lib }}"></script>
+  {% endfor %}
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  {% include "includes/header.html" %}
+  {% block content %}{% endblock %}
+  {% include "includes/footer.html" %}
+  {% include "includes/modal.html" %}
+</body>
+</html>
