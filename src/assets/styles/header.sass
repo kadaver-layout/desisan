@@ -1,2 +1,116 @@
 @use "_vars" as *
-// Стили шапки DESISAN.
+
+// Внешняя шапка не ограничивает sticky: служебная полоса занимает первые 36px,
+// а отрицательный top скрывает её при прокрутке без копирования навигации.
+.header
+  position: sticky
+  top: -36px
+  z-index: 30
+  background: $bg-primary
+  @media ($tablet)
+    top: 0
+  &.is-stuck &__main
+    box-shadow: $overlay-shadow
+  &__service
+    background: $bg-surface
+    @media ($tablet)
+      display: none
+  &__service-inner
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 24px
+    padding-block: 8px
+  &__information
+    display: flex
+    gap: 24px
+    color: $text-secondary
+  &__main
+    border-bottom: 1px solid $stroke-primary
+    background: $bg-primary
+  &__row
+    display: flex
+    align-items: center
+    gap: 48px
+    min-height: 56px
+    padding-block: 16px
+    @media ($tablet)
+      display: grid
+      grid-template-columns: 1fr auto 1fr
+      gap: 8px
+  &__categories
+    display: flex
+    gap: 32px
+    font-weight: 500
+    white-space: nowrap
+    @media (min-width: 1280px) and (max-width: 1439px)
+      gap: 24px
+  &__catalog
+    min-width: 0
+    @media ($tablet)
+      display: none
+  &__actions
+    display: flex
+    align-items: center
+    gap: 24px
+    margin-left: auto
+    @media ($tablet)
+      justify-content: end
+      gap: 16px
+      margin: 0
+  &__city
+    display: inline-flex
+    align-items: center
+    gap: 8px
+    color: $text-secondary
+    white-space: nowrap
+    @media ($tablet)
+      display: none
+  &__menu
+    display: none
+    justify-self: start
+    @media ($tablet)
+      display: inline-flex
+  &__logo
+    @media ($tablet)
+      font-size: 16px
+      line-height: 22px
+  &__cart-count
+    position: absolute
+    top: -2px
+    right: -6px
+    min-width: 16px
+    padding-inline: 4px
+    border-radius: 100px
+    background: $bg-inverse
+    color: $text-inverse
+    font-weight: 500
+    font-size: 12px
+    line-height: 16px
+    text-align: center
+  &__mobile-icon
+    display: none
+  @media ($tablet)
+    &__mobile-icon
+      display: block
+    &__desktop-icon
+      display: none
+  &__dropdown
+    position: relative
+    summary
+      cursor: pointer
+      font-weight: 500
+    .header__categories
+      position: absolute
+      top: 100%
+      left: 0
+      flex-direction: column
+      gap: 0
+      min-width: 224px
+      padding: 16px
+      background: $bg-primary
+      border: 1px solid $stroke-primary
+      box-shadow: $overlay-shadow
+      a
+        display: block
+        padding-block: 8px

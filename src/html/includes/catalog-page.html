@@ -1,0 +1,63 @@
+<main class="main catalog-page" id="main-content" data-catalog data-page-size="24">
+  <div class="container catalog-page__heading">
+    <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки"><ol>
+      {% for crumb in catalogPage.breadcrumbs %}
+      <li>{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span aria-current="page">{{ crumb.title }}</span>{% endif %}</li>
+      {% endfor %}
+    </ol></nav>
+    <div class="catalog-page__title-row"><h1>{{ catalogPage.title }}</h1><p data-catalog-count>{{ catalogPage.total }} товаров</p></div>
+  </div>
+  <section class="container catalog-page__results" aria-label="Товары каталога">
+    <div class="catalog-toolbar">
+      <div class="catalog-toolbar__desktop">
+        <div class="catalog-filter" data-filter-group="price">
+          <div class="catalog-chip">
+            <button type="button" data-popover-toggle="price-popover" aria-expanded="false" aria-controls="price-popover"><span data-chip-label="price">Цена</span>{% include "includes/catalog-chevron.html" %}</button>
+            <button class="catalog-chip__clear" type="button" data-clear-group="price" aria-label="Сбросить цену" hidden><span class="catalog-icon-slot"><span class="catalog-icon-native"><img src="assets/img/close.svg" width="24" height="24" alt=""></span></span></button>
+          </div>
+          <div class="catalog-popover" id="price-popover" hidden>
+            <form data-desktop-price>
+              {% set priceScope = "desktop" %}{% include "includes/catalog-price.html" %}
+              <p class="catalog-price__error" data-price-error hidden>Проверьте диапазон цены.</p>
+              <button class="button" type="submit">Применить</button>
+            </form>
+          </div>
+        </div>
+        <div class="catalog-filter" data-filter-group="discount">
+          <div class="catalog-chip"><button type="button" data-discount-toggle aria-pressed="false">Со скидкой</button><button class="catalog-chip__clear" type="button" data-clear-group="discount" aria-label="Сбросить скидку" hidden><span class="catalog-icon-slot"><span class="catalog-icon-native"><img src="assets/img/close.svg" width="24" height="24" alt=""></span></span></button></div>
+        </div>
+        {% if not catalogPage.gender %}
+          {% set filterGroup = "gender" %}{% set filterTitle = "Для кого" %}{% set filterOptions = catalog.genders %}
+          {% include "includes/catalog-list-filter.html" %}
+        {% endif %}
+        {% if not catalogPage.type %}
+          {% set filterGroup = "type" %}{% set filterTitle = "Тип товара" %}{% set filterOptions = catalog.types %}
+          {% include "includes/catalog-list-filter.html" %}
+        {% endif %}
+        <button class="catalog-toolbar__reset text-link" type="button" data-reset-filters hidden>Сбросить все</button>
+      </div>
+      <button class="catalog-toolbar__mobile" type="button" data-open-dialog="catalog-filters" aria-controls="catalog-filters" aria-expanded="false"><img src="assets/img/filter.svg" width="16" height="16" alt=""><span data-mobile-filter-label>Фильтры</span></button>
+      <div class="catalog-sort" data-catalog-sort>
+        <button class="catalog-sort__trigger" type="button" data-sort-toggle aria-controls="catalog-sort-menu" aria-expanded="false"><span class="catalog-sort__prefix">Сортировка:</span><span data-sort-label>Популярное</span>{% include "includes/catalog-chevron.html" %}</button>
+        <div class="catalog-sort__list" id="catalog-sort-menu" hidden>
+          {% for sort in catalog.sorts %}<button type="button" data-sort="{{ sort.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ sort.title }}<span class="catalog-icon-slot" data-sort-check {% if not loop.first %}hidden{% endif %}><span class="catalog-icon-native"><img src="assets/img/check-small.svg" width="24" height="24" alt=""></span></span></button>{% endfor %}
+        </div>
+      </div>
+    </div>
+    <ul class="catalog-grid" data-catalog-grid>
+      {% for product in catalogPage.products %}
+      <li data-catalog-item data-id="{{ product.id }}" data-price="{{ product.priceValue }}" data-old-price="{{ product.oldPriceValue }}" data-gender="{{ product.gender }}" data-type="{{ product.type }}" data-new="{{ 'true' if product.badge == 'НОВИНКА' else 'false' }}" data-order="{{ product.sortOrder }}" {% if loop.index > 24 %}hidden{% endif %}>
+        {% include "includes/product-card.html" %}
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="catalog-empty" data-catalog-empty hidden><h2>Ничего не нашлось</h2><button class="button button--secondary" type="button" data-reset-filters>Сбросить фильтры</button></div>
+    <div class="catalog-more" data-catalog-more {% if catalogPage.total <= 24 %}hidden{% endif %}>
+      <p data-catalog-progress>Показано 24 из {{ catalogPage.total }} товаров</p>
+      <button class="button button--secondary" type="button" data-load-more>Показать ещё</button>
+      <p class="catalog-more__error" data-load-error role="alert" hidden>Не удалось загрузить товары, попробуйте ещё раз</p>
+    </div>
+    <p class="visually-hidden" role="status" data-catalog-status></p>
+  </section>
+  {% include "includes/catalog-dialogs.html" %}
+</main>

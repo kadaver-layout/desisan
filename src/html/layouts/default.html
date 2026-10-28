@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
   <meta name="description" content="{{ meta_description }}">
+  <link rel="preload" href="assets/fonts/Onest-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Onest-Medium.woff2" as="font" type="font/woff2" crossorigin>
   {% for style in libsCss %}
   <link rel="stylesheet" href="assets/css/libs/{{ style }}.css">
   {% endfor %}
@@ -15,6 +17,7 @@
   <script defer src="assets/js/app.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   {% include "includes/header.html" %}
   {% block content %}{% endblock %}
   {% include "includes/footer.html" %}

@@ -1,0 +1,31 @@
+{% if productDetail.images | length %}
+<dialog class="product-viewer" id="product-viewer" aria-label="Просмотр фотографии товара">
+  <input class="product-viewer__zoom-toggle visually-hidden" type="checkbox" id="product-viewer-zoom" aria-label="Увеличить фотографию">
+  <label class="product-viewer__photo" for="product-viewer-zoom" aria-label="Увеличить фотографию"><img src="{{ productDetail.images[0].src }}" alt="{{ productDetail.images[0].alt }}" draggable="false" data-viewer-image></label>
+  <button class="dialog-close product-viewer__close" type="button" data-close-dialog aria-label="Закрыть просмотр"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  {% if productDetail.images | length > 1 %}
+  <button class="product-viewer__arrow product-viewer__arrow--prev" type="button" data-gallery-prev aria-label="Предыдущее фото"><img src="assets/img/product-arrow-left.svg" width="24" height="24" alt=""></button>
+  <button class="product-viewer__arrow product-viewer__arrow--next" type="button" data-gallery-next aria-label="Следующее фото"><img src="assets/img/product-arrow-right.svg" width="24" height="24" alt=""></button>
+  {% endif %}
+</dialog>
+{% endif %}
+<dialog class="product-review-dialog" id="product-review" aria-labelledby="review-dialog-title">
+  <button class="dialog-close" type="button" data-close-dialog aria-label="Закрыть форму отзыва"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <div class="product-review-dialog__content">
+    <h2 id="review-dialog-title">Написать отзыв</h2>
+    {# Отправка и модерация подключаются на стороне Битрикс. #}
+    <form class="review-form" method="post">
+      <label class="review-form__label" for="review-name">Ваше имя</label>
+      <input id="review-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" minlength="2" maxlength="80" required>
+      <fieldset><legend>Оценка</legend><div class="review-form__ratings">
+        {% for score in [1,2,3,4,5] %}<label><input type="radio" name="rating" value="{{ score }}" required><span>{{ score }}</span></label>{% endfor %}
+      </div></fieldset>
+      <label class="review-form__label" for="review-text">Ваш отзыв</label>
+      <textarea id="review-text" name="review" placeholder="Поделитесь впечатлениями о товаре" minlength="20" maxlength="2000" aria-describedby="review-length" required></textarea>
+      <p id="review-length">От 20 до 2000 символов</p>
+      <label class="review-form__consent"><input type="checkbox" name="consent" required><span>Согласен на обработку персональных данных</span></label>
+      <a class="text-link" href="{{ site.policyUrl }}">Политика конфиденциальности</a>
+      <button class="button review-form__submit" type="submit" disabled>Отправить отзыв</button>
+    </form>
+  </div>
+</dialog>

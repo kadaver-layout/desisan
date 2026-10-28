@@ -1,0 +1,6 @@
+{% for option in filterOptions %}
+<label class="catalog-option">
+  <input type="checkbox" value="{{ option.id }}" data-filter-option="{{ filterGroup }}" data-scope="{{ filterScope }}">
+  <span class="catalog-option__name">{{ option.title }}</span><span class="catalog-option__count" data-facet-count="{{ filterGroup }}:{{ option.id }}"></span>
+</label>
+{% endfor %}

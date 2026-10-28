@@ -1,0 +1,15 @@
+<article class="product-card" data-product-card data-product-id="{{ product.id }}" data-product-title="{{ product.title }}" data-product-keywords="{{ product.keywords }}" data-product-url="{{ product.url }}">
+  <div class="product-card__media">
+    {% if product.image %}
+    <a class="product-card__image-link" href="{{ product.url }}" tabindex="-1" aria-hidden="true"><img class="product-card__image" src="{{ product.image }}" alt="{{ product.title }}" loading="lazy" width="424" height="530"></a>
+    {% else %}
+    <span class="product-card__placeholder">Изображение скоро появится</span>
+    {% endif %}
+    {% if product.badge %}<span class="product-card__badge">{{ product.badge }}</span>{% endif %}
+    <button class="product-card__add" type="button" data-add-to-cart="{{ product.id }}" aria-label="Добавить в корзину: {{ product.title }}"><img src="assets/img/bag-small.svg" width="16" height="16" alt=""></button>
+  </div>
+  <div class="product-card__caption">
+    <h3 class="product-card__name"><a href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a></h3>
+    <p class="product-card__prices"><span>{{ product.price }}</span>{% if product.oldPrice %}<del>{{ product.oldPrice }}</del>{% endif %}</p>
+  </div>
+</article>

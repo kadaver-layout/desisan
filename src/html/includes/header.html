@@ -1,1 +1,41 @@
-{# Шапка DESISAN: разметка будет добавлена при вёрстке макета. #}
+<header class="header" data-header>
+  <div class="header__service">
+    <div class="container header__service-inner">
+      <nav aria-label="Информация"><ul class="header__information">
+        {% for link in informationLinks %}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{% endfor %}
+      </ul></nav>
+      <a class="phone" href="tel:{{ site.phoneHref }}"><img src="assets/img/phone-small.svg" width="16" height="16" alt="">{{ site.phone }}</a>
+    </div>
+  </div>
+  <div class="header__main" data-header-main>
+    <div class="container header__row">
+      <button class="icon-button header__menu" type="button" data-open-dialog="mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
+        <img src="assets/img/menu.svg" width="24" height="24" alt="">
+      </button>
+      <a class="logo header__logo" href="/" aria-label="DESISAN — главная">{{ site.name }}</a>
+      <nav class="header__catalog" aria-label="Каталог">
+        {% if categories | length > 6 %}<details class="header__dropdown"><summary>Каталог</summary>{% endif %}
+        <ul class="header__categories">
+          {% for category in categories %}<li><a href="{{ category.url }}">{{ category.title }}</a></li>{% endfor %}
+        </ul>
+        {% if categories | length > 6 %}</details>{% endif %}
+      </nav>
+      <div class="header__actions">
+        <button class="header__city" type="button" data-open-dialog="city-dialog" aria-controls="city-dialog" aria-expanded="false">
+          <img src="assets/img/location.svg" width="20" height="20" alt="">
+          <span data-current-city>{{ site.city }}</span>
+          <img src="assets/img/chevron-down.svg" width="20" height="20" alt="">
+        </button>
+        <button class="icon-button" type="button" data-open-dialog="search-dialog" aria-controls="search-dialog" aria-expanded="false" aria-label="Поиск по каталогу">
+          <img class="header__desktop-icon" src="assets/img/search.svg" width="20" height="20" alt="">
+          <img class="header__mobile-icon" src="assets/img/search-mobile.svg" width="24" height="24" alt="">
+        </button>
+        <a class="icon-button header__cart" href="{{ site.cartUrl }}" data-cart-link aria-label="Корзина">
+          <img class="header__desktop-icon" src="assets/img/bag.svg" width="20" height="20" alt="">
+          <img class="header__mobile-icon" src="assets/img/bag-mobile.svg" width="24" height="24" alt="">
+          <span class="header__cart-count" data-cart-count {% if not site.cartCount %}hidden{% endif %}>{{ site.cartCount }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

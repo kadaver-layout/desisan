@@ -1,0 +1,14 @@
+<section class="section product-section" aria-labelledby="{{ productSection.id }}-title" data-rail>
+  <div class="container">
+    <div class="section__heading">
+      <h2 class="eyebrow" id="{{ productSection.id }}-title">{{ productSection.title }}</h2>
+      {% set railCount = visibleProducts | length %}{% set railTitle = productSection.title %}
+      {% include "includes/rail-controls.html" %}
+    </div>
+    <ul class="product-grid" data-rail-track>
+      {% for product in visibleProducts %}
+      <li class="product-grid__item">{% include "includes/product-card.html" %}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

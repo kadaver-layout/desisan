@@ -1,0 +1,23 @@
+<dialog class="catalog-filter-dialog" id="catalog-filters" aria-labelledby="catalog-filters-title">
+  <div class="catalog-filter-dialog__header"><h2 id="catalog-filters-title">Фильтры</h2><button class="text-link" type="button" data-reset-draft>Сбросить</button></div>
+  <button class="dialog-close" type="button" data-close-dialog aria-label="Закрыть фильтры"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <div class="catalog-filter-dialog__scroll">
+    <details class="catalog-filter-group" open><summary class="eyebrow">Цена{% include "includes/catalog-chevron.html" %}</summary>
+      {% set priceScope = "mobile" %}{% include "includes/catalog-price.html" %}
+      <p class="catalog-price__error" data-draft-price-error hidden>Проверьте диапазон цены.</p>
+    </details>
+    <div class="catalog-filter-group"><label class="catalog-option"><input type="checkbox" data-draft-discount><span>Со скидкой</span></label></div>
+    {% if not catalogPage.gender %}
+    <details class="catalog-filter-group" open><summary class="eyebrow">Для кого{% include "includes/catalog-chevron.html" %}</summary><div class="catalog-filter-group__options">{% set filterGroup = "gender" %}{% set filterOptions = catalog.genders %}{% set filterScope = "mobile" %}{% include "includes/catalog-filter-options.html" %}</div></details>
+    {% endif %}
+    {% if not catalogPage.type %}
+    <details class="catalog-filter-group" open><summary class="eyebrow">Тип товара{% include "includes/catalog-chevron.html" %}</summary><div class="catalog-filter-group__options">{% set filterGroup = "type" %}{% set filterOptions = catalog.types %}{% set filterScope = "mobile" %}{% include "includes/catalog-filter-options.html" %}</div></details>
+    {% endif %}
+  </div>
+  <div class="catalog-filter-dialog__footer"><button class="button" type="button" data-apply-draft>Показать {{ catalogPage.total }} товаров</button></div>
+</dialog>
+<dialog class="catalog-sort-dialog" id="catalog-sort-dialog" aria-labelledby="sort-dialog-title">
+  <div class="catalog-sort-dialog__header" data-sort-swipe><h2 id="sort-dialog-title">Сортировка</h2></div>
+  <button class="dialog-close" type="button" data-close-dialog aria-label="Закрыть сортировку"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <div class="catalog-sort-dialog__options">{% for sort in catalog.sorts %}<button type="button" data-sort="{{ sort.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ sort.title }}<span class="catalog-icon-slot" data-sort-check {% if not loop.first %}hidden{% endif %}><span class="catalog-icon-native"><img src="assets/img/check-small.svg" width="24" height="24" alt=""></span></span></button>{% endfor %}</div>
+</dialog>

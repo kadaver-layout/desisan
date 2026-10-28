@@ -1,1 +1,76 @@
-{# Общие модальные окна DESISAN. #}
+<dialog class="mobile-menu" id="mobile-menu" aria-label="Меню">
+  <div class="mobile-menu__header"><a class="logo" href="/">{{ site.name }}</a></div>
+  <button class="dialog-close mobile-menu__close" type="button" data-close-dialog aria-label="Закрыть меню"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <div class="mobile-menu__scroll">
+    <nav aria-label="Каталог в меню"><ul class="mobile-menu__categories">
+      {% for category in categories %}<li><a href="{{ category.url }}">{{ category.title }}</a></li>{% endfor %}
+    </ul></nav>
+    <nav aria-label="Информация в меню"><ul class="mobile-menu__information">
+      {% for link in informationLinks %}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{% endfor %}
+    </ul></nav>
+  </div>
+  <div class="mobile-menu__bottom">
+    <button type="button" data-open-dialog="city-dialog"><img src="assets/img/location.svg" width="20" height="20" alt=""><span data-current-city>{{ site.city }}</span><img src="assets/img/chevron-right.svg" width="24" height="24" alt=""></button>
+    <a class="phone" href="tel:{{ site.phoneHref }}"><img src="assets/img/phone.svg" width="20" height="20" alt="">{{ site.phone }}</a>
+  </div>
+</dialog>
+
+<dialog class="search-panel" id="search-dialog" aria-label="Поиск по каталогу">
+  <div class="container search-panel__inner">
+    <form class="search-panel__form" action="{{ site.searchUrl }}" method="get" role="search" data-search-form>
+      <label class="visually-hidden" for="catalog-query">Поиск по каталогу</label>
+      <input id="catalog-query" name="q" type="search" placeholder="Поиск по каталогу" autocomplete="off" data-search-input autofocus aria-controls="search-results">
+      <button class="search-panel__close" type="button" data-close-dialog>Закрыть</button>
+    </form>
+    <div data-search-popular {% if not popularQueries | length %}hidden{% endif %}>
+      <h2 class="eyebrow search-panel__label">Популярные запросы</h2>
+      <ul class="search-panel__queries">
+        {% for query in popularQueries %}<li><button type="button" data-search-query="{{ query }}"><img src="assets/img/fire.svg" width="24" height="24" alt="">{{ query }}</button></li>{% endfor %}
+      </ul>
+    </div>
+    <div data-search-output hidden>
+      <p class="search-panel__empty" data-search-empty hidden>Ничего не найдено. Попробуйте другой запрос или <a class="text-link" href="/catalog/">перейдите в каталог</a>.</p>
+      <ul class="search-panel__results" id="search-results" data-search-results aria-label="Подсказки поиска"></ul>
+      <a class="search-panel__all text-link" href="{{ site.searchUrl }}" data-search-all>Все результаты по запросу</a>
+    </div>
+    <p class="visually-hidden" role="status" data-search-status></p>
+  </div>
+</dialog>
+
+<dialog class="city-dialog" id="city-dialog" aria-labelledby="city-title">
+  <h2 class="city-dialog__title" id="city-title">Выберите город</h2>
+  <button class="dialog-close" type="button" data-close-dialog aria-label="Закрыть выбор города"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <label class="city-dialog__search">
+    <img src="assets/img/search.svg" width="20" height="20" alt="">
+    <span class="visually-hidden">Поиск города</span>
+    <input type="search" placeholder="Введите название города" autocomplete="off" data-city-search>
+  </label>
+  <div class="city-dialog__scroll">
+    <h3 class="eyebrow city-dialog__label">Популярные города</h3>
+    <ul class="city-dialog__list" data-city-list>
+      {% for city in cities %}<li><button type="button" data-city-choice="{{ city }}" aria-pressed="{{ 'true' if city == site.city else 'false' }}">{{ city }}<img src="assets/img/check.svg" width="24" height="24" alt="" {% if city != site.city %}hidden{% endif %}></button></li>{% endfor %}
+    </ul>
+    <p data-city-empty hidden>Город не найден. Попробуйте другое название.</p>
+  </div>
+</dialog>
+
+<aside class="cookie-banner" aria-label="Использование файлов cookie" data-cookie-banner hidden>
+  <div class="container cookie-banner__inner">
+    <p>Мы используем файлы cookie, чтобы сайт работал корректно и запоминал ваши настройки. Оставаясь на сайте, вы соглашаетесь с <a class="text-link" href="{{ site.policyUrl }}">политикой обработки данных</a>.</p>
+    <button class="button" type="button" data-cookie-accept>Принять</button>
+    <button class="dialog-close" type="button" data-cookie-close aria-label="Закрыть уведомление о cookie"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  </div>
+</aside>
+
+<aside class="city-notice" aria-label="Подтверждение города" data-city-notice data-detected-city="{{ site.detectedCity }}" hidden>
+  <button class="dialog-close" type="button" data-city-dismiss aria-label="Закрыть уведомление о городе"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+  <p>Ваш город — <strong data-current-city>{{ site.city }}</strong>?</p>
+  <div class="city-notice__actions"><button class="button" type="button" data-city-confirm>Да, верно</button><button class="text-link" type="button" data-open-dialog="city-dialog">Другой город</button></div>
+</aside>
+
+<aside class="cart-toast" data-cart-toast hidden aria-label="Уведомление корзины">
+  <img src="assets/img/toast-bag.svg" width="24" height="24" alt="">
+  <div><p class="cart-toast__title" role="status" data-toast-message></p><a class="text-link" href="{{ site.cartUrl }}">Перейти в корзину</a></div>
+  <button class="dialog-close" type="button" data-toast-close aria-label="Закрыть уведомление"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
+</aside>
+<p class="visually-hidden" role="alert" data-cart-error></p>

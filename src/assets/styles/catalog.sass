@@ -1,0 +1,392 @@
+@use "_vars" as *
+
+// В экспорте Figma эти SVG имеют корень 24px. Масштабируется обёртка,
+// исходные размеры и содержимое самих SVG сохраняются.
+.catalog-icon-slot
+  display: inline-block
+  flex: 0 0 16px
+  width: 16px
+  height: 16px
+  pointer-events: none
+
+.catalog-icon-native
+  display: block
+  width: 24px
+  height: 24px
+  transform: scale(0.6666667)
+  transform-origin: left top
+
+.catalog-page
+  &__heading
+    display: grid
+    gap: 16px
+    padding-block: 32px
+    @media ($mobile)
+      padding-block: 24px
+  &__title-row
+    display: flex
+    align-items: baseline
+    gap: 16px
+    @media ($mobile)
+      gap: 8px
+    h1
+      font-size: 48px
+      line-height: 56px
+      font-weight: 500
+      letter-spacing: -0.01em
+      @media ($tablet)
+        font-size: 32px
+        line-height: 40px
+    p
+      font-size: 16px
+      line-height: 24px
+      color: $text-secondary
+      @media ($mobile)
+        font-size: 14px
+        line-height: 20px
+  &__results
+    display: grid
+    gap: 24px
+    padding-bottom: 64px
+    @media ($tablet)
+      padding-bottom: 48px
+    @media ($mobile)
+      gap: 16px
+
+.catalog-breadcrumbs
+  font-weight: 500
+  font-size: 12px
+  line-height: 16px
+  letter-spacing: 0.12em
+  text-transform: uppercase
+  ol
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+    list-style: none
+    margin: 0
+    padding: 0
+  li
+    display: flex
+    gap: 8px
+    &:not(:last-child)::after
+      content: "/"
+      color: $text-tertiary
+  a
+    color: $text-secondary
+
+.catalog-toolbar
+  position: relative
+  z-index: 3
+  display: flex
+  align-items: center
+  justify-content: space-between
+  min-height: 40px
+  gap: 24px
+  &__desktop
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 8px
+    @media ($tablet)
+      display: none
+  &__mobile
+    display: none
+    align-items: center
+    gap: 8px
+    height: 40px
+    font-weight: 500
+    white-space: nowrap
+    @media ($tablet)
+      display: inline-flex
+  &__reset
+    margin-left: 8px
+    color: $text-secondary
+
+.catalog-filter
+  position: relative
+
+.catalog-chip
+  display: inline-flex
+  align-items: center
+  background: $bg-surface
+  color: $text-primary
+  &.is-selected
+    background: $bg-inverse
+    color: $text-inverse
+    .catalog-icon-native img
+      filter: brightness(0) invert(1)
+    > button:first-child > .catalog-chevron
+      display: none
+  > button
+    display: inline-flex
+    align-items: center
+    gap: 8px
+    height: 32px
+    padding: 0 8px 0 16px
+    font-weight: 500
+    white-space: nowrap
+    &[data-discount-toggle]
+      padding-right: 16px
+    &:hover
+      text-decoration: underline
+  &__clear
+    padding: 0 8px !important
+    font-size: 20px
+    line-height: 20px
+  [aria-expanded="true"] .catalog-chevron
+    transform: rotate(180deg)
+
+.catalog-popover
+  position: absolute
+  z-index: 5
+  top: 40px
+  left: 0
+  width: 320px
+  padding: 24px
+  background: $bg-primary
+  box-shadow: $overlay-shadow
+  form, &--list
+    display: grid
+    gap: 16px
+  .button
+    width: 100%
+
+.catalog-price
+  display: flex
+  gap: 8px
+  label
+    display: grid
+    gap: 8px
+    flex: 1
+    min-width: 0
+    color: $text-secondary
+    font-weight: 500
+  input
+    width: 100%
+    min-width: 0
+    height: 48px
+    padding: 0 16px
+    border: 1px solid $stroke-primary
+    background: $bg-primary
+    color: $text-primary
+    font-size: 16px
+    line-height: 24px
+    font-weight: 400
+    appearance: textfield
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+      appearance: none
+    &::placeholder
+      color: $text-tertiary
+  &__error
+    color: $text-primary
+
+.catalog-option
+  display: flex
+  align-items: center
+  gap: 16px
+  cursor: pointer
+  min-height: 20px
+  input
+    appearance: none
+    flex: 0 0 20px
+    width: 20px
+    height: 20px
+    margin: 0
+    border: 1px solid $text-primary
+    background: $bg-primary
+    cursor: inherit
+    &:checked
+      border: 0
+      background: url("../img/checkbox-checked.svg") center no-repeat
+    &:disabled
+      border-color: $stroke-primary
+  &:has(input:disabled)
+    color: $text-tertiary
+    cursor: default
+  &__name
+    flex: 1
+  &__count
+    margin-left: auto
+    color: $text-tertiary
+
+.catalog-sort
+  position: relative
+  margin-left: auto
+  &__trigger
+    display: flex
+    align-items: center
+    gap: 8px
+    height: 40px
+    white-space: nowrap
+    font-weight: 500
+    &[aria-expanded="true"] .catalog-chevron
+      transform: rotate(180deg)
+  &__prefix
+    color: $text-secondary
+    @media ($tablet)
+      display: none
+  &__list
+    position: absolute
+    right: 0
+    top: 48px
+    width: 240px
+    padding-block: 8px
+    background: $bg-primary
+    box-shadow: $overlay-shadow
+    > button
+      display: flex
+      align-items: center
+      gap: 8px
+      width: 100%
+      height: 40px
+      padding: 0 16px
+      text-align: left
+      &:hover
+        background: $bg-surface
+      &[aria-pressed="true"]
+        font-weight: 500
+
+.catalog-grid
+  position: relative
+  display: grid
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+  gap: 48px 24px
+  @media ($desktop)
+    column-gap: 32px
+  @media ($tablet)
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 32px 16px
+  > li
+    min-width: 0
+
+.catalog-more
+  padding-top: 40px
+  display: grid
+  justify-items: center
+  gap: 16px
+  color: $text-secondary
+  .button
+    width: 240px
+    @media ($mobile)
+      width: 100%
+  &__error
+    text-align: center
+
+.button--secondary
+  border: 1px solid $text-primary
+  background: $bg-primary
+  color: $text-primary
+  &:hover
+    background: $bg-surface
+  &:active
+    background: $bg-surface-hover
+
+.catalog-empty
+  padding-block: 64px
+  display: grid
+  gap: 24px
+  justify-items: center
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+
+.catalog-filter-dialog
+  inset: 0
+  margin: 0
+  width: 100%
+  height: 100dvh
+  &[open]
+    display: flex
+    flex-direction: column
+  &__header
+    display: flex
+    flex-shrink: 0
+    align-items: center
+    gap: 24px
+    padding: 24px 80px 24px 32px
+    border-bottom: 1px solid $stroke-primary
+    @media ($mobile)
+      padding-left: 16px
+    h2
+      font-size: 24px
+      line-height: 32px
+      font-weight: 500
+    button
+      margin-left: auto
+      color: $text-secondary
+  &__scroll
+    flex: 1
+    min-height: 0
+    overflow-y: auto
+    padding-inline: 32px
+    @media ($mobile)
+      padding-inline: 16px
+  &__footer
+    flex-shrink: 0
+    padding: 16px 32px
+    border-top: 1px solid $stroke-primary
+    @media ($mobile)
+      padding-inline: 16px
+    .button
+      width: 100%
+
+.catalog-filter-group
+  border-bottom: 1px solid $stroke-primary
+  padding-block: 24px
+  summary
+    display: flex
+    align-items: center
+    justify-content: space-between
+    min-height: 24px
+    cursor: pointer
+    list-style: none
+    &::-webkit-details-marker
+      display: none
+  &[open] summary
+    margin-bottom: 16px
+    .catalog-chevron
+      transform: rotate(180deg)
+  &__options
+    display: grid
+    gap: 16px
+
+.catalog-sort-dialog
+  inset: auto 0 0
+  width: 100%
+  margin: 0
+  padding: 24px 32px 16px
+  @media ($mobile)
+    padding-inline: 16px
+  &__header
+    padding-right: 48px
+    padding-bottom: 24px
+    touch-action: none
+    h2
+      font-size: 20px
+      font-weight: 500
+      line-height: 28px
+  &__options
+    display: grid
+    button
+      display: flex
+      align-items: center
+      gap: 8px
+      min-height: 40px
+      text-align: left
+      &[aria-pressed="true"]
+        font-weight: 500
+
+.catalog-skeleton
+  pointer-events: none
+  &__media
+    aspect-ratio: 4 / 5
+    background: $bg-surface
+  &__caption
+    height: 16px
+    margin-top: 24px
+    background: $bg-surface
+    @media ($mobile)
+      height: 52px
+      margin-top: 16px

@@ -1,0 +1,56 @@
+<div class="product-info">
+  <div class="product-info__heading">
+    <h1>{{ productDetail.title }}</h1>
+    <p>Артикул {{ productDetail.article }}</p>
+  </div>
+  <div class="product-info__purchase">
+    <p class="product-info__price">
+      <span>{{ productDetail.price }}</span>{% if productDetail.oldPrice %}<del>{{ productDetail.oldPrice }}</del>{% endif %}
+    </p>
+    <!-- Цена со скидкой:
+    <p class="product-info__price"><span>12 990 ₽</span><del>15 990 ₽</del></p>
+    -->
+    {% if productDetail.stock is defined %}<p class="product-info__stock">В наличии: {{ productDetail.stock }} шт.</p>
+    {% endif %}
+    {% if productDetail.available %}
+    {# Кнопка использует общую интеграцию корзины: window.DesisanIntegrations.addToCart. #}
+    <button class="button product-info__button" type="button" data-add-to-cart="{{ productDetail.id }}"
+      data-product-title="{{ productDetail.title }}" {% if productDetail.inCart %}hidden{% endif %}><span data-purchase-label>В корзину</span><img class="product-info__loading" src="assets/img/product-loading.svg" width="34" height="24" alt="" hidden></button>
+    <a class="button product-info__button" href="{{ site.cartUrl }}" data-product-in-cart {% if not productDetail.inCart %}hidden{% endif %}>Перейти в корзину</a>
+    <p class="product-info__error" data-product-error role="alert" hidden></p>
+    <!-- Товар отсутствует:
+    <p class="product-info__availability">Нет в наличии</p>
+    <button class="button product-info__button" type="button" disabled>Нет в наличии</button>
+    <a class="text-link" href="/catalog/">Вернуться в каталог</a>
+    -->
+    {% else %}
+    <p class="product-info__availability">Нет в наличии</p>
+    <button class="button product-info__button" type="button" disabled>Нет в наличии</button>
+    <a class="text-link" href="/catalog/">Вернуться в каталог</a>
+    {% endif %}
+  </div>
+  {% set featureRows %}
+  {% for feature in productDetail.features %}
+  {% if feature.value or feature.value == 0 %}
+  <div class="product-info__feature">
+    <dt>{{ feature.name }}</dt>
+    <dd>{{ feature.value }}</dd>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endset %}
+  {% if featureRows | trim %}
+  <section class="product-info__features" aria-labelledby="product-features">
+    <h2 class="eyebrow" id="product-features">О товаре</h2>
+    <dl>{{ featureRows | safe }}</dl>
+  </section>
+  {% endif %}
+  <div class="product-info__conditions">
+    {% for condition in productDetail.conditions %}
+    <section class="product-info__condition">
+      <h2 class="eyebrow">{{ condition.title }}</h2>{% if condition.text %}<p>{{ condition.text }}</p>{% endif %}<a
+        class="text-link" href="{{ condition.url }}">{{ condition.link }}</a>
+    </section>
+    {% endfor %}
+  </div>
+</div>

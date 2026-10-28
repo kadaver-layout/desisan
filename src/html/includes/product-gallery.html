@@ -1,0 +1,28 @@
+<div class="product-gallery" data-product-gallery>
+  {% if productDetail.images | length %}
+  <div class="product-gallery__track" data-gallery-track aria-label="Фотографии товара">
+    {% for image in productDetail.images %}
+    <button class="product-gallery__slide" type="button" data-open-dialog="product-viewer" aria-label="Открыть фото {{ loop.index }} из {{ productDetail.images | length }}">
+      <img src="{{ image.src }}" alt="{{ image.alt }}" width="900" height="1200" {% if not loop.first %}loading="lazy"{% endif %}>
+      <span class="product-gallery__zoom" aria-hidden="true"><img src="assets/img/product-zoom.svg" width="24" height="24" alt=""></span>
+    </button>
+    {% endfor %}
+  </div>
+  {% if productDetail.images | length > 1 %}
+  <div class="product-gallery__thumbs" data-gallery-thumbs aria-label="Миниатюры фотографий">
+    {% for image in productDetail.images %}
+    <button class="product-gallery__thumb" type="button" data-gallery-thumb="{{ loop.index0 }}" aria-label="Фото {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+      <img src="{{ image.src }}" alt="" width="72" height="94" loading="lazy">
+    </button>
+    {% endfor %}
+  </div>
+  <div class="product-gallery__navigation">
+    <p data-gallery-counter aria-live="polite">1 / {{ productDetail.images | length }}</p>
+    <div class="product-gallery__controls"><button type="button" data-gallery-prev aria-label="Предыдущее фото">ПРЕД</button><span aria-hidden="true">/</span><button type="button" data-gallery-next aria-label="Следующее фото">СЛЕД</button></div>
+  </div>
+  {% endif %}
+  <p class="product-gallery__hint">Нажмите на фото, чтобы рассмотреть детали</p>
+  {% else %}
+  <div class="product-gallery__placeholder">Нет фотографии</div>
+  {% endif %}
+</div>

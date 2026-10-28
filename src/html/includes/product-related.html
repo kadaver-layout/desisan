@@ -1,0 +1,9 @@
+{% if productDetail.related | length %}
+<section class="product-related" aria-labelledby="related-title">
+  <div class="container"><h2 class="product-section-title" id="related-title">Похожие товары</h2>
+    <ul class="product-related__grid">
+      {% for product in productDetail.related %}<li>{% include "includes/product-card.html" %}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

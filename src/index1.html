@@ -1,0 +1,7 @@
+{% set catalogPage = catalogPages.all %}
+{% set title = catalogPage.title + " — DESISAN" %}
+{% set meta_description = "Каталог изделий DESISAN из натуральной кожи." %}
+{% extends "layouts/default.html" %}
+{% block content %}
+{% include "includes/catalog-page.html" %}
+{% endblock %}

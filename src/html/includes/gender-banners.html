@@ -1,0 +1,10 @@
+{% if genderBanners | length %}
+<section class="gender-banners" aria-label="Женская и мужская коллекции">
+  {% for banner in genderBanners %}
+  <a class="gender-banners__item gender-banners__item--{{ banner.modifier }}" href="{{ banner.url }}">
+    <img class="gender-banners__image" src="{{ banner.image }}" alt="" loading="lazy">
+    <div class="gender-banners__caption"><h2>{{ banner.title }}</h2><span class="text-link">Смотреть</span></div>
+  </a>
+  {% endfor %}
+</section>
+{% endif %}

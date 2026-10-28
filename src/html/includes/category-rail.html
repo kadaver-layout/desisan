@@ -1,0 +1,19 @@
+{% if categoryRail | length %}
+<section class="section category-section" id="catalog" aria-labelledby="categories-title" data-rail>
+  <div class="container">
+    <div class="section__heading">
+      <h2 class="eyebrow" id="categories-title">Каталог</h2>
+      {% set railCount = categoryRail | length %}{% set railTitle = "Каталог" %}
+      {% include "includes/rail-controls.html" %}
+    </div>
+    <ul class="category-grid" data-rail-track>
+      {% for category in categoryRail %}
+      <li class="category-card"><a class="category-card__link" href="{{ category.url }}">
+        <img class="category-card__image" src="{{ category.image }}" alt="" loading="lazy" width="272" height="340">
+        <h3 class="category-card__title" title="{{ category.title }}">{{ category.title }}</h3>
+      </a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}

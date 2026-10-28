@@ -1,0 +1,6 @@
+<div class="catalog-filter" data-filter-group="{{ filterGroup }}">
+  <div class="catalog-chip"><button type="button" data-popover-toggle="{{ filterGroup }}-popover" aria-controls="{{ filterGroup }}-popover" aria-expanded="false"><span data-chip-label="{{ filterGroup }}">{{ filterTitle }}</span>{% include "includes/catalog-chevron.html" %}</button><button class="catalog-chip__clear" type="button" data-clear-group="{{ filterGroup }}" aria-label="Сбросить: {{ filterTitle }}" hidden><span class="catalog-icon-slot"><span class="catalog-icon-native"><img src="assets/img/close.svg" width="24" height="24" alt=""></span></span></button></div>
+  <div class="catalog-popover catalog-popover--list" id="{{ filterGroup }}-popover" hidden>
+    {% set filterScope = "desktop" %}{% include "includes/catalog-filter-options.html" %}
+  </div>
+</div>

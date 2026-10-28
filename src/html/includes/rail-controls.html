@@ -1,0 +1,7 @@
+{% if railCount > 1 %}
+<div class="rail-controls" data-rail-controls aria-label="Листание: {{ railTitle }}">
+  <button type="button" data-rail-prev disabled aria-label="{{ railTitle }}: предыдущие">ПРЕД</button>
+  <span aria-hidden="true">/</span>
+  <button type="button" data-rail-next aria-label="{{ railTitle }}: следующие">СЛЕД</button>
+</div>
+{% endif %}

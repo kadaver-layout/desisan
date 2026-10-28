@@ -1,1 +1,27 @@
-{# Подвал DESISAN: разметка будет добавлена при вёрстке макета. #}
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__main">
+      <a class="logo footer__logo" href="/" aria-label="DESISAN — главная">{{ site.name }}</a>
+      <div class="footer__groups">
+        {% for group in footerGroups %}
+        <nav class="footer__group" aria-labelledby="footer-group-{{ loop.index }}">
+          <h2 class="eyebrow footer__title" id="footer-group-{{ loop.index }}">{{ group.title }}</h2>
+          <ul class="footer__links">
+            {% for link in group.links %}<li><a href="{{ link.url }}" {% if link.external %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.title }}</a></li>{% endfor %}
+          </ul>
+        </nav>
+        {% endfor %}
+        <div class="footer__group footer__contacts">
+          <h2 class="eyebrow footer__title">Контакты</h2>
+          <a class="phone" href="tel:{{ site.phoneHref }}"><img src="assets/img/phone.svg" width="20" height="20" alt="">{{ site.phone }}</a>
+          {# До получения официального ассета и адреса сообщества сохраняем текстовый плейсхолдер макета. #}
+          {% if site.vkUrl %}<a class="footer__social" href="{{ site.vkUrl }}" target="_blank" rel="noopener noreferrer" aria-label="DESISAN во ВКонтакте">VK</a>{% else %}<span class="footer__social" aria-label="ВКонтакте">VK</span>{% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <p>Мы обрабатываем данные посетителей и используем куки согласно <a href="{{ site.policyUrl }}">политике</a></p>
+      <p class="footer__copyright">© 2026 Desisan</p>
+    </div>
+  </div>
+</footer>

@@ -1,6 +1,402 @@
 @use "_vars" as *
 
-.index
-  padding: 48px 0
+.hero
+  position: relative
+  color: $text-inverse
+  &__track
+    display: flex
+    overflow-x: auto
+    scroll-snap-type: x mandatory
+    scrollbar-width: none
+    &::-webkit-scrollbar
+      display: none
+  &__slide
+    position: relative
+    flex: 0 0 100%
+    min-width: 0
+    height: 600px
+    display: flex
+    align-items: end
+    isolation: isolate
+    @media ($desktop)
+      height: 640px
+    @media ($tablet)
+      height: 520px
+    @media ($mobile)
+      height: 480px
+    &::after
+      content: ""
+      position: absolute
+      inset: 0
+      z-index: -1
+      background: linear-gradient(180deg, rgba(26,26,26,0.12), rgba(26,26,26,0.2) 45%, rgba(26,26,26,0.78))
+  &__image
+    position: absolute
+    z-index: -2
+    inset: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center 40%
+  &__content
+    display: grid
+    gap: 16px
+    padding-bottom: 64px
+    @media ($tablet)
+      padding-bottom: 48px
+    @media ($mobile)
+      padding-bottom: 40px
   &__title
-    margin: 0
+    font-size: 48px
+    line-height: 56px
+    letter-spacing: -0.01em
+    font-weight: 500
+    @media ($tablet)
+      font-size: 32px
+      line-height: 40px
+  .text-link
+    justify-self: start
+    font-weight: 500
+    letter-spacing: 0.04em
+  &__controls
+    position: absolute
+    bottom: 32px
+    left: 50%
+    transform: translateX(-50%)
+    display: flex
+    justify-content: end
+    gap: 16px
+    pointer-events: none
+    button
+      width: 48px
+      height: 48px
+      color: $text-inverse
+      border: 1px solid currentColor
+      pointer-events: auto
+
+.gender-banners
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  @media ($tablet)
+    grid-template-columns: minmax(0, 1fr)
+  &__item
+    display: flex
+    justify-content: center
+    align-items: end
+    position: relative
+    height: 560px
+    padding: 0 16px 48px
+    color: $text-inverse
+    isolation: isolate
+    @media ($desktop)
+      height: 640px
+    @media ($tablet)
+      height: 420px
+      padding-bottom: 40px
+    @media ($mobile)
+      height: 320px
+      padding-bottom: 32px
+    &::after
+      content: ""
+      position: absolute
+      inset: 0
+      z-index: -1
+      background: linear-gradient(180deg, rgba(26,26,26,0), rgba(26,26,26,0.1) 45%, rgba(26,26,26,0.45) 75%, rgba(26,26,26,0.88))
+    &:hover
+      text-decoration: none
+  &__image
+    position: absolute
+    inset: 0
+    z-index: -2
+    width: 100%
+    height: 100%
+    object-fit: cover
+  &__item--women &__image
+    object-position: center 13%
+  &__item--men &__image
+    object-position: center 54%
+  &__caption
+    display: grid
+    gap: 16px
+    text-align: center
+    @media ($tablet)
+      gap: 8px
+    h2
+      font-weight: 500
+      font-size: 24px
+      line-height: 32px
+      @media ($tablet)
+        font-size: 20px
+        line-height: 28px
+    .text-link
+      font-weight: 500
+      letter-spacing: 0.04em
+
+.rail-controls
+  display: flex
+  align-items: center
+  gap: 8px
+  font-size: 12px
+  font-weight: 500
+  line-height: 16px
+  letter-spacing: 0.12em
+  white-space: nowrap
+  @media ($tablet)
+    display: none
+  button
+    letter-spacing: inherit
+    &:disabled
+      color: $text-tertiary
+    &:not(:disabled):hover
+      text-decoration: underline
+  span
+    color: $text-tertiary
+
+.category-grid, .product-grid
+  display: grid
+  grid-auto-flow: column
+  grid-auto-columns: var(--card-width)
+  gap: var(--card-gap)
+  overflow-x: auto
+  scroll-snap-type: x mandatory
+  // Отступ привязки учитывает место для обводки фокуса у карточек.
+  scroll-padding-inline: 8px
+  scrollbar-width: none
+  // Внутренний отступ даёт место внешней обводке фокуса и не меняет сетку.
+  padding: 8px
+  margin: -8px
+  &::-webkit-scrollbar
+    display: none
+  > li
+    min-width: 0
+    scroll-snap-align: start
+  @media ($tablet)
+    grid-auto-flow: row
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr))
+    row-gap: 32px
+    overflow: visible
+  @media ($mobile)
+    row-gap: 24px
+
+.category-grid
+  --card-width: 264px
+  --card-gap: 32px
+  --columns: 3
+  @media ($desktop)
+    --card-width: 272px
+  @media ($tablet)
+    --card-gap: 16px
+  @media ($mobile)
+    --columns: 2
+
+.category-card
+  &__link
+    display: grid
+    gap: 16px
+    &:hover
+      text-decoration: none
+  &__image
+    display: block
+    width: 100%
+    height: auto
+    aspect-ratio: 4 / 5
+    object-fit: cover
+    transition: background $anim
+  &__title
+    font-size: 16px
+    line-height: 24px
+    font-weight: 500
+    text-align: center
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+  @media (hover: hover)
+    &:hover &__title
+      text-decoration: underline
+
+.product-grid
+  --card-width: 368px
+  --card-gap: 24px
+  --columns: 2
+  @media ($desktop)
+    --card-width: 424px
+    --card-gap: 32px
+  @media ($tablet)
+    --card-gap: 16px
+
+.product-card
+  display: grid
+  gap: 24px
+  min-width: 0
+  @media ($mobile)
+    gap: 16px
+  &:has(:focus-visible)
+    outline: 2px solid $stroke-focus
+    outline-offset: 4px
+  &__media
+    position: relative
+    aspect-ratio: 4 / 5
+    background: $bg-surface
+  &__image-link, &__image
+    display: block
+    width: 100%
+    height: 100%
+  &__image
+    object-fit: cover
+  &__image-link::after
+    content: ""
+    position: absolute
+    inset: 0
+    pointer-events: none
+    transition: background $anim
+  &__placeholder
+    display: grid
+    place-content: center
+    height: 100%
+    padding: 16px
+    text-align: center
+    color: $text-secondary
+  &__badge
+    position: absolute
+    top: 16px
+    left: 16px
+    padding: 4px 8px
+    background: $bg-inverse
+    color: $text-inverse
+    font-size: 12px
+    line-height: 16px
+    font-weight: 500
+    letter-spacing: 0.08em
+    text-transform: uppercase
+    @media ($mobile)
+      top: 8px
+      left: 8px
+  &__add
+    position: absolute
+    right: 16px
+    bottom: 16px
+    width: 32px
+    height: 32px
+    display: grid
+    place-items: center
+    background: $bg-primary
+    transition: background $anim
+    @media ($mobile)
+      right: 8px
+      bottom: 8px
+    &::after
+      content: ""
+      position: absolute
+      inset: -4px
+    &:disabled
+      opacity: 0.5
+  &__caption
+    display: flex
+    gap: 16px
+    min-width: 0
+    align-items: start
+    font-size: 12px
+    line-height: 16px
+    font-weight: 500
+    @media ($mobile)
+      display: grid
+      grid-template-rows: 32px 16px
+      gap: 4px
+  &__name
+    flex: 1
+    min-width: 0
+    font-size: inherit
+    line-height: inherit
+    font-weight: inherit
+    letter-spacing: 0.08em
+    a
+      display: block
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      @media ($mobile)
+        display: -webkit-box
+        -webkit-line-clamp: 2
+        -webkit-box-orient: vertical
+        white-space: normal
+  &__prices
+    display: flex
+    flex-shrink: 0
+    gap: 8px
+    white-space: nowrap
+    letter-spacing: 0.04em
+    del
+      color: $text-tertiary
+  @media (hover: hover)
+    &:hover &__image-link::after
+      background: rgba(26,26,26,0.06)
+    &:hover &__name a
+      text-decoration: underline
+    &:hover &__add
+      background: $bg-inverse
+      img
+        filter: brightness(0) invert(1)
+
+.brand
+  border-top: 1px solid $stroke-primary
+  &__inner
+    display: grid
+    gap: 48px
+    @media ($tablet)
+      gap: 32px
+  &__heading
+    display: grid
+    gap: 24px
+    @media ($tablet)
+      gap: 32px
+  &__description
+    max-width: 760px
+    font-size: 18px
+    line-height: 28px
+    color: $text-secondary
+    @media ($desktop)
+      max-width: 880px
+    @media ($tablet)
+      max-width: none
+      font-size: 16px
+      line-height: 24px
+  &__facts
+    display: grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+    gap: 32px
+    @media ($tablet)
+      gap: 24px
+    @media ($mobile)
+      grid-template-columns: minmax(0, 1fr)
+      gap: 32px
+  &__fact
+    border-top: 1px solid $stroke-primary
+    padding-top: 24px
+    display: grid
+    align-content: start
+    gap: 8px
+    h3
+      font: 500 14px / 20px $font-family
+      @media ($tablet)
+        font-size: 16px
+        line-height: 24px
+    p
+      color: $text-secondary
+  &__mobile-description
+    display: none
+  @media ($mobile)
+    &__mobile-description
+      display: block
+    &__desktop-description
+      display: none
+  &__link
+    display: inline-flex
+    align-items: center
+    gap: 8px
+    justify-self: start
+    font-weight: 500
+    @media ($tablet)
+      font-size: 16px
+      line-height: 24px
+      img
+        display: none

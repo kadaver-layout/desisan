@@ -1,0 +1,15 @@
+<section class="section brand" aria-labelledby="brand-title">
+  <div class="container brand__inner">
+    <div class="brand__heading"><h2 class="eyebrow" id="brand-title">О бренде</h2><p class="brand__description">{{ brand.description }}</p></div>
+    <ul class="brand__facts">
+      {% for fact in brand.facts %}
+      <li class="brand__fact">
+        <h3>{{ fact.title }}</h3>
+        <p {% if fact.mobileDescription %}class="brand__desktop-description"{% endif %}>{{ fact.description }}</p>
+        {% if fact.mobileDescription %}<p class="brand__mobile-description">{{ fact.mobileDescription }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a class="brand__link text-link" href="/about/">Подробнее о компании<img src="assets/img/arrow-right.svg" width="20" height="20" alt=""></a>
+  </div>
+</section>

@@ -1,2 +1,76 @@
 @use "_vars" as *
-// Стили подвала DESISAN.
+
+.footer
+  padding-block: 40px 16px
+  border-top: 1px solid $stroke-primary
+  @media ($mobile)
+    padding-top: 32px
+  &__inner
+    display: grid
+    gap: 48px
+  &__main
+    display: flex
+    align-items: start
+    justify-content: space-between
+    gap: 48px
+    @media ($tablet)
+      flex-direction: column
+  &__groups
+    display: grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+    gap: 24px
+    width: 856px
+    max-width: 100%
+    @media ($desktop)
+      width: 880px
+      gap: 32px
+    @media ($tablet)
+      width: 100%
+      grid-template-columns: max-content minmax(0, 1fr) max-content
+      gap: 64px
+    @media ($mobile)
+      grid-template-columns: minmax(0, 1fr)
+      gap: 24px
+  &__group
+    display: flex
+    flex-direction: column
+    align-items: start
+    gap: 16px
+    min-width: 0
+  &__title
+    color: $text-secondary
+  &__links
+    display: grid
+    gap: 8px
+  &__social
+    width: 40px
+    height: 40px
+    border: 1px solid $stroke-primary
+    display: grid
+    place-items: center
+    color: $text-secondary
+    font-size: 12px
+    line-height: 16px
+    font-weight: 500
+    letter-spacing: 0.04em
+  &__legal
+    display: flex
+    align-items: start
+    justify-content: space-between
+    gap: 24px
+    border-top: 1px solid $stroke-primary
+    padding-top: 16px
+    color: $text-secondary
+    @media ($mobile)
+      flex-direction: column
+      gap: 8px
+    a
+      text-decoration: underline
+      text-underline-offset: 2px
+  &__copyright
+    flex-shrink: 0
+    color: $text-tertiary
+  &__logo
+    @media ($mobile)
+      font-size: 16px
+      line-height: 22px
