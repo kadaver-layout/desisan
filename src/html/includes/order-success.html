@@ -1,0 +1,36 @@
+{# Битрикс передаёт сохранённый заказ после подтверждённого создания.
+   Шаблон не создаёт заказ, не очищает корзину и не подтверждает оплату.
+   Сообщение об отправленном письме требует подтверждения отправки сервером. #}
+{% set resultState = orderState | default('accepted') %}
+<main class="main order-success{% if resultState == 'load-failed' %} order-success--load-failed{% endif %}" id="main-content">
+  <div class="container order-success__inner">
+    <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки"><ol><li><a href="home.html">Главная</a></li><li><span aria-current="page">{% if resultState == 'load-failed' %}Информация о заказе{% else %}Заказ принят{% endif %}</span></li></ol></nav>
+    {% if resultState == 'load-failed' %}
+      <h1>Информация о заказе</h1>
+      <div class="order-success__content">
+        <p class="order-success__lead">Не удалось загрузить информацию о заказе</p>
+        <p class="order-success__description">Не оформляйте заказ повторно. Обновите информацию или свяжитесь с магазином по телефону <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+        <button class="button order-success__continue" type="button" data-order-result-retry>Обновить информацию</button>
+      </div>
+    {% else %}
+      <h1>Заказ принят</h1>
+      <div class="order-success__content">
+        <p class="order-success__lead">Заказ № {{ orderResult.number }} успешно создан</p>
+        <p class="order-success__description">Менеджер свяжется с вами, согласует доставку, итоговую стоимость и порядок оплаты</p>
+        {% if resultState == 'email-failed' %}
+          <p class="order-success__notice" role="status">Не удалось отправить письмо с деталями. Заказ принят — сохраните его номер.</p>
+        {% else %}
+          <p class="order-success__email">Подробности заказа отправлены на {{ orderResult.email }}</p>
+        {% endif %}
+        <section class="order-success__panel" aria-labelledby="order-details-title">
+          <h2 id="order-details-title">Детали заказа</h2>
+          <dl class="order-success__details">
+            {% for detail in orderResult.details %}<div><dt>{{ detail.label }}</dt><dd>{{ detail.value }}</dd></div>{% endfor %}
+          </dl>
+          <p class="order-success__delivery-note">Доставка не включена в сумму товаров. Окончательную стоимость подтвердит менеджер.</p>
+        </section>
+        <a class="button order-success__continue" href="index1.html">Продолжить покупки</a>
+      </div>
+    {% endif %}
+  </div>
+</main>

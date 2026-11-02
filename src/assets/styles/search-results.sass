@@ -1,0 +1,82 @@
+@use "_vars" as *
+
+.search-page
+  > .search-page__heading
+    display: grid
+    gap: 16px
+    padding-block: 32px
+    > div
+      display: grid
+      gap: 8px
+    h1
+      letter-spacing: -.48px
+      overflow-wrap: anywhere
+    p
+      color: $text-secondary
+  > .search-page__body
+    padding-block: 0 64px
+  &__grid
+    margin: 0
+    gap: 48px 24px
+    > div
+      min-width: 0
+  &__message
+    display: grid
+    justify-items: center
+    gap: 16px
+    max-width: 560px
+    margin: auto
+    padding: 64px 0
+    text-align: center
+    h2
+      font-size: 24px
+      line-height: 32px
+      font-weight: 500
+    p
+      color: $text-secondary
+    .button
+      margin-top: 8px
+  &__more
+    display: grid
+    justify-items: center
+    gap: 16px
+    margin-top: 24px
+    color: $text-secondary
+    .button
+      min-width: 240px
+  &__load-error
+    color: $text-negative
+.search-skeleton
+  display: grid
+  gap: 16px
+  > div
+    aspect-ratio: 4 / 5
+    background: $bg-surface
+  > span
+    display: block
+    height: 16px
+    background: $bg-surface
+    &:last-child
+      width: 40%
+@media ($desktop)
+  .search-page__grid
+    column-gap: 32px
+@media ($tablet)
+  .search-page__grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 32px 16px
+  .search-page__message
+    justify-items: start
+    max-width: none
+    padding-block: 0 32px
+    text-align: left
+@media ($mobile)
+  .search-page > .search-page__heading
+    padding-block: 24px
+    h1
+      letter-spacing: -.32px
+  .search-page__message .button
+    width: 100%
+  .search-page__more
+    justify-items: stretch
+    text-align: center

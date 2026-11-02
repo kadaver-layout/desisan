@@ -1,0 +1,7 @@
+{% set title = "Корзина — количество изменено — DESISAN" %}
+{% set meta_description = "Корзина после изменения количества товара." %}
+{% set variant = cartVariants.quantityChanged %}
+{% set cart = { items: variant.items, countLabel: variant.countLabel, oldTotal: variant.oldTotal, total: variant.total, discount: variant.discount, discountValue: 6000, recommendations: cart.recommendations } %}
+{% set headerCartCount = 3 %}
+{% extends "layouts/default.html" %}
+{% block content %}{% include "includes/cart-page.html" %}{% endblock %}

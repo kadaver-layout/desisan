@@ -1,18 +1,23 @@
-<div class="product-gallery" data-product-gallery>
+<div class="product-gallery" data-product-gallery data-gallery-state="{{ galleryState | default('') }}">
   {% if productDetail.images | length %}
   <div class="product-gallery__track" data-gallery-track aria-label="Фотографии товара">
     {% for image in productDetail.images %}
+    {% if image.type == 'video' %}
+    <div class="product-gallery__slide" data-gallery-video><video controls playsinline preload="metadata" src="{{ image.src }}"{% if image.poster %} poster="{{ image.poster }}"{% endif %} aria-label="{{ image.alt | default('Видео товара') }}"></video><div class="product-gallery__media-error" data-product-video-error hidden><p>Не удалось загрузить видео</p><button class="button button--secondary" type="button" data-product-video-retry>Повторить загрузку</button></div></div>
+    {% else %}
     <button class="product-gallery__slide" type="button" data-open-dialog="product-viewer" aria-label="Открыть фото {{ loop.index }} из {{ productDetail.images | length }}">
       <img src="{{ image.src }}" alt="{{ image.alt }}" width="900" height="1200" {% if not loop.first %}loading="lazy"{% endif %}>
+      <span class="product-gallery__media-error" data-gallery-error hidden>Не удалось загрузить изображение<span class="text-link">Повторить загрузку</span></span>
       <span class="product-gallery__zoom" aria-hidden="true"><img src="assets/img/product-zoom.svg" width="24" height="24" alt=""></span>
     </button>
+    {% endif %}
     {% endfor %}
   </div>
   {% if productDetail.images | length > 1 %}
   <div class="product-gallery__thumbs" data-gallery-thumbs aria-label="Миниатюры фотографий">
     {% for image in productDetail.images %}
     <button class="product-gallery__thumb" type="button" data-gallery-thumb="{{ loop.index0 }}" aria-label="Фото {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
-      <img src="{{ image.src }}" alt="" width="72" height="94" loading="lazy">
+      {% if image.type == 'video' %}{% if image.poster %}<img src="{{ image.poster }}" alt="" width="80" height="104" loading="lazy">{% endif %}<span class="product-gallery__video-label">Видео</span>{% else %}<img src="{{ image.src }}" alt="" width="80" height="104" loading="lazy">{% endif %}
     </button>
     {% endfor %}
   </div>

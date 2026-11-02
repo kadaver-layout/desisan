@@ -1,0 +1,10 @@
+{# Начальная загрузка: данные и итог неизвестны. Не подменять её пустой корзиной.
+   При обновлении заполненной корзины сохранять позиции и блокировать контролы. #}
+<section class="container cart-loading" aria-label="Загрузка корзины" aria-busy="true">
+  <p role="status">Загружаем корзину...</p>
+  <div class="cart-loading__items" aria-hidden="true">
+    {% for placeholder in range(0, 2) %}
+      <div class="cart-loading__item"><span class="cart-loading__image"></span><div class="cart-loading__lines"><span></span><span></span><span></span></div></div>
+    {% endfor %}
+  </div>
+</section>

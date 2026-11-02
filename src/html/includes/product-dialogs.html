@@ -1,7 +1,10 @@
 {% if productDetail.images | length %}
 <dialog class="product-viewer" id="product-viewer" aria-label="Просмотр фотографии товара">
   <input class="product-viewer__zoom-toggle visually-hidden" type="checkbox" id="product-viewer-zoom" aria-label="Увеличить фотографию">
-  <label class="product-viewer__photo" for="product-viewer-zoom" aria-label="Увеличить фотографию"><img src="{{ productDetail.images[0].src }}" alt="{{ productDetail.images[0].alt }}" draggable="false" data-viewer-image></label>
+  <label class="product-viewer__photo" for="product-viewer-zoom" aria-label="Увеличить фотографию"><img src="{{ (productDetail.images[0].poster | default('assets/img/image-line.svg')) if productDetail.images[0].type == 'video' else productDetail.images[0].src }}" alt="{{ productDetail.images[0].alt }}" draggable="false" data-viewer-image></label>
+  <div class="product-gallery__media-error" data-viewer-error hidden><p>Не удалось загрузить изображение</p><button class="button button--secondary" type="button" data-viewer-retry>Повторить загрузку</button></div>
+  <video class="product-viewer__video" controls playsinline data-viewer-video hidden aria-label="Видео товара"></video>
+  <div class="product-gallery__media-error" data-product-video-error hidden><p>Не удалось загрузить видео</p><button class="button button--secondary" type="button" data-product-video-retry>Повторить загрузку</button></div>
   <button class="dialog-close product-viewer__close" type="button" data-close-dialog aria-label="Закрыть просмотр"><img src="assets/img/close.svg" width="24" height="24" alt=""></button>
   {% if productDetail.images | length > 1 %}
   <button class="product-viewer__arrow product-viewer__arrow--prev" type="button" data-gallery-prev aria-label="Предыдущее фото"><img src="assets/img/product-arrow-left.svg" width="24" height="24" alt=""></button>
@@ -14,7 +17,7 @@
   <div class="product-review-dialog__content">
     <h2 id="review-dialog-title">Написать отзыв</h2>
     {# Отправка и модерация подключаются на стороне Битрикс. #}
-    <form class="review-form" method="post">
+    <form class="review-form" method="post" data-review-preview="{{ reviewPreview | default('') }}">
       <label class="review-form__label" for="review-name">Ваше имя</label>
       <input id="review-name" name="name" type="text" placeholder="Как к вам обращаться" autocomplete="name" minlength="2" maxlength="80" required>
       <fieldset><legend>Оценка</legend><div class="review-form__ratings">

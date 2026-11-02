@@ -1,0 +1,23 @@
+{% set item = news.items[(news_id | default(1)) - 1] %}
+{% set article_error = news_article_state == 'error' %}
+{% set article_missing = news_article_state == 'missing' %}
+{% set article_loading = news_article_state == 'loading' %}
+{% set short_article = news_article_state == 'short' or news_id > 1 %}
+<main class="main news-article" id="main-content" data-news-article>
+  <article class="container news-article__inner">
+    <header class="news-article__heading"><nav class="eyebrow news-article__crumbs" aria-label="Хлебные крошки"><a href="home.html">Главная</a><span aria-hidden="true"> / </span><a href="index8.html">Новости</a><span aria-hidden="true"> / </span><span aria-current="page">Новость</span></nav>
+    {% if not article_loading %}<h1>{{ 'Новость не найдена' if article_missing else ('Не удалось открыть новость' if article_error else (news.longTitle if news_article_state == 'image-error' else item.title)) }}</h1>{% else %}<h1 class="visually-hidden">Загрузка новости</h1>{% endif %}</header>
+    {% if article_loading %}<div class="news-article__skeleton" aria-busy="true"><span class="visually-hidden" role="status">Загружаем новость</span><div class="news-skeleton" aria-hidden="true"><span></span><span></span><div></div><span></span></div></div>
+    {% elif article_error %}<section class="news-page__state"><h2>Попробуйте ещё раз</h2><p>Проверьте подключение и повторите загрузку</p><button class="button button--secondary" type="button" data-news-article-retry>Попробовать снова</button></section>
+    {% elif article_missing %}<p>Страница удалена или у неё изменился адрес</p><div class="news-article__actions"><a class="button" href="home.html">На главную</a><a class="button button--secondary" href="index1.html">Перейти в каталог</a></div>
+    {% else %}
+    <div class="news-article__intro"><time datetime="{{ item.datetime }}">{{ item.date }}</time><p>{{ item.excerpt if news_id > 1 else news.article.lead }}</p></div>
+    {% if not short_article %}<figure class="news-article__figure">{% if news_article_state == 'image-error' %}<div class="news-article__image-error" role="img" aria-label="Изображение недоступно">Не удалось загрузить изображение</div>{% else %}<img src="assets/img/news-1.png" alt="Сумка Desisan из натуральной кожи" width="960" height="540" data-news-image>{% endif %}<figcaption>{{ news.article.caption }}</figcaption></figure>{% endif %}
+    {% if not news_id or news_id == 1 %}<section><h2>{{ news.article.heading }}</h2>{% for paragraph in news.article.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</section>{% endif %}
+    {% if not short_article and news_article_state != 'image-error' %}<div class="news-article__gallery">{% for caption in news.article.galleryCaptions %}<figure><img src="assets/img/news-{{ 3 if loop.first else 4 }}.png" alt="{{ caption }}" width="468" height="351" data-news-image><figcaption>{{ caption }}</figcaption></figure>{% endfor %}</div>{% endif %}
+    {% if not short_article %}<section><h2>{{ news.article.secondHeading }}</h2><p>{{ news.article.secondParagraph }}</p></section>{% endif %}
+    <aside class="news-article__cta"><h2>{{ news.article.ctaTitle }}</h2><p>{{ news.article.ctaDescription }}</p><a class="button" href="index1.html">Перейти в каталог</a></aside>
+    {% endif %}
+    <footer class="news-article__back"><a class="text-link" href="index8.html">Все новости</a></footer>
+  </article>
+</main>

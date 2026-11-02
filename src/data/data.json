@@ -1,12 +1,75 @@
 {
+  "contacts": {
+    "email": "info@desisan.ru",
+    "address": "г. Орёл, ул. Пионерская, 14",
+    "hours": "Пн–Пт, 9:00–18:00",
+    "daysOff": "Сб–Вс — выходные",
+    "mapUrl": "https://yandex.ru/maps/?text=Орёл%2C%20Пионерская%2C%2014",
+    "mapImage": "assets/img/contacts-map.png",
+    "demoName": "Анна",
+    "demoEmail": "anna@example.com",
+    "demoMessage": "Здравствуйте! Подскажите, пожалуйста, условия доставки."
+  },
+  "textPage": {
+    "longTitle": "Как выбрать изделие из натуральной кожи и ухаживать за ним каждый день",
+    "shortDescription": "Desisan — изделия из натуральной кожи для повседневной жизни. В каталоге представлены сумки, рюкзаки, портфели, кошельки и аксессуары.",
+    "deliveryUrl": "",
+    "videoUrl": "",
+    "manufacturerUrl": "",
+    "bullets": [
+      "Краткий пункт списка",
+      "Пункт с более подробным описанием, который переносится на несколько строк при небольшой ширине экрана",
+      "Ссылка или дополнительное пояснение внутри пункта"
+    ],
+    "steps": [
+      "Выберите нужный раздел",
+      "Изучите описание и условия",
+      "Перейдите по ссылке, чтобы получить подробную информацию",
+      "Если остались вопросы, воспользуйтесь разделом «Контакты»"
+    ],
+    "table": {
+      "headings": [
+        "Характеристика",
+        "Описание",
+        "Применение",
+        "Комментарий"
+      ],
+      "rows": [
+        [
+          "Материал",
+          "Натуральная кожа",
+          "Сумки и аксессуары",
+          "Значение из описания"
+        ],
+        [
+          "Размер",
+          "По карточке товара",
+          "Выбор модели",
+          "Ширина, высота, глубина"
+        ],
+        [
+          "Цвет",
+          "Варианты в каталоге",
+          "Выбор изделия",
+          "Фотография и описание"
+        ],
+        [
+          "Комплектация",
+          "Указана в описании",
+          "Перед покупкой",
+          "Проверяйте состав"
+        ]
+      ]
+    }
+  },
   "site": {
     "name": "DESISAN",
     "phone": "8 800 555-04-10",
     "phoneHref": "+78005550410",
     "city": "Орёл",
     "cartCount": 2,
-    "cartUrl": "/cart/",
-    "searchUrl": "/search/",
+    "cartUrl": "index3.html",
+    "searchUrl": "index11.html",
     "policyUrl": "/privacy/",
     "vkUrl": "",
     "detectedCity": ""
@@ -2041,7 +2104,972 @@
         }
       ],
       "total": 102
+    },
+    "section": {
+      "title": "Сумки",
+      "gender": "women",
+      "type": "bags",
+      "breadcrumbs": [
+        {
+          "title": "Главная",
+          "url": "home.html"
+        },
+        {
+          "title": "Каталог",
+          "url": "index1.html"
+        },
+        {
+          "title": "Женское",
+          "url": "catalog-women.html"
+        },
+        {
+          "title": "Сумки"
+        }
+      ],
+      "products": [
+        {
+          "id": "section-1",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 0
+        },
+        {
+          "id": "section-2",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 1
+        },
+        {
+          "id": "section-3",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "priceValue": 14290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 2
+        },
+        {
+          "id": "section-4",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "priceValue": 7990,
+          "oldPrice": "9 990 ₽",
+          "oldPriceValue": 9990,
+          "badge": "−20%",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 3
+        },
+        {
+          "id": "section-5",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "priceValue": 11490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 4
+        },
+        {
+          "id": "section-6",
+          "title": "Сумка с клапаном из натуральной кожи",
+          "price": "16 490 ₽",
+          "priceValue": 16490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 5
+        },
+        {
+          "id": "section-7",
+          "title": "Сумка-мешок из натуральной кожи",
+          "price": "8 790 ₽",
+          "priceValue": 8790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 6
+        },
+        {
+          "id": "section-8",
+          "title": "Сумка на плечо из натуральной кожи",
+          "price": "13 290 ₽",
+          "priceValue": 13290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 7
+        },
+        {
+          "id": "section-9",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "10 990 ₽",
+          "priceValue": 10990,
+          "oldPrice": "13 740 ₽",
+          "oldPriceValue": 13740,
+          "badge": "−20%",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 8
+        },
+        {
+          "id": "section-10",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "15 790 ₽",
+          "priceValue": 15790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 9
+        },
+        {
+          "id": "section-11",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "6 990 ₽",
+          "priceValue": 6990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 10
+        },
+        {
+          "id": "section-12",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "12 490 ₽",
+          "priceValue": 12490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 11
+        },
+        {
+          "id": "section-13",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 12
+        },
+        {
+          "id": "section-14",
+          "title": "Сумка с клапаном из натуральной кожи",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "11 860 ₽",
+          "oldPriceValue": 11860,
+          "badge": "−20%",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 13
+        },
+        {
+          "id": "section-15",
+          "title": "Сумка-мешок из натуральной кожи",
+          "price": "14 290 ₽",
+          "priceValue": 14290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 14
+        },
+        {
+          "id": "section-16",
+          "title": "Сумка на плечо из натуральной кожи",
+          "price": "7 990 ₽",
+          "priceValue": 7990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 15
+        },
+        {
+          "id": "section-17",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "11 490 ₽",
+          "priceValue": 11490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 16
+        },
+        {
+          "id": "section-18",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "16 490 ₽",
+          "priceValue": 16490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 17
+        },
+        {
+          "id": "section-19",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "8 790 ₽",
+          "priceValue": 8790,
+          "oldPrice": "10 990 ₽",
+          "oldPriceValue": 10990,
+          "badge": "−20%",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 18
+        },
+        {
+          "id": "section-20",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "13 290 ₽",
+          "priceValue": 13290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 19
+        },
+        {
+          "id": "section-21",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "10 990 ₽",
+          "priceValue": 10990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 20
+        },
+        {
+          "id": "section-22",
+          "title": "Сумка с клапаном из натуральной кожи",
+          "price": "15 790 ₽",
+          "priceValue": 15790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 21
+        },
+        {
+          "id": "section-23",
+          "title": "Сумка-мешок из натуральной кожи",
+          "price": "6 990 ₽",
+          "priceValue": 6990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 22
+        },
+        {
+          "id": "section-24",
+          "title": "Сумка на плечо из натуральной кожи",
+          "price": "12 490 ₽",
+          "priceValue": 12490,
+          "oldPrice": "15 610 ₽",
+          "oldPriceValue": 15610,
+          "badge": "−20%",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 23
+        }
+      ],
+      "total": 24
+    },
+    "women": {
+      "title": "Женское",
+      "gender": "women",
+      "type": "",
+      "breadcrumbs": [
+        {
+          "title": "Главная",
+          "url": "home.html"
+        },
+        {
+          "title": "Каталог",
+          "url": "index1.html"
+        },
+        {
+          "title": "Женское"
+        }
+      ],
+      "products": [
+        {
+          "id": "women-1",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 0
+        },
+        {
+          "id": "women-2",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 1
+        },
+        {
+          "id": "women-3",
+          "title": "Рюкзак городской из натуральной кожи",
+          "price": "14 290 ₽",
+          "priceValue": 14290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-1.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 2
+        },
+        {
+          "id": "women-4",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "7 990 ₽",
+          "priceValue": 7990,
+          "oldPrice": "9 990 ₽",
+          "oldPriceValue": 9990,
+          "badge": "−20%",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 3
+        },
+        {
+          "id": "women-5",
+          "title": "Кошелёк на молнии из натуральной кожи",
+          "price": "11 490 ₽",
+          "priceValue": 11490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-4.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 4
+        },
+        {
+          "id": "women-6",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "16 490 ₽",
+          "priceValue": 16490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 5
+        },
+        {
+          "id": "women-7",
+          "title": "Рюкзак-трансформер из натуральной кожи",
+          "price": "8 790 ₽",
+          "priceValue": 8790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-8.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 6
+        },
+        {
+          "id": "women-8",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "13 290 ₽",
+          "priceValue": 13290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 7
+        },
+        {
+          "id": "women-9",
+          "title": "Сумка с клапаном из натуральной кожи",
+          "price": "10 990 ₽",
+          "priceValue": 10990,
+          "oldPrice": "13 740 ₽",
+          "oldPriceValue": 13740,
+          "badge": "−20%",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 8
+        },
+        {
+          "id": "women-10",
+          "title": "Рюкзак на молнии из натуральной кожи",
+          "price": "15 790 ₽",
+          "priceValue": 15790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-12.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 9
+        },
+        {
+          "id": "women-11",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "6 990 ₽",
+          "priceValue": 6990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 10
+        },
+        {
+          "id": "women-12",
+          "title": "Кошелёк на молнии из натуральной кожи",
+          "price": "12 490 ₽",
+          "priceValue": 12490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-4.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 11
+        },
+        {
+          "id": "women-13",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 12
+        },
+        {
+          "id": "women-14",
+          "title": "Рюкзак городской из натуральной кожи",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "11 860 ₽",
+          "oldPriceValue": 11860,
+          "badge": "−20%",
+          "image": "assets/img/catalog-1.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 13
+        },
+        {
+          "id": "women-15",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "priceValue": 14290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-5.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 14
+        },
+        {
+          "id": "women-16",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "priceValue": 7990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-7.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 15
+        },
+        {
+          "id": "women-17",
+          "title": "Рюкзак-трансформер из натуральной кожи",
+          "price": "11 490 ₽",
+          "priceValue": 11490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-8.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 16
+        },
+        {
+          "id": "women-18",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "16 490 ₽",
+          "priceValue": 16490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-10.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 17
+        },
+        {
+          "id": "women-19",
+          "title": "Кошелёк на молнии из натуральной кожи",
+          "price": "8 790 ₽",
+          "priceValue": 8790,
+          "oldPrice": "10 990 ₽",
+          "oldPriceValue": 10990,
+          "badge": "−20%",
+          "image": "assets/img/catalog-4.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 18
+        },
+        {
+          "id": "women-20",
+          "title": "Сумка с клапаном из натуральной кожи",
+          "price": "13 290 ₽",
+          "priceValue": 13290,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-11.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 19
+        },
+        {
+          "id": "women-21",
+          "title": "Рюкзак на молнии из натуральной кожи",
+          "price": "10 990 ₽",
+          "priceValue": 10990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-12.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 20
+        },
+        {
+          "id": "women-22",
+          "title": "Сумка через плечо из натуральной кожи",
+          "price": "15 790 ₽",
+          "priceValue": 15790,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "",
+          "image": "assets/img/catalog-0.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 21
+        },
+        {
+          "id": "women-23",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "6 990 ₽",
+          "priceValue": 6990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "badge": "НОВИНКА",
+          "image": "assets/img/catalog-3.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 22
+        },
+        {
+          "id": "women-24",
+          "title": "Рюкзак городской из натуральной кожи",
+          "price": "12 490 ₽",
+          "priceValue": 12490,
+          "oldPrice": "15 610 ₽",
+          "oldPriceValue": 15610,
+          "badge": "−20%",
+          "image": "assets/img/catalog-1.png",
+          "url": "index2.html",
+          "available": true,
+          "gender": "women",
+          "type": "bags",
+          "sortOrder": 23
+        }
+      ],
+      "total": 24
     }
+  },
+  "orderResult": {
+    "number": "DS-10485",
+    "email": "maria@example.ru",
+    "details": [
+      {
+        "label": "Номер заказа",
+        "value": "DS-10485"
+      },
+      {
+        "label": "Дата и время",
+        "value": "5 октября 2026, 14:32"
+      },
+      {
+        "label": "За товары",
+        "value": "22 480 ₽"
+      },
+      {
+        "label": "Доставка",
+        "value": "ТК или почтой"
+      },
+      {
+        "label": "Город",
+        "value": "Орёл"
+      },
+      {
+        "label": "Адрес доставки",
+        "value": "ул. Лесная, д. 12, кв. 8"
+      },
+      {
+        "label": "Предпочтительная оплата",
+        "value": "Банковская карта"
+      }
+    ]
+  },
+  "cartVariants": {
+    "longTitle": "Женская сумка из натуральной кожи с длинным регулируемым ремнём и двумя отделениями",
+    "quantityChanged": {
+      "countLabel": "3 товара",
+      "total": "35 470 ₽",
+      "oldTotal": "41 470 ₽",
+      "discount": "−6 000 ₽",
+      "items": [
+        {
+          "id": "201",
+          "quantity": 2,
+          "title": "Сумка из натуральной кожи",
+          "article": "DS-1042",
+          "color": "Бордовый",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "15 990 ₽",
+          "oldPriceValue": 15990,
+          "linePrice": "25 980 ₽",
+          "lineOldPrice": "31 980 ₽",
+          "image": "assets/img/catalog-0.png",
+          "url": "/catalog/product/desisan-201/"
+        },
+        {
+          "id": "202",
+          "title": "Сумка-тоут из натуральной кожи",
+          "article": "DS-1086",
+          "color": "Бежевый",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "image": "assets/img/catalog-3.png",
+          "url": "/catalog/product/desisan-202/"
+        }
+      ]
+    },
+    "noDiscount": {
+      "total": "22 480 ₽",
+      "items": [
+        {
+          "id": "201",
+          "title": "Сумка из натуральной кожи",
+          "article": "DS-1042",
+          "color": "Бордовый",
+          "price": "12 990 ₽",
+          "priceValue": 12990,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "image": "",
+          "url": "/catalog/product/desisan-201/"
+        },
+        {
+          "id": "202",
+          "title": "Сумка-тоут из натуральной кожи",
+          "article": "DS-1086",
+          "color": "Бежевый",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "image": "assets/img/catalog-3.png",
+          "url": "/catalog/product/desisan-202/"
+        }
+      ]
+    },
+    "priceChanged": {
+      "items": [
+        {
+          "id": "201",
+          "title": "Сумка из натуральной кожи",
+          "article": "DS-1042",
+          "color": "Бордовый",
+          "price": "13 490 ₽",
+          "priceValue": 13490,
+          "oldPrice": "15 990 ₽",
+          "oldPriceValue": 15990,
+          "image": "assets/img/catalog-0.png",
+          "url": "/catalog/product/desisan-201/"
+        },
+        {
+          "id": "202",
+          "title": "Сумка-тоут из натуральной кожи",
+          "article": "DS-1086",
+          "color": "Бежевый",
+          "price": "9 490 ₽",
+          "priceValue": 9490,
+          "oldPrice": "",
+          "oldPriceValue": 0,
+          "image": "assets/img/catalog-3.png",
+          "url": "/catalog/product/desisan-202/"
+        }
+      ],
+      "total": "22 980 ₽",
+      "oldTotal": "25 480 ₽",
+      "discount": "−2 500 ₽",
+      "discountValue": 2500
+    }
+  },
+  "cart": {
+    "discountValue": 3000,
+    "items": [
+      {
+        "id": "201",
+        "title": "Сумка из натуральной кожи",
+        "article": "DS-1042",
+        "color": "Бордовый",
+        "price": "12 990 ₽",
+        "priceValue": 12990,
+        "oldPrice": "15 990 ₽",
+        "oldPriceValue": 15990,
+        "image": "assets/img/catalog-0.png",
+        "url": "/catalog/product/desisan-201/"
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1086",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/"
+      }
+    ],
+    "oldTotal": "25 480 ₽",
+    "discount": "−3 000 ₽",
+    "total": "22 480 ₽",
+    "recommendations": [
+      {
+        "id": "280",
+        "title": "Сумка кросс-боди из натуральной кожи",
+        "price": "7 990 ₽",
+        "image": "assets/img/catalog-7.png",
+        "url": "/catalog/product/desisan-280/",
+        "keywords": "сумка"
+      },
+      {
+        "id": "278",
+        "title": "Сумка с клапаном из натуральной кожи",
+        "price": "16 490 ₽",
+        "image": "assets/img/catalog-11.png",
+        "url": "/catalog/product/desisan-278/",
+        "keywords": "сумка"
+      },
+      {
+        "id": "292",
+        "title": "Сумка-шопер из натуральной кожи",
+        "price": "14 290 ₽",
+        "image": "assets/img/catalog-5.png",
+        "url": "/catalog/product/desisan-292/",
+        "keywords": "сумка"
+      },
+      {
+        "id": "283",
+        "title": "Сумка-багет из натуральной кожи",
+        "price": "11 490 ₽",
+        "image": "assets/img/catalog-10.png",
+        "url": "/catalog/product/desisan-283/",
+        "keywords": "сумка"
+      }
+    ]
   },
   "productDetail": {
     "id": "201",
@@ -2173,5 +3201,2088 @@
         "keywords": "сумка"
       }
     ]
+  },
+  "news": {
+    "items": [
+      {
+        "id": 1,
+        "date": "5 октября 2026",
+        "datetime": "2026-10-05",
+        "title": "Новая коллекция сумок Desisan",
+        "excerpt": "Знакомимся с моделями из натуральной кожи для повседневных дел и поездок",
+        "image": "assets/img/news-1.png",
+        "url": "news-article-1.html"
+      },
+      {
+        "id": 2,
+        "date": "28 сентября 2026",
+        "datetime": "2026-09-28",
+        "title": "Фактура кожи: детали коллекции",
+        "excerpt": "Небольшие изделия, в которых важны форма, отделения и внимание к деталям",
+        "image": "assets/img/news-2.png",
+        "url": "news-article-2.html"
+      },
+      {
+        "id": 3,
+        "date": "21 сентября 2026",
+        "datetime": "2026-09-21",
+        "title": "Сумки с рисунком: знакомимся с моделями",
+        "excerpt": "Рассматриваем фактуру, цвет и декоративные детали в нашей подборке",
+        "image": "assets/img/news-3.png",
+        "url": "news-article-3.html"
+      },
+      {
+        "id": 4,
+        "date": "14 сентября 2026",
+        "datetime": "2026-09-14",
+        "title": "Сумка на каждый день",
+        "excerpt": "Показываем, как выглядят разные форматы и что помещается внутри",
+        "image": "assets/img/news-4.png",
+        "url": "news-article-4.html"
+      },
+      {
+        "id": 5,
+        "date": "7 сентября 2026",
+        "datetime": "2026-09-07",
+        "title": "Натуральная кожа в деталях",
+        "excerpt": "Крупные планы материалов и фактур в изделиях Desisan",
+        "image": "assets/img/news-2.png",
+        "url": "news-article-5.html"
+      },
+      {
+        "id": 6,
+        "date": "31 августа 2026",
+        "datetime": "2026-08-31",
+        "title": "Сумки для города и поездок",
+        "excerpt": "Знакомимся с формой, ручками и отделениями на примере коллекции",
+        "image": "assets/img/news-1.png",
+        "url": "news-article-6.html"
+      },
+      {
+        "id": 7,
+        "date": "24 августа 2026",
+        "datetime": "2026-08-24",
+        "title": "Цвет в коллекции Desisan",
+        "excerpt": "Рассматриваем оттенки кожи и сочетания деталей в знакомых моделях",
+        "image": "assets/img/news-3.png",
+        "url": "news-article-7.html"
+      },
+      {
+        "id": 8,
+        "date": "17 августа 2026",
+        "datetime": "2026-08-17",
+        "title": "Сумки крупным планом",
+        "excerpt": "Подборка фотографий, на которых хорошо видны фактура и отделка",
+        "image": "assets/img/news-4.png",
+        "url": "news-article-8.html"
+      }
+    ],
+    "article": {
+      "title": "Новая коллекция сумок Desisan",
+      "date": "5 октября 2026",
+      "lead": "В новой подборке Desisan — сумки из натуральной кожи для повседневных дел. Рассмотрим форму, фактуру и детали нескольких моделей",
+      "caption": "Сумка Desisan: форма и фактура кожи",
+      "heading": "Форма и детали",
+      "paragraphs": [
+        "У каждой модели свой характер: лаконичный силуэт, выразительная фактура или рисунок. На фотографиях можно рассмотреть ручки, застёжку и отделку",
+        "Перед выбором стоит сравнить размеры и устройство отделений. Полные характеристики и фотографии конкретной модели находятся в карточке товара"
+      ],
+      "galleryCaptions": [
+        "Рисунок и декоративные детали",
+        "Форма и цвет другой модели"
+      ],
+      "secondHeading": "Как выбрать модель",
+      "secondParagraph": "Подумайте, что вы обычно берёте с собой: документы, кошелёк, телефон или ноутбук. Это поможет определить удобный формат и перейти к подходящим моделям в каталоге",
+      "ctaTitle": "Посмотрите коллекцию Desisan",
+      "ctaDescription": "Сумки, рюкзаки, кошельки и другие изделия из натуральной кожи"
+    },
+    "longTitle": "Новая коллекция сумок из натуральной кожи для города, работы и долгих поездок: знакомимся с формой, фактурой и деталями моделей Desisan",
+    "edgeTexts": [
+      "28 сентября 2026",
+      "Фактура кожи: детали коллекции",
+      "Небольшие изделия, в которых важны форма, отделения и внимание к деталям",
+      "21 сентября 2026",
+      "Сумки с рисунком: знакомимся с моделями",
+      "Рассматриваем фактуру, цвет и декоративные детали в нашей подборке",
+      "DESISAN",
+      "ПОКУПАТЕЛЯМ",
+      "Доставка и оплата"
+    ]
+  },
+  "search": {
+    "products": [
+      {
+        "id": "search-1",
+        "title": "Сумка через плечо из натуральной кожи",
+        "price": "12 990 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка через плечо из натуральной кожи"
+      },
+      {
+        "id": "search-2",
+        "title": "Сумка-тоут из натуральной кожи",
+        "price": "9 490 ₽",
+        "oldPrice": "",
+        "badge": "Новинка",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-тоут из натуральной кожи"
+      },
+      {
+        "id": "search-3",
+        "title": "Сумка-шопер из натуральной кожи",
+        "price": "14 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-3.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-шопер из натуральной кожи"
+      },
+      {
+        "id": "search-4",
+        "title": "Сумка кросс-боди из натуральной кожи",
+        "price": "7 990 ₽",
+        "oldPrice": "9 990 ₽",
+        "badge": "",
+        "image": "assets/img/search-4.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка кросс-боди из натуральной кожи"
+      },
+      {
+        "id": "search-5",
+        "title": "Сумка-багет из натуральной кожи",
+        "price": "11 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-5.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-багет из натуральной кожи"
+      },
+      {
+        "id": "search-6",
+        "title": "Сумка с клапаном из натуральной кожи",
+        "price": "16 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-6.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка с клапаном из натуральной кожи"
+      },
+      {
+        "id": "search-7",
+        "title": "Сумка-мешок из натуральной кожи",
+        "price": "8 790 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-мешок из натуральной кожи"
+      },
+      {
+        "id": "search-8",
+        "title": "Сумка на плечо из натуральной кожи",
+        "price": "13 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка на плечо из натуральной кожи"
+      },
+      {
+        "id": "search-9",
+        "title": "Сумка через плечо из натуральной кожи",
+        "price": "10 990 ₽",
+        "oldPrice": "13 740 ₽",
+        "badge": "",
+        "image": "assets/img/search-3.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка через плечо из натуральной кожи"
+      },
+      {
+        "id": "search-10",
+        "title": "Сумка-тоут из натуральной кожи",
+        "price": "15 790 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-4.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-тоут из натуральной кожи"
+      },
+      {
+        "id": "search-11",
+        "title": "Сумка-шопер из натуральной кожи",
+        "price": "6 990 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-5.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-шопер из натуральной кожи"
+      },
+      {
+        "id": "search-12",
+        "title": "Сумка кросс-боди из натуральной кожи",
+        "price": "12 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-6.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка кросс-боди из натуральной кожи"
+      },
+      {
+        "id": "search-13",
+        "title": "Сумка-багет из натуральной кожи",
+        "price": "12 990 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-багет из натуральной кожи"
+      },
+      {
+        "id": "search-14",
+        "title": "Сумка с клапаном из натуральной кожи",
+        "price": "9 490 ₽",
+        "oldPrice": "11 860 ₽",
+        "badge": "",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка с клапаном из натуральной кожи"
+      },
+      {
+        "id": "search-15",
+        "title": "Сумка-мешок из натуральной кожи",
+        "price": "14 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-3.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-мешок из натуральной кожи"
+      },
+      {
+        "id": "search-16",
+        "title": "Сумка на плечо из натуральной кожи",
+        "price": "7 990 ₽",
+        "oldPrice": "",
+        "badge": "Новинка",
+        "image": "assets/img/search-4.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка на плечо из натуральной кожи"
+      },
+      {
+        "id": "search-17",
+        "title": "Сумка через плечо из натуральной кожи",
+        "price": "11 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-5.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка через плечо из натуральной кожи"
+      },
+      {
+        "id": "search-18",
+        "title": "Сумка-тоут из натуральной кожи",
+        "price": "16 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-6.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-тоут из натуральной кожи"
+      },
+      {
+        "id": "search-19",
+        "title": "Сумка-шопер из натуральной кожи",
+        "price": "8 790 ₽",
+        "oldPrice": "10 990 ₽",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-шопер из натуральной кожи"
+      },
+      {
+        "id": "search-20",
+        "title": "Сумка кросс-боди из натуральной кожи",
+        "price": "13 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка кросс-боди из натуральной кожи"
+      },
+      {
+        "id": "search-21",
+        "title": "Сумка-багет из натуральной кожи",
+        "price": "10 990 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-3.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-багет из натуральной кожи"
+      },
+      {
+        "id": "search-22",
+        "title": "Сумка с клапаном из натуральной кожи",
+        "price": "15 790 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-4.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка с клапаном из натуральной кожи"
+      },
+      {
+        "id": "search-23",
+        "title": "Сумка-мешок из натуральной кожи",
+        "price": "6 990 ₽",
+        "oldPrice": "",
+        "badge": "Новинка",
+        "image": "assets/img/search-5.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-мешок из натуральной кожи"
+      },
+      {
+        "id": "search-24",
+        "title": "Сумка на плечо из натуральной кожи",
+        "price": "12 490 ₽",
+        "oldPrice": "15 610 ₽",
+        "badge": "",
+        "image": "assets/img/search-6.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка на плечо из натуральной кожи"
+      },
+      {
+        "id": "search-25",
+        "title": "Сумка через плечо из натуральной кожи",
+        "price": "12 990 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка через плечо из натуральной кожи"
+      },
+      {
+        "id": "search-26",
+        "title": "Сумка-тоут из натуральной кожи",
+        "price": "9 490 ₽",
+        "oldPrice": "",
+        "badge": "Новинка",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-тоут из натуральной кожи"
+      },
+      {
+        "id": "search-27",
+        "title": "Сумка-шопер из натуральной кожи",
+        "price": "14 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-3.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-шопер из натуральной кожи"
+      },
+      {
+        "id": "search-28",
+        "title": "Сумка кросс-боди из натуральной кожи",
+        "price": "7 990 ₽",
+        "oldPrice": "9 990 ₽",
+        "badge": "",
+        "image": "assets/img/search-4.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка кросс-боди из натуральной кожи"
+      },
+      {
+        "id": "search-29",
+        "title": "Сумка-багет из натуральной кожи",
+        "price": "11 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-5.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-багет из натуральной кожи"
+      },
+      {
+        "id": "search-30",
+        "title": "Сумка с клапаном из натуральной кожи",
+        "price": "16 490 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-6.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка с клапаном из натуральной кожи"
+      },
+      {
+        "id": "search-31",
+        "title": "Сумка-мешок из натуральной кожи",
+        "price": "8 790 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-1.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка-мешок из натуральной кожи"
+      },
+      {
+        "id": "search-32",
+        "title": "Сумка на плечо из натуральной кожи",
+        "price": "13 290 ₽",
+        "oldPrice": "",
+        "badge": "",
+        "image": "assets/img/search-2.png",
+        "url": "index2.html",
+        "available": true,
+        "keywords": "Сумка на плечо из натуральной кожи"
+      }
+    ],
+    "longQuery": "сумка через плечо из натуральной кожи с длинным ремнём"
+  },
+  "emails": {
+    "order": {
+      "heading": "Заказ принят",
+      "greeting": "Анна, спасибо за покупку",
+      "body": "Мы получили ваш заказ. Менеджер свяжется с вами, чтобы согласовать доставку, окончательную стоимость и порядок оплаты.",
+      "panels": [
+        {
+          "fields": [
+            {
+              "label": "Номер заказа",
+              "value": "№ 000482"
+            },
+            {
+              "label": "Дата и время",
+              "value": "6 октября 2026, 14:35"
+            },
+            {
+              "label": "Доставка",
+              "value": "Транспортная компания или почта"
+            },
+            {
+              "label": "Оплата",
+              "value": "Порядок оплаты согласует менеджер"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "title": "Сумка из натуральной кожи",
+          "meta": "Артикул 3319 · Чёрный · 1 шт.",
+          "price": "14 400 ₽"
+        },
+        {
+          "title": "Кошелёк из натуральной кожи",
+          "meta": "Артикул 067 · Бордовый · 1 шт.",
+          "price": "4 200 ₽"
+        }
+      ],
+      "totals": [
+        {
+          "label": "Товары (2 шт.)",
+          "value": "18 600 ₽"
+        },
+        {
+          "label": "Скидка",
+          "value": "−1 200 ₽"
+        },
+        {
+          "label": "Стоимость товаров",
+          "value": "17 400 ₽"
+        }
+      ],
+      "notice": "Доставка и окончательная сумма — после согласования с менеджером",
+      "button": "Связаться с магазином",
+      "buttonUrl": "https://desisan.ru/contacts/",
+      "reason": "Вы получили письмо в связи с заказом на desisan.ru",
+      "manager": false,
+      "preheader": "Мы получили заказ. Менеджер согласует доставку и оплату."
+    },
+    "manager": {
+      "heading": "Новый заказ",
+      "greeting": "Заказ № 000482 · требуется обработка",
+      "body": "Свяжитесь с покупателем, согласуйте доставку, окончательную стоимость и порядок оплаты.",
+      "panels": [
+        {
+          "fields": [
+            {
+              "label": "Номер заказа",
+              "value": "№ 000482"
+            },
+            {
+              "label": "Дата и время",
+              "value": "6 октября 2026, 14:35"
+            },
+            {
+              "label": "Доставка",
+              "value": "Транспортная компания или почта"
+            },
+            {
+              "label": "Оплата",
+              "value": "Порядок оплаты согласует менеджер"
+            }
+          ]
+        },
+        {
+          "title": "Покупатель",
+          "fields": [
+            {
+              "label": "ФИО",
+              "value": "Анна Иванова"
+            },
+            {
+              "label": "Телефон",
+              "value": "+7 (900) 000-00-00"
+            },
+            {
+              "label": "Email",
+              "value": "anna@example.com"
+            },
+            {
+              "label": "Адрес",
+              "value": "г. Москва, ул. Лесная, д. 12, кв. 8"
+            },
+            {
+              "label": "Комментарий",
+              "value": "Позвоните перед отправкой"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "title": "Сумка из натуральной кожи",
+          "meta": "Артикул 3319 · Чёрный · 1 шт.",
+          "price": "14 400 ₽"
+        },
+        {
+          "title": "Кошелёк из натуральной кожи",
+          "meta": "Артикул 067 · Бордовый · 1 шт.",
+          "price": "4 200 ₽"
+        }
+      ],
+      "totals": [
+        {
+          "label": "Товары (2 шт.)",
+          "value": "18 600 ₽"
+        },
+        {
+          "label": "Скидка",
+          "value": "−1 200 ₽"
+        },
+        {
+          "label": "Стоимость товаров",
+          "value": "17 400 ₽"
+        }
+      ],
+      "notice": "Доставка и окончательная сумма — после согласования с менеджером",
+      "button": "Открыть заказ",
+      "buttonUrl": "",
+      "reason": "Служебное уведомление о новом заказе в магазине Desisan",
+      "manager": true,
+      "preheader": "Поступил новый заказ. Требуется обработка."
+    },
+    "pickup": {
+      "heading": "Заказ принят",
+      "greeting": "Спасибо за покупку",
+      "body": "Мы получили ваш заказ. Менеджер свяжется с вами, чтобы согласовать детали самовывоза и порядок оплаты.",
+      "panels": [
+        {
+          "fields": [
+            {
+              "label": "Номер заказа",
+              "value": "№ 000482"
+            },
+            {
+              "label": "Дата и время",
+              "value": "6 октября 2026, 14:35"
+            },
+            {
+              "label": "Доставка",
+              "value": "Самовывоз, г. Орёл"
+            },
+            {
+              "label": "Оплата",
+              "value": "Порядок оплаты согласует менеджер"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "title": "Сумка из натуральной кожи",
+          "meta": "Артикул 3319 · Чёрный · 1 шт.",
+          "price": "14 400 ₽"
+        },
+        {
+          "title": "Кошелёк из натуральной кожи",
+          "meta": "Артикул 067 · Бордовый · 1 шт.",
+          "price": "4 200 ₽"
+        }
+      ],
+      "totals": [
+        {
+          "label": "Товары (2 шт.)",
+          "value": "18 600 ₽"
+        },
+        {
+          "label": "Стоимость товаров",
+          "value": "18 600 ₽"
+        }
+      ],
+      "notice": "Доставка и окончательная сумма — после согласования с менеджером",
+      "button": "Связаться с магазином",
+      "buttonUrl": "https://desisan.ru/contacts/",
+      "reason": "Вы получили письмо в связи с заказом на desisan.ru",
+      "manager": false,
+      "preheader": "Менеджер согласует детали самовывоза и оплаты."
+    },
+    "long": {
+      "heading": "Новый заказ",
+      "greeting": "Заказ № 000482 · требуется обработка",
+      "body": "Свяжитесь с покупателем, согласуйте доставку, окончательную стоимость и порядок оплаты.",
+      "panels": [
+        {
+          "fields": [
+            {
+              "label": "Номер заказа",
+              "value": "№ 000482"
+            },
+            {
+              "label": "Дата и время",
+              "value": "6 октября 2026, 14:35"
+            },
+            {
+              "label": "Доставка",
+              "value": "Транспортная компания или почта"
+            },
+            {
+              "label": "Оплата",
+              "value": "Порядок оплаты согласует менеджер"
+            }
+          ]
+        },
+        {
+          "title": "Покупатель",
+          "fields": [
+            {
+              "label": "ФИО",
+              "value": "Анна Александровна Константинопольская"
+            },
+            {
+              "label": "Телефон",
+              "value": "+7 (900) 000-00-00"
+            },
+            {
+              "label": "Email",
+              "value": "anna@example.com"
+            },
+            {
+              "label": "Адрес",
+              "value": "г. Нижний Новгород, ул. Большая Покровская, д. 123, корпус 2, подъезд 4, квартира 56"
+            },
+            {
+              "label": "Комментарий",
+              "value": "Пожалуйста, позвоните перед отправкой. Нужно уточнить возможность доставки в пункт выдачи рядом с домом. Если указанного цвета не окажется в наличии, сначала согласуйте замену по телефону."
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "title": "Женская сумка из натуральной кожи с двумя отделениями и регулируемым плечевым ремнём",
+          "meta": "Артикул 3319 · Чёрный · 1 шт.",
+          "price": "14 400 ₽"
+        },
+        {
+          "title": "Кошелёк из натуральной кожи",
+          "meta": "Артикул 067 · Бордовый · 1 шт.",
+          "price": "4 200 ₽"
+        }
+      ],
+      "totals": [
+        {
+          "label": "Товары (2 шт.)",
+          "value": "18 600 ₽"
+        },
+        {
+          "label": "Скидка",
+          "value": "−1 200 ₽"
+        },
+        {
+          "label": "Стоимость товаров",
+          "value": "17 400 ₽"
+        }
+      ],
+      "notice": "Доставка и окончательная сумма — после согласования с менеджером",
+      "button": "Открыть заказ",
+      "buttonUrl": "",
+      "reason": "Служебное уведомление о новом заказе в магазине Desisan",
+      "manager": true,
+      "preheader": "Поступил новый заказ. Требуется обработка."
+    },
+    "registration": {
+      "heading": "Добро пожаловать",
+      "greeting": "Анна, рады видеть вас в Desisan",
+      "body": "Вы зарегистрировались на desisan.ru. Сохраните это письмо: в нём указан email вашего аккаунта.",
+      "panels": [
+        {
+          "title": "Ваш аккаунт",
+          "fields": [
+            {
+              "label": "Email",
+              "value": "anna@example.com"
+            }
+          ]
+        }
+      ],
+      "notice": "Мы не отправляем пароль по почте. Если вы не регистрировались на сайте, свяжитесь с магазином.",
+      "button": "Перейти на сайт",
+      "buttonUrl": "https://desisan.ru/",
+      "reason": "Вы получили письмо после регистрации на desisan.ru",
+      "preheader": "Регистрация завершена. Данные вашего аккаунта — в письме."
+    },
+    "password": {
+      "heading": "Восстановление доступа",
+      "greeting": "Запрос для anna@example.com",
+      "body": "Чтобы создать новый пароль для аккаунта на desisan.ru, нажмите кнопку ниже.",
+      "button": "Создать новый пароль",
+      "buttonUrl": "https://desisan.ru/reset?token=example",
+      "backupLabel": "Если кнопка не работает, откройте ссылку:",
+      "notice": "Ссылка одноразовая. Если вы не запрашивали смену пароля, просто проигнорируйте письмо.",
+      "reason": "Вы получили письмо по запросу восстановления доступа на desisan.ru",
+      "preheader": "Вы запросили смену пароля. Перейдите по ссылке в письме."
+    },
+    "shipped": {
+      "heading": "Заказ отправлен",
+      "greeting": "Анна, ваш заказ в пути",
+      "body": "Мы передали заказ службе доставки. Статус отправления можно проверить по трек-номеру.",
+      "panels": [
+        {
+          "fields": [
+            {
+              "label": "Номер заказа",
+              "value": "№ 000482"
+            },
+            {
+              "label": "Служба доставки",
+              "value": "СДЭК"
+            },
+            {
+              "label": "Трек-номер",
+              "value": "00000123456789"
+            }
+          ]
+        }
+      ],
+      "notice": "Ожидаемую дату доставки уточняйте у перевозчика",
+      "button": "Отследить отправление",
+      "buttonUrl": "",
+      "reason": "Вы получили письмо в связи с заказом на desisan.ru",
+      "preheader": "Заказ передан службе доставки. Данные для отслеживания — внутри."
+    }
+  },
+  "productVariants": {
+    "soldOut": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": false,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ]
+    },
+    "inCart": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ],
+      "inCart": true
+    },
+    "onePhoto": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ]
+    },
+    "manyPhotos": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ]
+    },
+    "noPhoto": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ]
+    },
+    "noReviews": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "",
+      "reviews": [],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ]
+    },
+    "discount": {
+      "id": "201",
+      "title": "Сумка из натуральной кожи",
+      "article": "DS-1042",
+      "price": "12 990 ₽",
+      "available": true,
+      "images": [
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        },
+        {
+          "src": "assets/img/popular-1.png",
+          "alt": "Сумка из натуральной кожи"
+        }
+      ],
+      "features": [
+        {
+          "name": "Состав",
+          "value": "Натуральная кожа"
+        },
+        {
+          "name": "Цвет",
+          "value": "Бордовый"
+        },
+        {
+          "name": "Размер",
+          "value": "35 × 25 × 14 см"
+        },
+        {
+          "name": "Количество отделений",
+          "value": "2"
+        },
+        {
+          "name": "Вид застёжки",
+          "value": "Молния"
+        },
+        {
+          "name": "Страна-производитель",
+          "value": "Турция"
+        },
+        {
+          "name": "Длина ремня",
+          "value": "120 см"
+        }
+      ],
+      "conditions": [
+        {
+          "title": "Доставка",
+          "text": "Доставка транспортными компаниями и почтой, самовывоз в Орле. Детали доставки можно обсудить с менеджером.",
+          "link": "Подробнее о доставке",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Оплата",
+          "text": "Информация о порядке оплаты заказа — в разделе «Доставка и оплата»",
+          "link": "Подробнее об оплате",
+          "url": "/delivery/"
+        },
+        {
+          "title": "Возврат",
+          "text": "Условия и порядок возврата товара описаны в разделе «Возврат и обмен»",
+          "link": "Подробнее о возврате товара",
+          "url": "/return/"
+        }
+      ],
+      "rating": "4,5 из 5 · 2 отзыва",
+      "reviews": [
+        {
+          "author": "Анна",
+          "date": "4 октября 2026",
+          "rating": "5 из 5",
+          "text": "Удобная сумка на каждый день. Вмещает всё необходимое, ремень регулируется."
+        },
+        {
+          "author": "Мария",
+          "date": "2 октября 2026",
+          "rating": "4 из 5",
+          "text": "Понравились цвет и качество кожи. Для моих вещей размер подошёл."
+        }
+      ],
+      "related": [
+        {
+          "id": "3001",
+          "title": "Сумка-тоут из натуральной кожи",
+          "price": "9 490 ₽",
+          "badge": "Новинка",
+          "image": "assets/img/popular-2.png",
+          "url": "/catalog/product/desisan-3001/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3002",
+          "title": "Сумка-шопер из натуральной кожи",
+          "price": "14 290 ₽",
+          "image": "assets/img/popular-4.png",
+          "url": "/catalog/product/desisan-3002/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3003",
+          "title": "Сумка кросс-боди из натуральной кожи",
+          "price": "7 990 ₽",
+          "oldPrice": "9 990 ₽",
+          "badge": "−20%",
+          "image": "assets/img/new-1.png",
+          "url": "/catalog/product/desisan-3003/",
+          "keywords": "сумка"
+        },
+        {
+          "id": "3004",
+          "title": "Сумка-багет из натуральной кожи",
+          "price": "11 490 ₽",
+          "image": "assets/img/new-4.png",
+          "url": "/catalog/product/desisan-3004/",
+          "keywords": "сумка"
+        }
+      ],
+      "oldPrice": "15 990 ₽"
+    }
+  },
+  "homeVariants": {
+    "one": [
+      {
+        "id": "popular",
+        "title": "Популярное",
+        "products": [
+          {
+            "id": "101",
+            "title": "Сумка из натуральной кожи",
+            "price": "13 243 ₽",
+            "image": "assets/img/popular-1.png",
+            "url": "/catalog/sumki/desisan-101/",
+            "available": true,
+            "keywords": "сумка женская"
+          }
+        ]
+      },
+      {
+        "id": "new",
+        "title": "Новинки",
+        "products": [
+          {
+            "id": "105",
+            "title": "Сумка из натуральной кожи",
+            "price": "16 728 ₽",
+            "image": "assets/img/new-1.png",
+            "url": "/catalog/sumki/desisan-105/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "сумка женская"
+          }
+        ]
+      }
+    ],
+    "long": [
+      {
+        "id": "popular",
+        "title": "Популярное",
+        "products": [
+          {
+            "id": "101",
+            "title": "Женская сумка из натуральной кожи с длинным регулируемым ремнём и двумя отделениями",
+            "price": "13 243 ₽",
+            "image": "assets/img/popular-1.png",
+            "url": "/catalog/sumki/desisan-101/",
+            "available": true,
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "102",
+            "title": "Сумка из натуральной кожи",
+            "price": "12 211 ₽",
+            "image": "assets/img/popular-2.png",
+            "url": "/catalog/sumki/desisan-102/",
+            "available": true,
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "103",
+            "title": "Рюкзак из натуральной кожи",
+            "price": "12 704 ₽",
+            "image": "assets/img/popular-3.png",
+            "url": "/catalog/ryukzaki/desisan-103/",
+            "available": true,
+            "keywords": "рюкзак кожаный"
+          },
+          {
+            "id": "104",
+            "title": "Сумка из натуральной кожи",
+            "price": "11 687 ₽",
+            "image": "assets/img/popular-4.png",
+            "url": "/catalog/sumki/desisan-104/",
+            "available": true,
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "109",
+            "title": "Сумка из натуральной кожи",
+            "price": "13 243 ₽",
+            "image": "assets/img/popular-1.png",
+            "url": "/catalog/sumki/desisan-101/",
+            "available": true,
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "110",
+            "title": "Сумка из натуральной кожи",
+            "price": "12 211 ₽",
+            "image": "assets/img/popular-2.png",
+            "url": "/catalog/sumki/desisan-102/",
+            "available": true,
+            "keywords": "сумка женская"
+          }
+        ]
+      },
+      {
+        "id": "new",
+        "title": "Новинки",
+        "products": [
+          {
+            "id": "105",
+            "title": "Женская сумка из натуральной кожи с длинным регулируемым ремнём и двумя отделениями",
+            "price": "16 728 ₽",
+            "image": "assets/img/new-1.png",
+            "url": "/catalog/sumki/desisan-105/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "106",
+            "title": "Портфель из натуральной кожи",
+            "price": "15 603 ₽",
+            "image": "assets/img/new-2.png",
+            "url": "/catalog/portfeli/desisan-106/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "портфель мужской"
+          },
+          {
+            "id": "107",
+            "title": "Рюкзак из натуральной кожи",
+            "price": "12 347 ₽",
+            "image": "assets/img/new-3.png",
+            "url": "/catalog/ryukzaki/desisan-107/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "рюкзак кожаный"
+          },
+          {
+            "id": "108",
+            "title": "Сумка из натуральной кожи",
+            "price": "10 014 ₽",
+            "image": "assets/img/new-4.png",
+            "url": "/catalog/sumki/desisan-108/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "111",
+            "title": "Сумка из натуральной кожи",
+            "price": "16 728 ₽",
+            "image": "assets/img/new-1.png",
+            "url": "/catalog/sumki/desisan-105/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "сумка женская"
+          },
+          {
+            "id": "112",
+            "title": "Портфель из натуральной кожи",
+            "price": "15 603 ₽",
+            "image": "assets/img/new-2.png",
+            "url": "/catalog/portfeli/desisan-106/",
+            "available": true,
+            "badge": "Новинка",
+            "keywords": "портфель мужской"
+          }
+        ]
+      }
+    ]
+  },
+  "checkout": {
+    "longItems": [
+      {
+        "id": "201",
+        "title": "Сумка из натуральной кожи с длинным регулируемым ремнём, двумя отделениями и дополнительным карманом",
+        "article": "DS-1042",
+        "color": "Бордовый",
+        "price": "12 990 ₽",
+        "priceValue": 12990,
+        "oldPrice": "15 990 ₽",
+        "oldPriceValue": 15990,
+        "image": "assets/img/catalog-0.png",
+        "url": "/catalog/product/desisan-201/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1086",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1088",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1089",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1090",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1091",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1092",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1093",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1094",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1095",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1096",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1097",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1098",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1099",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      },
+      {
+        "id": "202",
+        "title": "Сумка-тоут из натуральной кожи",
+        "article": "DS-1100",
+        "color": "Бежевый",
+        "price": "9 490 ₽",
+        "priceValue": 9490,
+        "oldPrice": "",
+        "oldPriceValue": 0,
+        "image": "assets/img/catalog-3.png",
+        "url": "/catalog/product/desisan-202/",
+        "quantity": 1
+      }
+    ],
+    "longSubtotal": "148 850 ₽",
+    "longTotal": "145 850 ₽"
   }
 }

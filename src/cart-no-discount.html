@@ -1,0 +1,6 @@
+{% set title = "Корзина без скидки — DESISAN" %}
+{% set meta_description = "Корзина без скидки, товар без фотографии." %}
+{% set variant = cartVariants.noDiscount %}
+{% set cart = { items: variant.items, oldTotal: variant.total, total: variant.total, discount: "0 ₽", discountValue: 0, recommendations: cart.recommendations } %}
+{% extends "layouts/default.html" %}
+{% block content %}{% include "includes/cart-page.html" %}{% endblock %}

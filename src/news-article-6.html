@@ -1,0 +1,1 @@
+﻿{% set news_id = 6 %}{% set title = news.items[news_id - 1].title + " — DESISAN" %}{% set meta_description = news.items[news_id - 1].excerpt %}{% extends "layouts/default.html" %}{% block content %}{% include "includes/news-article.html" %}{% endblock %}

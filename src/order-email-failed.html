@@ -1,0 +1,5 @@
+{% set title = "Заказ принят — письмо не отправлено — DESISAN" %}
+{% set meta_description = "Заказ принят, подтверждение по электронной почте не отправлено." %}
+{% set orderState = "email-failed" %}
+{% extends "layouts/default.html" %}
+{% block content %}{% include "includes/order-success.html" %}{% endblock %}

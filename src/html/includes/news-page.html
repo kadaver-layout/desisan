@@ -1,0 +1,22 @@
+<main class="main news-page" id="main-content" data-news-page data-news-state="{{ news_state }}">
+  <div class="container news-page__inner">
+    <header class="news-page__heading"><nav class="eyebrow" aria-label="Хлебные крошки"><a href="home.html">Главная</a><span aria-hidden="true"> / </span><span aria-current="page">Новости</span></nav><h1>Новости</h1></header>
+    <section class="news-page__state" data-news-empty{% if news_state != 'empty' %} hidden{% endif %}><h2>Новостей пока нет</h2><p>Здесь появятся новые публикации Desisan</p><a class="button" href="index1.html">Перейти в каталог</a></section>
+    <section class="news-page__state" data-news-error{% if news_state != 'error' %} hidden{% endif %}><h2>Не удалось загрузить новости</h2><p>Проверьте подключение и попробуйте ещё раз</p><button class="button button--secondary" type="button" data-news-retry>Попробовать снова</button></section>
+    <div class="news-page__grid" data-news-grid aria-busy="{{ 'true' if news_state in ['loading','loading-more'] else 'false' }}"{% if news_state in ['empty','error'] %} hidden{% endif %}>
+      {% for item in news.items %}
+      <article class="news-card" data-news-item{% if news_state == 'loading' or loop.index > (8 if news_state == 'end' else (3 if news_state == 'edge' else 6)) %} hidden{% endif %}>
+        <a href="{{ item.url }}" aria-labelledby="news-title-{{ item.id }}">
+          {% if item.image and not (news_state == 'edge' and loop.first) %}<span class="news-card__media"><img class="news-card__image" src="{{ item.image }}" alt="" width="576" height="360" loading="lazy" data-news-image></span>{% endif %}
+          <div class="news-card__text">{% if item.date and not (news_state == 'edge' and loop.first) %}<time datetime="{{ item.datetime }}">{{ item.date }}</time>{% endif %}<h2 id="news-title-{{ item.id }}">{{ news.longTitle if news_state == 'edge' and loop.first else item.title }}</h2>{% if item.excerpt %}<p>{{ item.excerpt }}</p>{% endif %}</div>
+        </a>
+      </article>
+      {% endfor %}
+      {% for index in range(0,6) %}<div class="news-skeleton" aria-hidden="true" data-news-skeleton{% if news_state not in ['loading','loading-more'] %} hidden{% endif %}><div></div><span></span><span></span><span></span></div>{% endfor %}
+    </div>
+    <div class="news-page__more" data-news-more-wrapper{% if news_state in ['loading','empty','error','end','edge'] %} hidden{% endif %}>
+      <p role="status" data-news-more-error{% if news_state != 'more-error' %} hidden{% endif %}>Не удалось загрузить новости. Попробуйте ещё раз.</p>
+      <button class="button button--secondary" type="button" data-news-more{% if news_state == 'loading-more' %} disabled aria-busy="true"{% endif %}><span data-news-more-label>{{ 'Попробовать снова' if news_state == 'more-error' else 'Показать ещё' }}</span><img src="assets/img/product-loading.svg" alt="" width="34" height="24" data-news-more-spinner hidden></button>
+    </div>
+  </div>
+</main>

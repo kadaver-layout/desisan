@@ -1,0 +1,390 @@
+@use "_vars" as *
+
+.cart-page
+  &__heading
+    padding-top: 32px
+  &__breadcrumbs
+    display: flex
+    gap: 8px
+    color: $text-secondary
+  &__title
+    display: flex
+    align-items: center
+    gap: 16px
+    margin-top: 24px
+    h1
+      font-size: 48px
+      line-height: 56px
+      font-weight: 500
+    p
+      color: $text-secondary
+  &__content
+    display: grid
+    grid-template-columns: minmax(0, 1fr) 368px
+    gap: 32px
+    padding-top: 48px
+    padding-bottom: 48px
+  &__items
+    min-width: 0
+
+.cart-item
+  display: grid
+  grid-template-columns: 112px minmax(0, 1fr) 44px
+  gap: 16px
+  min-height: 189px
+  padding: 16px 0 20px
+  border-bottom: 1px solid $stroke-primary
+  &__image img
+    width: 112px
+    height: 140px
+    object-fit: cover
+  &__placeholder
+    display: grid
+    place-items: center
+    width: 112px
+    height: 140px
+    background: $bg-surface
+    img
+      width: 20px
+      height: 20px
+  &__info
+    min-width: 0
+    h2
+      font-size: 16px
+      line-height: 24px
+      font-weight: 400
+      overflow-wrap: anywhere
+    > p:nth-child(2)
+      margin-top: 4px
+      overflow-wrap: anywhere
+      color: $text-secondary
+      font-size: 12px
+      line-height: 16px
+  &__prices
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+    margin-top: 8px
+    font-weight: 500
+    > span, del
+      white-space: nowrap
+    &:has(del) > span
+      color: $text-sale
+    del
+      color: $text-secondary
+      font-weight: 400
+  &__remove
+    display: grid
+    place-items: center
+    align-self: center
+    min-width: 44px
+    min-height: 44px
+    font-size: 24px
+    line-height: 1
+    &:hover
+      background: $bg-surface
+    &:active
+      background: $bg-surface-hover
+  &__unit-price
+    margin-top: 4px
+    color: $text-secondary
+    font-size: 12px
+    line-height: 16px
+  &__error
+    margin-top: 8px
+    color: $text-negative
+    font-size: 14px
+    line-height: 20px
+  .cart-quantity
+    margin-top: 12px
+
+.cart-quantity
+  display: grid
+  grid-template-columns: repeat(3, 44px)
+  height: 44px
+  border: 1px solid $stroke-primary
+  width: max-content
+  button, input
+    display: grid
+    place-items: center
+    min-width: 0
+  input
+    width: 100%
+    border: 0
+    padding: 0
+    background: transparent
+    text-align: center
+    font-weight: 500
+  button
+    &:hover:not(:disabled)
+      background: $bg-surface
+    &:active:not(:disabled)
+      background: $bg-surface-hover
+    &:disabled
+      color: $text-tertiary
+  &:focus-within
+    outline: 2px solid $stroke-focus
+    outline-offset: -1px
+  &:has(input[aria-invalid="true"])
+    border-color: $text-negative
+
+.cart-summary
+  align-self: start
+  padding: 24px
+  background: $bg-surface
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+  dl
+    display: grid
+    gap: 8px
+    margin: 24px 0 48px
+    color: $text-secondary
+    div
+      display: flex
+      justify-content: space-between
+    dd
+      margin: 0
+      color: $text-primary
+  &__discount
+    color: $text-sale !important
+  &__total
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-size: 24px
+    line-height: 32px
+    color: $text-secondary
+    strong
+      color: $text-primary
+      font-size: 24px
+      font-weight: 500
+  &__button
+    width: 100%
+    margin-top: 24px
+  > p
+    margin-top: 24px
+    color: $text-secondary
+    font-size: 14px
+    line-height: 20px
+
+.cart-recommendations
+  padding-bottom: 64px
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+  ul
+    display: grid
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+    gap: 24px
+    margin-top: 24px
+
+.cart-empty
+  min-height: 320px
+  padding-top: 48px
+  padding-bottom: 64px
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+  p
+    margin-top: 24px
+    color: $text-secondary
+    font-size: 16px
+    line-height: 24px
+  .button
+    width: 274px
+    margin-top: 24px
+
+.cart-loading
+  padding-block: 48px 64px
+  > p
+    color: $text-secondary
+    font-size: 16px
+    line-height: 24px
+  &__items
+    display: grid
+    gap: 24px
+    max-width: 608px
+    margin-top: 24px
+    animation: cart-skeleton-pulse 2s ease-in-out infinite alternate
+    @media (prefers-reduced-motion: reduce)
+      animation: none
+  &__item
+    display: grid
+    grid-template-columns: 112px minmax(0, 1fr)
+    gap: 24px
+  &__image
+    height: 140px
+    background: $bg-surface
+  &__lines
+    display: grid
+    align-content: start
+    gap: 16px
+    span
+      width: calc(100% - 32px)
+      height: 16px
+      background: $bg-surface
+      &:nth-child(2)
+        width: calc(100% - 80px)
+      &:nth-child(3)
+        width: calc(100% - 128px)
+
+@keyframes cart-skeleton-pulse
+  from
+    opacity: .5
+  to
+    opacity: 1
+
+@media ($desktop)
+  .cart-page__content
+    grid-template-columns: minmax(0, 1fr) 424px
+    gap: 64px
+
+@media ($tablet)
+  .cart-loading
+    padding-top: 32px
+    &__items
+      max-width: none
+    &__item
+      grid-template-columns: 80px minmax(0, 1fr)
+    &__image
+      height: 100px
+  .cart-page__content
+    grid-template-columns: 1fr
+    gap: 32px
+    padding-top: 32px
+  .cart-recommendations ul
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 24px 16px
+
+@media ($mobile)
+  .cart-page__heading
+    padding-top: 32px
+  .cart-page__title
+    margin-top: 24px
+    h1
+      font-size: 32px
+      line-height: 40px
+  .cart-page__content
+    padding-top: 32px
+    padding-bottom: 32px
+  .cart-item
+    grid-template-columns: 80px minmax(0, 1fr)
+    gap: 16px
+    row-gap: 0
+    min-height: 0
+    padding: 0 0 24px
+    margin-bottom: 24px
+    &:last-child
+      margin-bottom: 0
+    &__image
+      grid-column: 1
+      grid-row: 1 / span 6
+      align-self: start
+    &__info
+      display: contents
+      > *
+        grid-column: 2
+      > p:nth-child(2)
+        grid-row: 2
+    .cart-quantity
+      grid-column: 2
+      grid-row: 5
+    &__unit-price
+      grid-row: 3
+    &__error
+      grid-row: 6
+    &__remove
+      grid-column: 2
+      grid-row: 5
+    &__image img
+      width: 80px
+      height: 100px
+    &__placeholder
+      width: 80px
+      height: 100px
+      img
+        width: 20px
+        height: 20px
+    &__info h2
+      grid-row: 1
+      font-size: 16px
+      line-height: 24px
+    &__prices
+      grid-row: 4
+      font-size: 16px
+      line-height: 24px
+    &__remove
+      align-self: end
+      justify-self: end
+  .cart-summary
+    padding: 24px
+  .cart-recommendations
+    padding-bottom: 64px
+    ul
+      margin-top: 16px
+  .cart-empty
+    min-height: 336px
+    padding-top: 32px
+    padding-bottom: 128px
+    .button
+      width: 100%
+
+.cart-item__status
+  margin-top: 8px
+  color: $text-secondary
+  font-size: 12px
+  line-height: 16px
+
+.cart-page__notice
+  margin-bottom: 32px
+  color: $text-secondary
+  font-size: 16px
+  line-height: 24px
+
+.cart-item__operation-error
+  margin-top: 8px
+  color: $text-negative
+  font-size: 12px
+  line-height: 16px
+  button
+    color: inherit
+    text-align: left
+    &:hover
+      text-decoration: underline
+
+.cart-quantity--error
+  border-color: $text-negative
+
+.cart-item__remove:disabled
+  opacity: .35
+  cursor: default
+  background: transparent
+
+.cart-item.is-updating
+  .cart-item__prices, .cart-item__unit-price
+    opacity: .45
+  .cart-quantity
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      inset: 0
+      background: $bg-primary url("../img/product-loading.svg") center / 24px 16px no-repeat
+  [data-cart-line-price], [data-cart-total]
+    transition: opacity .2s ease
+
+.cart-quantity input.cart-quantity__loading
+  color: transparent
+  background: url("../img/product-loading.svg") center / 24px 16px no-repeat
+
+@media ($mobile)
+  .cart-item__status
+    grid-column: 2
+    grid-row: 6
+  .cart-item__operation-error
+    grid-column: 2
+    grid-row: 6

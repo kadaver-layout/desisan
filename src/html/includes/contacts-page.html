@@ -1,0 +1,46 @@
+{% set filled = contacts_state in ['filled','sending','sent','error','checking','long'] %}
+{% set locked = contacts_state in ['sending','checking'] %}
+<main class="main contacts-page" id="main-content">
+  <div class="container contacts-page__inner">
+    <header class="contacts-page__heading">
+      <nav class="eyebrow" aria-label="Хлебные крошки"><a href="home.html">Главная</a><span aria-hidden="true"> / </span><span aria-current="page">Контакты</span></nav>
+      <h1>Контакты</h1><p>Свяжитесь с нами удобным способом</p>
+    </header>
+    <div class="contacts-page__grid">
+      {% if site.phone %}<section><h2>Телефон</h2><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><p>По вопросам о товарах и заказах</p></section>{% endif %}
+      {% if contacts.email and contacts_state != 'optional' %}<section><h2>Email</h2><a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a><p>Для вопросов и обращений</p></section>{% endif %}
+      {% if contacts.address %}<section><h2>Адрес</h2><a href="{{ contacts.mapUrl }}" target="_blank" rel="noopener">{{ contacts.address }}</a><p>Самовывоз</p></section>
+      <section><h2>Режим работы</h2><div>{{ contacts.hours }}</div><p>{{ contacts.daysOff }}</p></section>{% endif %}
+    </div>
+    <div class="contacts-page__body">
+      {% if contacts.address %}
+      <section class="contacts-page__map" aria-labelledby="contacts-map-title">
+        <h2 id="contacts-map-title">Как нас найти</h2><p>{{ contacts.address }}</p>
+        {# Изображение и адрес из макета демонстрационные; заменить перед запуском. #}
+        <div class="contacts-map" data-contacts-map aria-busy="{{ 'true' if contacts_state == 'map-loading' else 'false' }}">
+          <img src="{{ contacts.mapImage }}" alt="Карта расположения магазина: {{ contacts.address }}" data-contacts-map-image{% if contacts_state in ['map-error','map-loading'] %} hidden{% endif %}>
+          <div class="contacts-map__state" data-contacts-map-error{% if contacts_state != 'map-error' %} hidden{% endif %}><h3>Карта временно недоступна</h3><p>Адрес указан выше. Откройте его в Яндекс Картах или попробуйте загрузить карту снова.</p><button class="button button--secondary" type="button" data-contacts-map-retry>Повторить загрузку</button></div>
+          <div class="contacts-map__state" data-contacts-map-loading{% if contacts_state != 'map-loading' %} hidden{% endif %}><img src="assets/img/product-loading.svg" width="34" height="24" alt=""><span role="status">Загружаем карту</span></div>
+        </div>
+        <a class="text-link" href="{{ contacts.mapUrl }}" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+      </section>
+      {% endif %}
+      <section class="contacts-form" aria-labelledby="contacts-form-title" data-contacts-root data-contacts-state="{{ contacts_state }}">
+        <h2 id="contacts-form-title">Напишите нам</h2><p>Поможем с выбором товара, доставкой и другими вопросами.</p>
+        <div class="contacts-form__notice" role="status" data-contacts-status{% if contacts_state not in ['error','checking'] %} hidden{% endif %}><h3 data-contacts-status-title>{{ 'Не удалось подтвердить отправку' if contacts_state == 'checking' else 'Не удалось отправить сообщение' }}</h3><p data-contacts-status-text>{{ 'Не отправляйте сообщение повторно, пока проверяется результат. Если статус не обновится, свяжитесь с нами по телефону.' if contacts_state == 'checking' else 'Ваши данные сохранены. Попробуйте ещё раз или свяжитесь с нами по телефону.' }}</p></div>
+        <form data-contacts-form novalidate{% if contacts_state == 'sent' %} hidden{% endif %}>
+          <div class="contacts-form__pair">
+            <label>Имя *<input name="name" autocomplete="name" placeholder="Как к вам обращаться" maxlength="80" value="{{ contacts.demoName if filled else '' }}" required{% if locked %} disabled{% endif %}></label>
+            <label>Email *<input type="email" name="email" autocomplete="email" placeholder="name@example.com" maxlength="254" value="{{ contacts.demoEmail if filled else ('anna@' if contacts_state == 'validation' else '') }}" required{% if locked %} disabled{% endif %}></label>
+          </div>
+          <label>Сообщение *<textarea name="message" placeholder="Напишите ваш вопрос" maxlength="2000" required{% if locked %} disabled{% endif %}>{{ contacts.demoMessage if filled else '' }}</textarea><span class="contacts-form__counter" data-contacts-counter hidden></span></label>
+          <div class="contacts-form__documents"><label class="contacts-form__consent"><input type="checkbox" name="privacy" required data-contacts-consent{% if filled or contacts_state == 'validation' %} checked{% endif %}{% if locked %} disabled{% endif %}><span>Даю согласие на обработку данных</span></label><a href="{{ site.policyUrl }}">Согласие на обработку персональных данных</a><a href="{{ site.policyUrl }}">Политика конфиденциальности</a></div>
+          <button class="button" type="submit" data-contacts-submit{% if not filled and contacts_state != 'validation' or locked %} disabled{% endif %}><span data-contacts-submit-label>Отправить сообщение</span><img src="assets/img/product-loading.svg" width="34" height="24" alt="" data-contacts-spinner hidden></button>
+          <p class="contacts-form__required">* Обязательные поля</p>
+        </form>
+        <div class="contacts-form__success" data-contacts-success{% if contacts_state != 'sent' %} hidden{% endif %}><h3>Сообщение отправлено</h3><p>Ответ придёт на <span data-contacts-email>{{ contacts.demoEmail }}</span>. Если хотите задать ещё один вопрос, отправьте новое сообщение.</p><button type="button" class="button button--secondary" data-contacts-reset>Написать ещё</button></div>
+      </section>
+    </div>
+    {% if site.vkUrl and contacts_state != 'optional' %}<section class="contacts-page__social"><h2 class="eyebrow">Мы в социальных сетях</h2><a href="{{ site.vkUrl }}" target="_blank" rel="noopener">ВКонтакте</a></section>{% endif %}
+  </div>
+</main>

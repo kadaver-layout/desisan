@@ -1,0 +1,5 @@
+{% set title = "Не удалось загрузить заказ — DESISAN" %}
+{% set meta_description = "Ошибка загрузки данных заказа." %}
+{% set orderState = "load-failed" %}
+{% extends "layouts/default.html" %}
+{% block content %}{% include "includes/order-success.html" %}{% endblock %}

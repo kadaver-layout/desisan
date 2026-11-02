@@ -1,0 +1,1 @@
+﻿{% set emailRecord = emails.order %}{% set title = emailRecord.heading + " — Desisan" %}{% set emailImagesDisabled = true %}{% extends "layouts/email-order.html" %}{% block content %}{% include "includes/email-transaction.html" %}{% endblock %}

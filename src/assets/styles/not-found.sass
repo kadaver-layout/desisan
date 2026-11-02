@@ -1,0 +1,77 @@
+@use "_vars" as *
+
+// Короткая страница занимает окно; при длинном содержимом подвал идёт в потоке.
+body:has(.not-found)
+  min-height: 100svh
+  display: flex
+  flex-direction: column
+
+.not-found
+  flex: 1
+  display: flex
+  flex-direction: column
+  min-height: 472px
+  &__breadcrumbs
+    padding-block: 32px
+  &__inner
+    flex: 1
+    display: grid
+    place-items: start center
+    padding-block: 24px 88px
+    text-align: center
+  &__message
+    width: 100%
+    max-width: 640px
+  &__code
+    margin-bottom: 16px
+    color: $text-secondary
+    font-size: 64px
+    line-height: 72px
+    letter-spacing: -1.28px
+    font-weight: 500
+    letter-spacing: -.48px
+  h1
+    margin-bottom: 16px
+    font-size: 48px
+    line-height: 56px
+    font-weight: 500
+  &__description
+    color: $text-secondary
+    font-size: 16px
+    line-height: 24px
+  &__actions
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: 16px
+    margin-top: 24px
+
+@media ($desktop)
+  .not-found
+    min-height: 565px
+@media ($tablet)
+  .not-found
+    min-height: 548px
+    h1
+      font-size: 32px
+      line-height: 40px
+      letter-spacing: -.32px
+    &__inner
+      padding-bottom: 120px
+
+@media ($mobile)
+  .not-found
+    min-height: 528px
+    &__breadcrumbs
+      padding-block: 24px
+    &__inner
+      padding-block: 24px 72px
+    &__message
+      max-width: 328px
+    h1
+      max-width: 280px
+      margin-inline: auto
+    &__actions
+      flex-direction: column
+      .button
+        width: 100%

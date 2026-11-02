@@ -16,7 +16,7 @@
   {% endfor %}
   <script defer src="assets/js/app.js"></script>
 </head>
-<body>
+<body{% if pagePreview %} data-page-preview="{{ pagePreview }}"{% endif %}>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   {% include "includes/header.html" %}
   {% block content %}{% endblock %}

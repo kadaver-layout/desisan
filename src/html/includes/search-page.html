@@ -1,0 +1,23 @@
+﻿{% set currentSearchState = searchState | default('results') %}
+{% set initialTotal = 1 if currentSearchState == 'one' else (0 if currentSearchState == 'empty' else 32) %}
+{% set query = searchQuery | default('сумка') %}
+{% set productHeadingTag = 'h2' %}
+<main class="main search-page" id="main-content" data-search-results-page data-search-state="{{ currentSearchState }}" data-search-query="{{ query }}">
+  <header class="container search-page__heading"><nav class="eyebrow" aria-label="Хлебные крошки"><a href="home.html">Главная</a><span aria-hidden="true"> / </span><span aria-current="page">Поиск</span></nav><div><h1>Результаты поиска: «<span data-results-query>{{ query }}</span>»</h1><p data-results-count>{{ 'Ищем товары…' if currentSearchState == 'loading' else ('Результаты поиска не получены' if currentSearchState == 'error' else (initialTotal + ' товар' if initialTotal == 1 else (initialTotal + ' товаров' if initialTotal == 0 else initialTotal + ' товара'))) }}</p></div></header>
+  <div class="container search-page__body">
+    <section class="search-page__message" data-results-empty{% if currentSearchState != 'empty' %} hidden{% endif %}><h2>Ничего не нашлось</h2><p>По вашему запросу не смогли ничего подобрать. Попробуйте другой запрос.</p></section>
+    <section class="search-page__message" data-results-error{% if currentSearchState != 'error' %} hidden{% endif %}><h2>Не удалось выполнить поиск</h2><p>Попробуйте ещё раз. Если ошибка повторяется, вернитесь позже.</p><button class="button button--large" type="button" data-results-retry>Повторить поиск</button></section>
+    <div class="search-page__grid" data-results-grid aria-busy="{{ 'true' if currentSearchState in ['loading','loading-more'] else 'false' }}"{% if currentSearchState in ['empty','error'] %} hidden{% endif %}>
+      {% for product in search.products %}
+      <div data-result-item{% if currentSearchState == 'loading' or (currentSearchState == 'one' and loop.index != 2) or (currentSearchState not in ['end','one'] and loop.index > 24) %} hidden{% endif %}>{% include 'includes/product-card.html' %}</div>
+      {% endfor %}
+      {% for index in range(0,8) %}<div class="search-skeleton" aria-hidden="true" data-results-skeleton{% if currentSearchState not in ['loading','loading-more'] %} hidden{% endif %}><div></div><span></span><span></span></div>{% endfor %}
+    </div>
+    <div class="search-page__more" data-results-more-wrapper{% if currentSearchState in ['one','empty','error','loading'] %} hidden{% endif %}>
+      <p data-results-progress>{{ 'Все 32 товара показаны' if currentSearchState == 'end' else 'Показано 24 из 32 товаров' }}</p><p class="search-page__load-error" role="status" data-results-more-error{% if currentSearchState != 'more-error' %} hidden{% endif %}>Не удалось загрузить товары. Попробуйте ещё раз.</p>
+      <button type="button" class="button button--secondary" data-results-more{% if currentSearchState == 'end' %} hidden{% endif %}{% if currentSearchState == 'loading-more' %} disabled aria-busy="true"{% endif %}><span data-results-more-label>{{ 'Повторить' if currentSearchState == 'more-error' else 'Показать ещё' }}</span><img src="assets/img/product-loading.svg" width="34" height="24" alt="" data-results-spinner hidden></button>
+    </div>
+  </div>
+</main>
+
+

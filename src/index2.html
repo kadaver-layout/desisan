@@ -1,22 +1,4 @@
 {% set title = productDetail.title + " — DESISAN" %}
 {% set meta_description = productDetail.title + " DESISAN из натуральной кожи." %}
 {% extends "layouts/default.html" %}
-{% block content %}
-<main class="main product-page" id="main-content">
-  <nav class="container product-breadcrumbs" aria-label="Хлебные крошки">
-    <ol class="product-breadcrumbs__desktop">
-      <li><a href="/">Главная</a></li><li><a href="/catalog/">Каталог</a></li><li><a href="/catalog/zhenskoe/">Женское</a></li><li><a href="/catalog/zhenskoe/sumki/">Сумки</a></li><li aria-current="page">{{ productDetail.title }}</li>
-    </ol>
-    <a class="product-breadcrumbs__back" href="/catalog/zhenskoe/sumki/"><span class="product-small-icon"><img src="assets/img/product-back.svg" width="24" height="24" alt=""></span>Женские сумки</a>
-  </nav>
-  <section class="product-main" aria-label="Информация о товаре">
-    <div class="container product-main__layout">
-      {% include "includes/product-gallery.html" %}
-      {% include "includes/product-info.html" %}
-    </div>
-  </section>
-  {% include "includes/product-reviews.html" %}
-  {% include "includes/product-related.html" %}
-  {% include "includes/product-dialogs.html" %}
-</main>
-{% endblock %}
+{% block content %}{% include "includes/product-page.html" %}{% endblock %}

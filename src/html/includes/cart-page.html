@@ -1,0 +1,72 @@
+{% set emptyCart = cartState == 'empty' %}
+{% set loadingCart = cartState == 'loading' %}
+{% set loadFailedCart = cartState == 'load-failed' %}
+{% set recalculatingCart = cartState == 'recalculating' %}
+{% set quantityFailedCart = cartState == 'quantity-failed' %}
+{% set soldOutCart = cartState == 'sold-out' %}
+{% set limitedCart = cartState == 'limit' %}
+{% set priceChangedCart = cartState == 'price-changed' %}
+{% set removeFailedCart = cartState == 'remove-failed' %}
+{% set checkoutFailedCart = cartState == 'checkout-failed' %}
+{% set manyCart = cartState == 'many' %}
+{% set unavailableCart = emptyCart or loadingCart or loadFailedCart %}
+<main class="main cart-page" id="main-content" data-cart-page{% if loadingCart or loadFailedCart or recalculatingCart %} data-cart-preview{% endif %}>
+  {% if loadingCart or loadFailedCart %}<template data-cart-ready>{% set cartState = 'default' %}{% include "includes/cart-page.html" %}</template>{% endif %}
+  <div class="container cart-page__heading">
+    <nav class="cart-page__breadcrumbs eyebrow" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><span aria-current="page">Корзина</span></nav>
+    <div class="cart-page__title"><h1>Корзина</h1><p data-cart-count-label{% if unavailableCart %} hidden{% endif %}>{{ cart.countLabel | default((cart.items | length) ~ ' товара') }}</p></div>
+  </div>
+  {% if loadingCart %}{% include "includes/cart-loading.html" %}{% endif %}
+  {% if loadFailedCart %}
+    <section class="cart-empty cart-load-error container" aria-labelledby="cart-load-error-title">
+      <h2 id="cart-load-error-title">Не удалось загрузить корзину</h2>
+      <p>Проверьте подключение к интернету<br>и попробуйте ещё раз.</p>
+      <button class="button" type="button" data-cart-retry aria-label="Повторить загрузку"><span data-cart-retry-label>Повторить загрузку</span><img src="assets/img/product-loading.svg" width="34" height="24" alt="" data-cart-retry-loading hidden></button>
+    </section>
+  {% endif %}
+  <div class="container cart-page__content" data-cart-content{% if unavailableCart %} hidden{% endif %}>
+    <section class="cart-page__items" aria-label="Товары в корзине" data-cart-items>
+      <p class="cart-page__notice" role="alert" data-cart-checkout-error{% if not checkoutFailedCart %} hidden{% endif %}>Не удалось проверить состав заказа. Проверьте товары и попробуйте ещё раз.</p>
+      {% if priceChangedCart %}<p class="cart-page__notice" role="status">Цена одного товара изменилась. Проверьте обновлённый итог.</p>{% endif %}
+      {% set cartRepeatCount = 8 if manyCart else 1 %}
+      {% if not unavailableCart %}{% for repeat in range(0, cartRepeatCount) %}{% for item in cart.items %}{% if not manyCart or repeat * (cart.items | length) + loop.index <= 15 %}
+      {% set itemTitle = item.title %}{% if cartLongTitle and loop.first %}{% set itemTitle = cartLongTitle %}{% endif %}
+      {% set itemQuantity = item.quantity | default(1) %}
+      {% set lockedQuantity = (recalculatingCart or soldOutCart) and loop.first %}
+      <article class="cart-item"{% if limitedCart and loop.first %} data-cart-max-quantity="1"{% endif %}{% if soldOutCart and loop.first %} data-cart-unavailable{% endif %}{% if recalculatingCart and loop.first %} aria-busy="true"{% endif %} data-cart-item data-cart-price="{{ item.priceValue }}" data-cart-old-price="{{ item.oldPriceValue }}">
+        <a class="cart-item__image" href="{{ item.url }}">{% if item.image %}<img src="{{ item.image }}" alt="{{ itemTitle }}" width="112" height="140" data-cart-image>{% endif %}<span class="cart-item__placeholder" role="img" aria-label="Изображение отсутствует: {{ itemTitle }}" data-cart-image-placeholder{% if item.image %} hidden{% endif %}><img src="assets/img/image-line.svg" width="20" height="20" alt=""></span></a>
+        <div class="cart-item__info"><h2><a href="{{ item.url }}">{{ itemTitle }}</a></h2><p>Артикул {{ item.article }} · {{ item.color }}</p>
+          <p class="cart-item__unit-price" data-cart-unit-price{% if itemQuantity <= 1 %} hidden{% endif %}>{{ item.price }} за штуку</p>
+          <p class="cart-item__prices"><span data-cart-line-price>{{ item.linePrice | default(item.price) }}</span>{% if item.oldPrice %}<del data-cart-line-old-price>{{ item.lineOldPrice | default(item.oldPrice) }}</del>{% endif %}</p>
+          <div class="cart-quantity{% if quantityFailedCart and loop.first %} cart-quantity--error{% endif %}" data-cart-quantity-control>
+            <button type="button" data-cart-decrease aria-label="Уменьшить количество: {{ item.title }}"{% if itemQuantity <= 1 or lockedQuantity %} disabled{% endif %}>−</button>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" value="{{ itemQuantity }}"{% if lockedQuantity %} disabled{% endif %}{% if recalculatingCart and loop.first %} class="cart-quantity__loading"{% endif %} data-cart-quantity aria-label="Количество: {{ item.title }}" aria-describedby="cart-quantity-error-{{ repeat }}-{{ loop.index }}">
+            <button type="button" data-cart-increase{% if lockedQuantity or (limitedCart and loop.first) %} disabled{% endif %} aria-label="Увеличить количество: {{ item.title }}">+</button>
+          </div>
+          {% if recalculatingCart and loop.first %}<p class="cart-item__status" role="status" aria-live="polite">Обновляем количество и сумму...</p>{% endif %}
+          <p class="cart-item__operation-error" role="alert" data-cart-operation-error{% if not (quantityFailedCart and loop.first and repeat == 0) %} hidden{% endif %}>Не удалось изменить количество. <button type="button" data-cart-operation-retry>Повторить</button></p>
+          <p class="cart-item__operation-error" role="alert" data-cart-remove-error{% if not (removeFailedCart and loop.first and repeat == 0) %} hidden{% endif %}>Не удалось удалить товар. <button type="button" data-cart-remove-retry>Повторить</button></p>
+          <p class="cart-item__operation-error" role="alert" data-cart-unavailable-note{% if not (soldOutCart and loop.first) %} hidden{% endif %}>Товар закончился. Удалите его, чтобы продолжить.</p>
+          {% if limitedCart and loop.first %}<p class="cart-item__status" data-cart-limit-note>Больше добавить не получится</p>{% endif %}
+          {% if priceChangedCart and loop.first %}<p class="cart-item__status">Цена изменилась. Проверьте итог перед оформлением.</p>{% endif %}
+          <p class="cart-item__error" id="cart-quantity-error-{{ repeat }}-{{ loop.index }}" data-cart-quantity-error role="alert" hidden>Введите целое число от 1</p>
+        </div>
+        <button class="cart-item__remove" type="button" data-cart-remove{% if removeFailedCart and loop.first and repeat == 0 %} data-cart-remove-failed{% endif %}{% if recalculatingCart and loop.first %} disabled{% endif %} aria-label="Удалить {{ item.title }}"><img src="assets/img/delete-bin.svg" width="20" height="20" alt=""></button>
+      </article>
+      {% endif %}{% endfor %}{% endfor %}{% endif %}
+    </section>
+    <aside class="cart-summary" data-cart-summary>
+      <h2>Ваш заказ</h2>
+      <dl>
+        <div><dt data-cart-count-label>{{ cart.countLabel | default((cart.items | length) ~ ' товара') }}</dt><dd data-cart-old-total>{{ cart.oldTotal }}</dd></div>
+        <div data-cart-discount-row{% if not cart.discountValue %} hidden{% endif %}><dt>Скидка</dt><dd class="cart-summary__discount" data-cart-discount>{{ cart.discount }}</dd></div>
+      </dl>
+      <div class="cart-summary__total"><span>Итого</span><strong data-cart-total aria-live="polite" aria-atomic="true">{% if recalculatingCart %}Обновляем...{% else %}{{ cart.total }}{% endif %}</strong></div>
+      {# Перед переходом в Битрикс повторно проверяются состав и цены на сервере. #}
+      {% if recalculatingCart %}<button type="button" class="button cart-summary__button" disabled aria-busy="true" aria-label="Обновляем количество и сумму"><img src="assets/img/product-loading.svg" width="34" height="24" alt=""></button>{% else %}<a class="button cart-summary__button" href="index4.html" data-cart-checkout{% if soldOutCart %} hidden{% endif %}>Оформить заказ</a><button type="button" class="button cart-summary__button" disabled data-cart-checkout-disabled{% if not soldOutCart %} hidden{% endif %}><span data-cart-checkout-label>Оформить заказ</span><img src="assets/img/product-loading.svg" width="34" height="24" alt="Обновляем количество и сумму" data-cart-checkout-loading hidden></button>{% endif %}
+      <p data-cart-checkout-note>{% if soldOutCart %}Удалите недоступный товар, чтобы перейти к оформлению.{% else %}Способ доставки выберете при оформлении заказа.{% endif %}</p>
+    </aside>
+  </div>
+  <section class="cart-empty container" data-cart-empty{% if not emptyCart %} hidden{% endif %}><h2>В корзине пока пусто</h2><p>Выберите сумку или аксессуар в каталоге и добавьте в корзину.</p><a class="button" href="index1.html">Перейти в каталог</a></section>
+  <section class="cart-recommendations container" data-cart-recommendations{% if unavailableCart or not cart.recommendations.length %} hidden{% endif %}><h2>С этим товаром покупают</h2><ul>{% for product in cart.recommendations %}<li>{% include "includes/product-card.html" %}</li>{% endfor %}</ul></section>
+</main>

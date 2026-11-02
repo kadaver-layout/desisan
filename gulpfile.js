@@ -75,6 +75,9 @@ const path = {
 function serverStart() {
   server.init({
     server: { baseDir: path.dist.base, mimeTypes: { woff: "font/woff", woff2: "font/woff2", ttf: "font/ttf", mp4: "video/mp4" } },
+    // Node.js 22 возвращает AggregateError при проверке localhost в portscanner.
+    // Явный IPv4 сохраняет локальный режим BrowserSync и стабильно запускает dev-сервер.
+    listen: "127.0.0.1",
     notify: false,
     online: true,
     snippetOptions: { rule: { fn: (snippet, match) => `<script async src="/browser-sync/browser-sync-client.js?v=3.0.4"></script>${match}` } },

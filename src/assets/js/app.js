@@ -1,5 +1,12 @@
 import { initProductGallery, initProductReview } from "./product.js";
 import { initCatalog } from "./catalog.js";
+import { initCartPage } from "./cart.js";
+import { initCheckout } from "./checkout.js";
+import { initTextMedia } from "./text-media.js";
+import { initContacts } from "./contacts.js";
+import { initNews } from "./news.js";
+import { initSearchResults } from "./search-results.js";
+import { initOrderResult } from "./order-result.js";
 
 // Общая логика интерфейса. Серверные операции вынесены в window.DesisanIntegrations:
 // search(query, { signal }), addToCart(productId), setCity(city).
@@ -17,7 +24,43 @@ document.addEventListener("DOMContentLoaded", () => {
   initCatalog(dialogs);
   initProductGallery();
   initProductReview();
+  initCartPage();
+  initCheckout();
+  initTextMedia();
+  initContacts();
+  initNews();
+  initSearchResults();
+  initOrderResult();
+  queueMicrotask(() => initPagePreview(dialogs));
 });
+
+// Изолированные страницы состояний для приёмки макета. Общие данные меню не меняются.
+function initPagePreview(dialogs) {
+  const state = document.body.dataset.pagePreview;
+  if (!state) return;
+  const cookie = document.querySelector('[data-cookie-banner]');
+  const city = document.querySelector('[data-city-notice]');
+  cookie.hidden = state === 'cookies' ? false : true;
+  city.hidden = state !== 'city-notice';
+  if (state === 'menu' && innerWidth < 1280) dialogs.open('mobile-menu');
+  if (state === 'city') dialogs.open('city-dialog');
+  if (state === 'review') dialogs.open('product-review', document.querySelector('[data-open-dialog="product-review"]'));
+  if (state === 'viewer') dialogs.open('product-viewer', document.querySelector('[data-open-dialog="product-viewer"]'));
+  if (['search', 'suggestions', 'search-empty'].includes(state)) {
+    dialogs.open('search-dialog');
+    const input = document.querySelector('[data-search-input]');
+    if (state !== 'search') {
+      input.value = state === 'suggestions' ? 'сумка' : 'несуществующий товар';
+      input.dispatchEvent(new Event('input', {bubbles:true}));
+    }
+  }
+  if (state === 'empty-cart') document.querySelectorAll('[data-cart-count]').forEach(node => { node.hidden = true; });
+  if (state === 'toast') {
+    const toast = document.querySelector('[data-cart-toast]');
+    toast.querySelector('[data-toast-message]').textContent = 'Сумка добавлена в корзину';
+    toast.hidden = false;
+  }
+}
 
 const desktopMedia = window.matchMedia("(min-width: 1280px)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -105,7 +148,18 @@ function initDialogs() {
     menuHistoryActive = false;
     close(menu);
   });
-  menu?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => close(menu)));
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    if (!menuHistoryActive) { close(menu); return; }
+    // Сначала убираем запись открытого меню, затем переходим по ссылке.
+    // Иначе асинхронный history.back из close отменяет начавшуюся навигацию.
+    event.preventDefault();
+    const url = link.href;
+    menuHistoryActive = false;
+    close(menu);
+    window.addEventListener('popstate', () => window.location.assign(url), {once:true});
+    history.back();
+  }));
   desktopMedia.addEventListener("change", () => {
     if (desktopMedia.matches) close(menu);
   });
@@ -429,8 +483,26 @@ function initCart() {
           // Без Битрикс не показываем фиктивное подтверждение и не меняем счётчик.
           throw new Error("Cart integration is not configured");
         }
-        const response = await window.DesisanIntegrations.addToCart(button.dataset.addToCart);
+        // Повтор после сетевой ошибки использует тот же ключ: сервер исключает дубли.
+        button.dataset.cartAttempt ||= crypto.randomUUID();
+        const response = await window.DesisanIntegrations.addToCart(button.dataset.addToCart, {attemptId:button.dataset.cartAttempt});
+        if (purchase && response?.status === 'price-changed') {
+          delete button.dataset.cartAttempt;
+          if (Number.isFinite(response.price)) purchase.querySelector('.product-info__price > span').textContent = new Intl.NumberFormat('ru-RU').format(response.price) + '\u00a0₽';
+          productError.textContent = 'Цена обновилась. Проверьте её перед добавлением.';
+          productError.hidden = false;
+          return;
+        }
+        if (purchase && response?.status === 'unavailable') {
+          delete button.dataset.cartAttempt;
+          label.textContent = 'Нет в наличии';
+          button.dataset.productUnavailable = 'true';
+          productError.textContent = 'Нет в наличии';
+          productError.hidden = false;
+          return;
+        }
         if (!response || !Number.isFinite(response.count)) throw new Error("Invalid cart response");
+        delete button.dataset.cartAttempt;
         document.querySelectorAll("[data-cart-count]").forEach(counter => {
           counter.textContent = response.count;
           counter.hidden = response.count <= 0;
@@ -452,7 +524,7 @@ function initCart() {
           label.textContent = "Повторить";
         }
       } finally {
-        button.disabled = false;
+        button.disabled = button.dataset.productUnavailable === 'true';
         button.removeAttribute("aria-busy");
         if (label) label.hidden = false;
         if (loading) loading.hidden = true;

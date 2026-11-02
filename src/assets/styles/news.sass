@@ -1,0 +1,182 @@
+@use "_vars" as *
+.news-card__media
+  display: block
+  aspect-ratio: 16 / 10
+  background: $bg-surface
+
+.news-page
+  > .news-page__inner
+    display: grid
+    gap: 32px
+    padding-block: 32px 64px
+  &__heading
+    display: grid
+    gap: 24px
+    h1
+      letter-spacing: -.48px
+  &__grid
+    margin: 0
+    gap: 32px
+    align-items: start
+  &__more
+    display: grid
+    justify-items: center
+    gap: 16px
+    > p
+      color: $text-negative
+  &__state
+    display: grid
+    justify-items: center
+    text-align: center
+    gap: 16px
+    padding: 64px 0
+    h2
+      font-size: 24px
+      line-height: 32px
+      font-weight: 500
+    p
+      color: $text-secondary
+.news-card
+  display: block
+  min-width: 0
+  > a
+    display: grid
+    gap: 16px
+  img.news-card__image
+    width: 100%
+    height: auto
+    aspect-ratio: 16 / 10
+    object-fit: cover
+    background: $bg-surface
+  &__text
+    display: grid
+    gap: 8px
+  time, p
+    font-size: 14px
+    line-height: 20px
+  h2
+    font-size: 18px
+    line-height: 28px
+    font-weight: 400
+    overflow-wrap: anywhere
+  > a:hover h2
+    text-decoration: underline
+.news-skeleton
+  display: grid
+  gap: 16px
+  width: 100%
+  > div
+    aspect-ratio: 16 / 10
+    background: $bg-surface
+  > span
+    display: block
+    height: 20px
+    background: $bg-surface
+    &:nth-child(2)
+      width: 32%
+    &:last-child
+      width: 72%
+.news-article
+  &__inner
+    display: grid
+    gap: 32px
+    width: calc(100% - 128px)
+    max-width: 960px
+    padding: 32px 0 64px
+  &__heading
+    display: grid
+    gap: 24px
+    h1
+      font-size: 48px
+      line-height: 56px
+      letter-spacing: -.48px
+      font-weight: 500
+      overflow-wrap: anywhere
+  &__crumbs
+    display: flex
+    flex-wrap: wrap
+    gap: 8px
+  &__intro
+    display: grid
+    gap: 16px
+    time
+      color: $text-secondary
+      font-size: 14px
+      line-height: 20px
+    p
+      font-size: 18px
+      line-height: 28px
+  &__figure, &__gallery figure
+    display: grid
+    gap: 8px
+    margin: 0
+    img
+      width: 100%
+      aspect-ratio: 16 / 9
+      object-fit: cover
+      background: $bg-surface
+    figcaption
+      color: $text-secondary
+      font-size: 14px
+      line-height: 20px
+  &__gallery
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 24px
+    figure img
+      aspect-ratio: 4 / 3
+  &__inner > section, &__cta
+    display: grid
+    gap: 16px
+    h2
+      font-size: 32px
+      line-height: 40px
+      font-weight: 500
+    p
+      font-size: 16px
+      line-height: 24px
+  &__cta
+    padding: 24px
+    background: $bg-surface
+    justify-items: start
+    h2
+      font-size: 24px
+      line-height: 32px
+  &__back
+    border-top: 1px solid $stroke-primary
+    padding-top: 24px
+  &__actions
+    display: flex
+    flex-wrap: wrap
+    gap: 16px
+  &__image-error
+    display: grid
+    place-items: center
+    aspect-ratio: 16 / 9
+    padding: 24px
+    background: $bg-surface
+    color: $text-secondary
+  &__skeleton
+    width: 100%
+@media (min-width: 1280px) and (max-width: 1919.9px)
+  .news-page__grid
+    gap: 24px
+@media ($tablet)
+  .news-page__grid
+    gap: 32px 16px
+  .news-article__inner
+    width: calc(100% - 64px)
+@media ($mobile)
+  .news-page__more .button
+    width: 100%
+  .news-page__more
+    justify-items: stretch
+  .news-article
+    &__inner
+      width: calc(100% - 32px)
+    &__heading h1
+      font-size: 32px
+      line-height: 40px
+      letter-spacing: -.32px
+    &__gallery
+      grid-template-columns: 1fr

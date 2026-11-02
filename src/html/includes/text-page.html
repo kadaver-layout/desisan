@@ -1,0 +1,31 @@
+﻿<main class="main text-page" id="main-content">
+  <div class="container"><article class="text-page__article">
+    <header class="text-page__heading"><nav class="text-page__crumbs eyebrow" aria-label="Хлебные крошки"><a href="home.html">Главная</a><span aria-hidden="true">/</span><span aria-current="page">{% if textVariant == 'short' %}О компании{% elif textVariant == 'media-error' %}Как выбрать изделие{% else %}Текстовая страница{% endif %}</span></nav>
+    <h1>{% if textVariant == 'short' %}О компании{% elif textVariant == 'media-error' %}{{ textPage.longTitle }}{% else %}Заголовок первого уровня{% endif %}</h1></header>
+    {% if textVariant == 'media-error' %}
+    {% include "includes/text-media-error.html" %}
+    {% elif textVariant == 'short' %}
+    <p>{{ textPage.shortDescription }}</p><p><a href="index1.html">Перейти в каталог</a></p>
+    {% else %}
+    <div class="text-page__intro"><time datetime="2026-10-05">5 октября 2026</time>
+    <p>Это пример вступления к текстовой странице Desisan. Здесь можно кратко рассказать о компании, объяснить условия покупки или представить полезную информацию об изделиях из натуральной кожи.</p></div>
+    <figure><img src="assets/img/catalog-0.png" alt="Бордовая сумка Desisan из натуральной кожи" width="900" height="1200"><figcaption>Подпись к изображению</figcaption></figure>
+    <section><h2>Заголовок второго уровня</h2><p>В этом блоке располагается основной текст страницы. Абзацы помогают разделить материал на понятные части: каждый раскрывает одну мысль и связан с предыдущим.</p><p>Шаблон подходит для короткой справки и большого документа. Текст свободно переносится, а следующие блоки сдвигаются по высоте вместе с содержимым.</p></section>
+    <blockquote><p>«Хороший текст помогает быстро найти ответ и понять, что делать дальше»</p><footer>Подпись автора или источник</footer></blockquote>
+    <div><p>Маркированный список</p><ul>{% for item in textPage.bullets %}<li>{{ item }}</li>{% endfor %}</ul></div>
+    <div class="text-page__gallery">
+      <figure><img src="assets/img/catalog-10.png" alt="Сумка с золотистым узором и плечевым ремнём" width="900" height="1200"><figcaption>Подпись к первому изображению</figcaption></figure>
+      <figure><img src="assets/img/catalog-5.png" alt="Синяя сумка с цветочным узором" width="900" height="1200"><figcaption>Подпись ко второму изображению</figcaption></figure>
+    </div>
+    <section><h3>Заголовок третьего уровня</h3><p>Нумерованный список подходит для последовательных действий. Порядок пунктов сохраняется на всех устройствах.</p><p>Нумерованный список</p><ol>{% for item in textPage.steps %}<li>{{ item }}</li>{% endfor %}</ol></section>
+    <section><h4>Заголовок четвёртого уровня</h4><p>Таблица сравнивает несколько характеристик. Значения в этом примере демонстрируют оформление, а содержимое задаётся для каждой страницы отдельно.</p>
+      <div class="text-page__table" role="region" aria-labelledby="text-table-caption" tabindex="0"><table><caption id="text-table-caption">Пример таблицы</caption><thead><tr>{% for heading in textPage.table.headings %}<th scope="col">{{ heading }}</th>{% endfor %}</tr></thead><tbody>{% for row in textPage.table.rows %}<tr>{% for cell in row %}{% if loop.first %}<th scope="row">{{ cell }}</th>{% else %}<td>{{ cell }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>
+    </section>
+    {% if textPage.videoUrl %}<section><h5>Заголовок пятого уровня</h5><figure><video controls preload="none" poster="assets/img/catalog-3.png" aria-label="Видео об изделии Desisan"><source src="{{ textPage.videoUrl }}" type="video/mp4">Ваш браузер не поддерживает видео.</video><figcaption>Подпись к видео</figcaption></figure></section>{% endif %}
+    <div><p>Дополнительная информация доступна в других разделах сайта</p>{% if textPage.deliveryUrl %}<p><a href="{{ textPage.deliveryUrl }}">Доставка и оплата</a></p>{% endif %}{% if textPage.manufacturerUrl %}<p><a href="{{ textPage.manufacturerUrl }}" target="_blank" rel="noopener">Подробнее на сайте производителя <span aria-hidden="true">↗</span></a></p>{% endif %}</div>
+    <aside class="text-page__help"><p>Остались вопросы?</p><p>Посмотрите контактную информацию и выберите удобный способ связи.</p><a href="index7.html">Перейти к контактам</a></aside>
+    <div class="text-page__catalog"><p>Посмотрите изделия Desisan в каталоге</p><a class="button" href="index1.html">Перейти в каталог</a></div>
+    {% endif %}
+  </article></div>
+</main>
+

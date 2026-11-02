@@ -346,7 +346,51 @@
     line-height: 32px
     font-weight: 500
 
+.product-gallery__media-error
+  position: absolute
+  inset: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 16px
+  padding: 24px
+  background: $bg-surface
+  font-size: 14px
+  line-height: 20px
+
+.product-gallery__slide > video
+  display: block
+  width: 100%
+  height: 100%
+  object-fit: contain
+  background: $bg-inverse
+.product-gallery__thumb
+  position: relative
+.product-gallery__video-label
+  position: absolute
+  inset: auto 0 0
+  padding: 4px
+  background: $bg-primary
+  font-size: 12px
+  line-height: 16px
+.product-viewer__video
+  width: 100%
+  height: 100%
+  object-fit: contain
+  background: $bg-inverse
+
+.review-form__success
+  display: grid
+  gap: 16px
+
 .review-form
+  &__error, &__status
+    color: $text-negative
+    font-size: 14px
+    line-height: 20px
+  [aria-invalid="true"]
+    border-color: $text-negative
   display: grid
   gap: 16px
   input[type="text"], textarea

@@ -1,0 +1,10 @@
+<main class="main" id="main-content">
+  {% include "includes/hero.html" %}
+  {% include "includes/gender-banners.html" %}
+  {% include "includes/category-rail.html" %}
+  {% for productSection in productSections %}
+    {% set visibleProducts = productSection.products | selectattr("available") | list %}
+    {% if visibleProducts | length %}{% include "includes/product-rail.html" %}{% endif %}
+  {% endfor %}
+  {% include "includes/brand.html" %}
+</main>

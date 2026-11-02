@@ -9,7 +9,7 @@
     <button class="product-card__add" type="button" data-add-to-cart="{{ product.id }}" aria-label="Добавить в корзину: {{ product.title }}"><img src="assets/img/bag-small.svg" width="16" height="16" alt=""></button>
   </div>
   <div class="product-card__caption">
-    <h3 class="product-card__name"><a href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a></h3>
+    <{{ productHeadingTag | default('h3') }} class="product-card__name"><a href="{{ product.url }}" title="{{ product.title }}">{{ product.title }}</a></{{ productHeadingTag | default('h3') }}>
     <p class="product-card__prices"><span>{{ product.price }}</span>{% if product.oldPrice %}<del>{{ product.oldPrice }}</del>{% endif %}</p>
   </div>
 </article>

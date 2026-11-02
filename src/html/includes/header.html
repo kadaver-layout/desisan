@@ -33,7 +33,8 @@
         <a class="icon-button header__cart" href="{{ site.cartUrl }}" data-cart-link aria-label="Корзина">
           <img class="header__desktop-icon" src="assets/img/bag.svg" width="20" height="20" alt="">
           <img class="header__mobile-icon" src="assets/img/bag-mobile.svg" width="24" height="24" alt="">
-          <span class="header__cart-count" data-cart-count {% if not site.cartCount %}hidden{% endif %}>{{ site.cartCount }}</span>
+          {% set visibleCartCount = headerCartCount | default(site.cartCount) %}
+          <span class="header__cart-count" data-cart-count {% if not visibleCartCount %}hidden{% endif %}>{{ visibleCartCount }}</span>
         </a>
       </div>
     </div>

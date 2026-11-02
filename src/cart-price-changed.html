@@ -1,0 +1,7 @@
+{% set title = "Корзина — новая цена — DESISAN" %}
+{% set meta_description = "Корзина после изменения цены товара." %}
+{% set variant = cartVariants.priceChanged %}
+{% set cart = { items: variant.items, oldTotal: variant.oldTotal, total: variant.total, discount: variant.discount, discountValue: variant.discountValue, recommendations: cart.recommendations } %}
+{% set cartState = 'price-changed' %}
+{% extends "layouts/default.html" %}
+{% block content %}{% include "includes/cart-page.html" %}{% endblock %}

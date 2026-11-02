@@ -1,0 +1,27 @@
+<h1 style="margin:0 0 8px;font-size:24px;line-height:32px;font-weight:700;">{{ emailRecord.heading | escape }}</h1>
+<p style="margin:0 0 24px;color:#6e6a65;font-size:16px;line-height:24px;">{{ emailRecord.greeting | escape }}</p>
+<p style="margin:0 0 24px;font-size:16px;line-height:24px;">{{ emailRecord.body | escape }}</p>
+{% for panel in emailRecord.panels %}
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f1ef" style="margin-bottom:24px;table-layout:fixed;"><tr><td style="padding:16px;">
+  {% if panel.title %}<h2 style="margin:0 0 16px;font-size:14px;line-height:20px;font-weight:700;">{{ panel.title | escape }}</h2>{% endif %}
+  {% for field in panel.fields %}<p style="margin:0 0 4px;color:#6e6a65;font-size:14px;line-height:20px;">{{ field.label | escape }}</p><p style="margin:0{% if not loop.last %} 0 16px{% endif %};font-size:16px;line-height:24px;overflow-wrap:anywhere;word-break:break-word;">{{ field.value | escape }}</p>{% endfor %}
+</td></tr></table>
+{% endfor %}
+{% if emailRecord.items %}
+<h2 style="margin:0 0 16px;font-size:14px;line-height:20px;font-weight:700;">Состав заказа</h2>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="table-layout:fixed;">
+  {% for item in emailRecord.items %}<tr><td style="padding:20px 0;border-top:1px solid #e5e2de;overflow-wrap:anywhere;"><p style="margin:0 0 4px;font-size:16px;line-height:24px;">{{ item.title | escape }}</p><p style="margin:0 0 4px;color:#6e6a65;font-size:14px;line-height:20px;">{{ item.meta | escape }}</p><p style="margin:0;font-size:14px;line-height:20px;font-weight:700;">{{ item.price | escape }}</p></td></tr>{% endfor %}
+</table>
+{% endif %}
+{% if emailRecord.totals %}
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f1ef" style="margin-top:4px;"><tr><td style="padding:16px;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size:14px;line-height:20px;">
+    {% for total in emailRecord.totals %}<tr><td style="{{ 'padding-top:12px;border-top:1px solid #e5e2de;font-weight:700;' if loop.last else 'padding-bottom:12px;' }}">{{ total.label | escape }}</td><td align="right" style="white-space:nowrap;{{ 'padding-top:12px;border-top:1px solid #e5e2de;font-weight:700;' if loop.last else 'padding-bottom:12px;' }}">{{ total.value | escape }}</td></tr>{% endfor %}
+  </table>
+  <p style="margin:12px 0 0;color:#6e6a65;font-size:14px;line-height:20px;">{{ emailRecord.notice | escape }}</p>
+</td></tr></table>
+{% elif not emailRecord.backupLabel %}<p style="margin:0 0 24px;color:#6e6a65;font-size:14px;line-height:20px;">{{ emailRecord.notice | escape }}</p>{% endif %}
+{% if emailRecord.buttonUrl or emailRecord.manager %}
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:{{ 24 if emailRecord.items else 0 }}px;"><tr><td align="center" bgcolor="#1a1a1a" style="padding:12px 24px;">{% if emailRecord.buttonUrl %}<a href="{{ emailRecord.buttonUrl | escape }}" style="display:block;color:#fff;text-decoration:none;font-size:16px;line-height:24px;font-weight:700;">{{ emailRecord.button | escape }}</a>{% else %}{# Ссылку на защищённый заказ передаёт Битрикс перед отправкой менеджеру. #}<span style="display:block;color:#fff;font-size:16px;line-height:24px;font-weight:700;">{{ emailRecord.button | escape }}</span>{% endif %}</td></tr></table>
+{% endif %}
+{% if emailRecord.backupLabel %}<p style="margin:24px 0 8px;font-size:14px;line-height:20px;">{{ emailRecord.backupLabel | escape }}</p><p style="margin:0 0 24px;font-size:14px;line-height:20px;overflow-wrap:anywhere;word-break:break-all;"><a href="{{ emailRecord.buttonUrl | escape }}" style="color:#1a1a1a;text-decoration:underline;">{{ emailRecord.buttonUrl | escape }}</a></p><p style="margin:0;color:#6e6a65;font-size:14px;line-height:20px;">{{ emailRecord.notice | escape }}</p>{% endif %}

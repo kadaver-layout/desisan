@@ -1,0 +1,94 @@
+@use "_vars" as *
+
+.order-success
+  &__inner
+    padding-block: 32px 64px
+  h1
+    margin-top: 24px
+    font-size: 48px
+    line-height: 56px
+    font-weight: 500
+    letter-spacing: -.48px
+  &__content
+    max-width: 872px
+    margin-top: 48px
+    overflow-wrap: anywhere
+  &__lead
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+  &__description
+    margin-top: 16px
+    color: $text-secondary
+    font-size: 16px
+    line-height: 24px
+  &__email
+    margin-top: 16px
+    color: $text-secondary
+    font-size: 14px
+    line-height: 20px
+  &__panel
+    margin-top: 48px
+    padding: 24px
+    background: $bg-surface
+    h2
+      font-size: 24px
+      line-height: 32px
+      font-weight: 500
+  &__details
+    display: grid
+    gap: 16px
+    margin: 16px 0 0
+    font-size: 14px
+    line-height: 20px
+    div
+      display: grid
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr)
+      gap: 16px
+      padding-block: 16px
+      border-bottom: 1px solid $stroke-primary
+    dt
+      color: $text-secondary
+    dd
+      margin: 0
+  &__delivery-note
+    margin-top: 16px
+    color: $text-secondary
+    font-size: 14px
+    line-height: 20px
+  &__continue
+    min-width: 328px
+    margin-top: 48px
+  &__notice
+    margin-top: 16px
+    color: $text-negative
+  &__actions
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 24px
+    margin-top: 32px
+  &--load-failed
+    min-height: 544px
+    .order-success__description
+      margin-top: 24px
+    .order-success__continue
+      margin-top: 24px
+
+@media ($mobile)
+  .order-success
+    &__inner
+      padding-block: 32px 64px
+    h1
+      margin-top: 24px
+      font-size: 32px
+      line-height: 40px
+      letter-spacing: -.32px
+    &__content
+      margin-top: 32px
+    &__panel
+      margin-top: 32px
+    &__continue
+      width: 100%
+      min-width: 0
+      margin-top: 32px

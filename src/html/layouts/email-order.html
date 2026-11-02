@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="x-apple-disable-message-reformatting"><title>{{ title | escape }}</title>
+  <style>table{border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt}@media screen and (min-width:600px){.email-content,.email-footer{padding:40px!important}}</style>
+</head>
+<body style="margin:0;padding:0;background:#f2f1ef;color:#1a1a1a;font-family:Arial,Helvetica,sans-serif;">
+  <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">{{ emailRecord.preheader | default('Мы получили заказ. Менеджер согласует доставку и оплату.') | escape }}</div>
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#f2f1ef"><tr><td align="center">
+    <!--[if mso]><table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0"><tr><td><![endif]-->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;table-layout:fixed;">
+      <tr><td align="center" bgcolor="#ffffff" style="padding:24px;border-bottom:1px solid #e5e2de;">{% if emailImagesDisabled %}<span style="display:inline-block;width:100px;height:24px;font-size:16px;line-height:24px;color:#6e6a65;">Desisan</span>{% else %}<img src="assets/img/email-logo.png" width="100" height="24" alt="Desisan" style="display:block;border:0;background:#fff;">{% endif %}</td></tr>
+      <tr><td class="email-content" bgcolor="#ffffff" style="padding:20px;overflow-wrap:anywhere;word-wrap:break-word;">{% block content %}{% endblock %}</td></tr>
+      <tr><td class="email-footer" style="padding:20px;border-top:1px solid #e5e2de;font-size:12px;line-height:18px;">
+        <p style="margin:0 0 12px;font-size:14px;line-height:20px;font-weight:700;">Desisan · desisan.ru</p>
+        <p style="margin:0 0 12px;font-size:14px;line-height:20px;"><a href="https://desisan.ru/contacts/" style="color:#1a1a1a;text-decoration:underline;">Связаться с магазином</a></p>
+        <p style="margin:0 0 12px;color:#6e6a65;">{{ emailRecord.reason | default('Вы получили письмо в связи с заказом на desisan.ru') | escape }}</p>
+        {% if not emailRecord.manager %}<a href="https://desisan.ru/privacy/" style="color:#6e6a65;text-decoration:underline;">Политика конфиденциальности</a>{% endif %}
+      </td></tr>
+    </table>
+    <!--[if mso]></td></tr></table><![endif]-->
+  </td></tr></table>
+</body></html>

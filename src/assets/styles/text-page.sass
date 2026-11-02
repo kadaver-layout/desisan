@@ -1,0 +1,150 @@
+@use "_vars" as *
+
+body:has(.text-page)
+  min-height: 100svh
+  display: flex
+  flex-direction: column
+
+.text-page
+  flex: 1
+  padding-block: 32px 64px
+  &__article
+    max-width: 960px
+    margin-inline: auto
+    display: flex
+    flex-direction: column
+    gap: 32px
+    min-width: 0
+    font-size: 16px
+    line-height: 24px
+    h4, h5, figure, blockquote, ol
+      margin: 0
+    h1, h2, h3, h4, h5
+      font-weight: 500
+    h1
+      font-size: 48px
+      line-height: 56px
+      letter-spacing: -.48px
+      overflow-wrap: anywhere
+    h2
+      font-size: 32px
+      line-height: 40px
+    h3
+      font-size: 24px
+      line-height: 32px
+    h4
+      font-size: 20px
+      line-height: 28px
+    h5
+      font-size: 16px
+      line-height: 24px
+    section > * + *, aside > * + *, div > p + p
+      margin-top: 16px
+    figure img, video
+      display: block
+      width: 100%
+      height: auto
+    figcaption, blockquote footer, time
+      color: $text-secondary
+      font-size: 14px
+      line-height: 20px
+    figcaption
+      margin-top: 8px
+    blockquote
+      padding: 24px
+      background: $bg-surface
+      footer
+        margin-top: 8px
+    ul, ol
+      margin-top: 16px
+      padding-left: 24px
+    ul
+      list-style: disc
+    ol
+      list-style: decimal
+    li
+      padding-left: 8px
+      & + li
+        margin-top: 16px
+    a:not(.button)
+      text-decoration: underline
+      text-underline-offset: 3px
+      &:hover
+        color: $text-secondary
+    a, td, th
+      overflow-wrap: anywhere
+  &__heading
+    display: grid
+    gap: 24px
+  &__intro
+    display: grid
+    gap: 16px
+  &__crumbs
+    display: flex
+    gap: 8px
+    min-width: 0
+    color: $text-secondary
+    > :last-child
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+    a
+      flex-shrink: 0
+      text-decoration: none !important
+  &__gallery
+    display: grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+    gap: 24px
+    &:has(> figure:only-child)
+      grid-template-columns: 1fr
+  &__table
+    overflow-x: auto
+    max-width: 100%
+    table
+      width: 100%
+      min-width: 704px
+      border-collapse: collapse
+      table-layout: fixed
+    caption
+      padding-bottom: 16px
+      text-align: left
+    th, td
+      padding: 16px
+      border-bottom: 1px solid $stroke-primary
+      vertical-align: top
+      text-align: left
+      font-weight: 400
+    thead
+      background: $bg-surface
+  &__help, &__catalog
+    padding: 24px
+    background: $bg-surface
+  &__catalog .button
+    margin-top: 24px
+  &__image-error, &__video-error, &__video-loading
+    padding: 24px
+    background: $bg-surface
+    > p:first-child
+      font-size: 24px
+      line-height: 32px
+    > p + p
+      margin-top: 16px
+      color: $text-secondary
+    .button
+      margin-top: 24px
+
+@media ($mobile)
+  .text-page
+    &__article
+      h1
+        font-size: 32px
+        line-height: 40px
+        letter-spacing: -.32px
+      h2
+        font-size: 24px
+        line-height: 32px
+      h3
+        font-size: 20px
+        line-height: 28px
+    &__gallery
+      grid-template-columns: 1fr

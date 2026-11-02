@@ -1,0 +1,278 @@
+@use "_vars" as *
+
+.pages-index__inner
+  max-width: 960px
+  padding-block: 64px 96px
+.pages-index h1
+  margin-top: 16px
+  font-size: 48px
+  line-height: 56px
+  font-weight: 500
+.pages-index__lead
+  margin-top: 16px
+  color: $text-secondary
+  font-size: 18px
+  line-height: 28px
+.pages-index__list
+  display: grid
+  margin-top: 40px
+  border-top: 1px solid $stroke-primary
+  counter-reset: page
+  li
+    counter-increment: page
+    border-bottom: 1px solid $stroke-primary
+  a
+    display: grid
+    grid-template-columns: 48px minmax(0, 1fr) auto
+    gap: 16px
+    align-items: center
+    padding: 20px 0
+    font-size: 18px
+    &::before
+      content: counter(page, decimal-leading-zero)
+      color: $text-secondary
+      font-size: 12px
+    small
+      color: $text-secondary
+      font-size: 12px
+
+.content-page h1, .contacts-page h1, .news-page h1, .letters-page h1, .search-page h1
+  font-size: 48px
+  line-height: 56px
+  font-weight: 500
+
+.content-page__inner, .contacts-page__inner, .news-page > .container, .letters-page > .container, .search-page > .container
+  padding-top: 48px
+  padding-bottom: 80px
+
+.content-page__crumbs
+  display: flex
+  gap: 8px
+  margin-bottom: 32px
+  color: $text-secondary
+
+.content-page__article
+  max-width: 856px
+  display: grid
+  gap: 20px
+  h2
+    margin-top: 20px
+    font-size: 28px
+    line-height: 36px
+    font-weight: 500
+  p
+    font-size: 16px
+    line-height: 24px
+  .content-page__lead
+    font-size: 24px
+    line-height: 32px
+
+.contacts-page__grid
+  display: grid
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+  gap: 32px
+  margin-top: 40px
+  section
+    min-height: 240px
+    padding: 32px
+    background: $bg-surface
+    display: grid
+    align-content: start
+    gap: 16px
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+  p
+    color: $text-secondary
+
+.contacts-page__phone
+  font-size: 24px
+  font-weight: 500
+
+.contacts-page__map, .contacts-form
+  max-width: 856px
+  margin-top: 48px
+  h2
+    font-size: 24px
+    line-height: 32px
+    font-weight: 500
+.contacts-page__map
+  [data-contacts-map]
+    display: grid
+    min-height: 280px
+    place-items: center
+    margin-top: 24px
+    background: $bg-surface
+    color: $text-secondary
+  > p
+    margin-top: 16px
+    color: $text-secondary
+.contacts-form form
+  display: grid
+  gap: 16px
+  margin-top: 24px
+  label
+    display: grid
+    gap: 8px
+  input, textarea
+    width: 100%
+    min-height: 48px
+    padding: 12px 16px
+    border: 1px solid $stroke-primary
+  textarea
+    min-height: 144px
+    resize: vertical
+  .contacts-form__consent
+    grid-template-columns: 20px minmax(0, 1fr)
+    align-items: start
+    input
+      width: 20px
+      min-height: 20px
+      padding: 0
+
+.news-page__grid
+  display: grid
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+  gap: 24px
+  margin-top: 40px
+.news-card
+  display: grid
+  align-content: start
+  gap: 12px
+  img
+    width: 100%
+    aspect-ratio: 1 / 1
+    object-fit: cover
+    background: $bg-surface
+  time, p
+    color: $text-secondary
+    font-size: 12px
+  h2
+    font-size: 20px
+    line-height: 28px
+    font-weight: 500
+
+.letters-page p
+  margin-top: 20px
+  color: $text-secondary
+.letters-page__list
+  display: grid
+  gap: 0
+  max-width: 720px
+  margin-top: 32px
+  border-top: 1px solid $stroke-primary
+  li
+    border-bottom: 1px solid $stroke-primary
+  a
+    display: block
+    padding: 20px 0
+    font-size: 18px
+.letters-page__templates
+  display: grid
+  gap: 32px
+  margin-top: 56px
+.letter-template
+  max-width: 640px
+  padding: 40px
+  background: $bg-surface
+  scroll-margin-top: 120px
+  h2
+    margin-top: 16px
+    font-size: 28px
+    line-height: 36px
+    font-weight: 500
+  > p:last-child
+    margin-top: 16px
+    color: $text-secondary
+    font-size: 16px
+    line-height: 24px
+
+.search-page__form
+  display: flex
+  gap: 16px
+  max-width: 856px
+  margin-top: 40px
+  input
+    min-width: 0
+    flex: 1
+    height: 48px
+    padding: 12px 16px
+    border: 1px solid $stroke-primary
+.search-page__popular
+  margin-top: 48px
+  h2
+    font-size: 24px
+    font-weight: 500
+  ul
+    display: flex
+    flex-wrap: wrap
+    gap: 12px
+    margin-top: 20px
+  a
+    display: block
+    padding: 10px 16px
+    border: 1px solid $stroke-primary
+
+.search-page__suggestions
+  display: grid
+  max-width: 856px
+  margin-top: 8px
+  border: 1px solid $stroke-primary
+  a
+    padding: 14px 16px
+    border-bottom: 1px solid $stroke-primary
+    &:last-child
+      border-bottom: 0
+.search-page__empty
+  margin-top: 64px
+  text-align: center
+  h2
+    font-size: 24px
+    font-weight: 500
+  p
+    margin: 12px 0 20px
+    color: $text-secondary
+.search-page__results
+  margin-top: 48px
+  h2
+    font-size: 24px
+    font-weight: 500
+.search-page__grid
+  display: grid
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+  gap: 24px
+  margin-top: 24px
+
+@media ($tablet)
+  .news-page__grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+
+@media ($mobile)
+  .pages-index__inner
+    padding-block: 40px 64px
+  .pages-index h1
+    font-size: 32px
+    line-height: 40px
+  .pages-index__list a
+    grid-template-columns: 32px minmax(0, 1fr)
+    gap: 8px
+    small
+      grid-column: 2
+  .content-page h1, .contacts-page h1, .news-page h1, .letters-page h1, .search-page h1
+    font-size: 32px
+    line-height: 40px
+  .content-page__inner, .contacts-page__inner, .news-page > .container, .letters-page > .container, .search-page > .container
+    padding-top: 32px
+    padding-bottom: 48px
+  .contacts-page__grid, .news-page__grid
+    grid-template-columns: 1fr
+  .contacts-page__grid section
+    min-height: 0
+    padding: 24px
+  .letter-template
+    padding: 24px
+  .search-page__form
+    flex-direction: column
+  .search-page__grid
+    grid-template-columns: repeat(2, minmax(0, 1fr))

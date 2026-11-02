@@ -126,11 +126,31 @@ img
   line-height: 24px
   transition: background $anim
   &:hover
-    background: #36332f
+    background: $bg-inverse-hover
   &:active
     background: #000
   &:disabled
-    opacity: 0.4
+    background: $bg-surface-hover
+    color: $text-tertiary
+  &[aria-busy="true"]:disabled
+    background: $bg-inverse
+    color: $text-inverse
+  &--large
+    min-height: 56px
+  &--small
+    min-height: 40px
+  &--secondary
+    border: 1px solid $stroke-focus
+    background: $bg-primary
+    color: $text-primary
+    &:hover
+      background: $bg-surface-subtle
+    &:active
+      background: $bg-surface-hover
+    &:disabled
+      border-color: $stroke-primary
+      background: $bg-primary
+      color: $text-tertiary
 
 .icon-button
   display: inline-flex

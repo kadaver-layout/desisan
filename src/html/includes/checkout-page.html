@@ -1,0 +1,114 @@
+{% set filledCheckout = checkoutState and checkoutState != 'validation' %}
+﻿<main class="main checkout" id="main-content" data-checkout-page data-checkout-state="{{ checkoutState | default('default') }}">
+<div class="container checkout__heading">
+<nav class="checkout__crumbs eyebrow" aria-label="Хлебные крошки">
+<a href="home.html">Главная</a>
+<span>/</span>
+<span aria-current="page">Оформление заказа</span>
+</nav>
+<h1>Оформление заказа</h1>
+</div>
+<div class="container checkout__layout">
+<form class="checkout-form" id="checkout-form">
+<a class="text-link" href="index3.html">Вернуться в корзину</a>
+<section>
+<h2>Товары в заказе</h2>
+<p class="checkout-notice" data-checkout-notice{% if checkoutState != "price-changed" and checkoutState != "sold-out" %} hidden{% endif %}>{{ "Цена одного товара изменилась. Проверьте обновлённый итог и подтвердите заказ." if checkoutState == "price-changed" else "Сумка из натуральной кожи больше недоступна" }}</p>{% set checkoutItems = cart.items %}{% if checkoutState == "long" %}{% set checkoutItems = checkout.longItems %}{% endif %}{% for item in checkoutItems %}{% if loop.index <= 15 %}<article class="checkout-item">
+<img src="{{ item.image }}" alt="{{ item.title }}">
+<div>
+<h3>{{ item.title }}</h3>
+<p>Артикул {{ item.article }} · {{ item.color }}</p>
+<strong data-checkout-item-price data-checkout-item-id="{{ loop.index }}">{{ "13 490 ₽" if checkoutState == "price-changed" and loop.first else item.price }}</strong>
+<p>{{ item.quantity | default(1) }} шт.</p>
+</div>
+</article>{% endif %}{% endfor %}</section>
+<section>
+<h2>Регион доставки</h2>
+<label>Город или населённый пункт<input name="city" value="{{ site.city }}" required>
+</label>
+</section>
+<fieldset>
+<legend>Доставка</legend>{% for option in ['Самовывоз','Доставка ТК или почтой'] %}<label class="checkout-choice">
+<input type="radio" name="delivery" value="{{ option }}"{% if (checkoutState == "pickup" and loop.first) or (checkoutState != "pickup" and loop.last) %} checked{% endif %}>
+<span>
+<b>{{ option }}</b>
+<small>{% if loop.first %}Из магазина в Орле{% else %}Стоимость и условия согласует менеджер{% endif %}</small>
+</span>
+</label>{% endfor %}</fieldset>
+<section data-checkout-pickup hidden>
+<h2>Самовывоз</h2>
+<p>Орёл, [адрес магазина]</p>{# Адрес и координаты предоставляет заказчик. Не геокодировать плейсхолдер. #}<div class="checkout-pickup-map">
+<h3>Карта пункта самовывоза</h3>
+<p>Адрес и координаты предоставит заказчик</p>
+</div>
+</section>
+<section>
+<h2>Покупатель</h2>
+<p class="checkout-form__hint">Все поля обязательны, кроме комментария</p>
+<label>ФИО<input name="name" value="{{ ('Александра Константиновна Соколова-Воскресенская' if checkoutState == 'long' else 'Анна Сергеевна Иванова') if filledCheckout else '' }}" placeholder="Введите фамилию, имя и отчество" required>
+</label>
+<div class="checkout-form__pair">
+<label>Email<input name="email" value="{{ ('alexandra.sokolova@example.ru' if checkoutState == 'long' else 'anna@example.ru') if filledCheckout else '' }}" type="email" placeholder="mail@example.ru" required>
+</label>
+<label>Телефон<input name="phone" value="{{ '+7 (999) 123-45-67' if filledCheckout else '' }}" type="tel" placeholder="+7 (___) ___-__-__" required>
+</label>
+</div>
+<label data-checkout-address>Адрес доставки<input name="address" value="{{ ('ул. Академика Королёва, д. 12, корпус 3, подъезд 2, кв. 145' if checkoutState == 'long' else 'ул. Пионерская, д. 14, кв. 25') if filledCheckout else '' }}" placeholder="Улица, дом, квартира" required>
+</label>
+<label>Комментарий к заказу<textarea name="comment" placeholder="Необязательно">
+</textarea>
+</label>
+</section>
+<fieldset>
+<legend>Предпочтительный способ оплаты</legend>
+<p class="checkout-form__hint">Выберите удобный способ. Порядок оплаты согласует менеджер.</p>{% for option in ['Банковская карта','СБП','Банковский перевод'] %}<label class="checkout-choice">
+<input type="radio" name="payment" value="{{ option }}">
+<span>
+<b>{{ option }}</b>
+<small>{% if loop.index == 1 %}Предпочитаю оплатить картой{% elif loop.index == 2 %}Предпочитаю оплатить через СБП{% else %}Предпочитаю оплатить по реквизитам{% endif %}</small>
+</span>
+</label>{% endfor %}</fieldset>
+</form>
+<aside class="checkout-summary">
+<h2>Ваш заказ</h2>
+<dl>
+<div>
+<dt>{{ "15 товаров" if checkoutState == "long" else "2 товара" }}</dt>
+<dd data-checkout-subtotal>{{ checkout.longSubtotal if checkoutState == "long" else cart.oldTotal }}</dd>
+</div>
+<div>
+<dt>Скидка</dt>
+<dd data-checkout-discount>{{ "−2 500 ₽" if checkoutState == "price-changed" else "−3 000 ₽" }}</dd>
+</div>
+<div>
+<dt>Доставка</dt>
+<dd data-checkout-delivery>ТК или почтой</dd>
+</div>
+</dl>
+<div class="checkout-summary__total">
+<span>Итого</span>
+<strong data-checkout-total>{{ checkout.longTotal if checkoutState == "long" else ("22 980 ₽" if checkoutState == "price-changed" else cart.total) }}</strong>
+</div>
+<p>Доставка не включена. Итоговую сумму и оплату согласует менеджер.</p>
+<div class="checkout-summary__consents">
+<label class="checkout-consent">
+<input type="checkbox" name="privacy" form="checkout-form" required data-checkout-consent{% if filledCheckout %} checked{% endif %}>
+<span>Даю согласие на обработку персональных данных и принимаю условия <a href="/privacy/">политики конфиденциальности</a> и <a href="/offer/">оферты</a>
+</span>
+</label>
+<label class="checkout-consent">
+<input type="checkbox" name="newsletter" form="checkout-form">
+<span>Я согласен получать рекламные материалы от интернет-магазина Desisan</span>
+</label>
+</div>
+<button class="button" type="submit" form="checkout-form" data-checkout-submit disabled>
+<span data-checkout-submit-label>Оформить заказ</span>
+<img src="assets/img/product-loading.svg" width="34" height="24" alt="" data-checkout-submit-loading hidden>
+</button>
+<p class="checkout-summary__status" role="status" data-checkout-status hidden>
+</p>
+</aside>
+</div>
+</main>
+
+

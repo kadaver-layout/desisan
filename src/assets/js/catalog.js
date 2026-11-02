@@ -111,8 +111,8 @@ export function initCatalog(dialogs) {
     root.querySelector('[data-price-min][data-scope="' + scope + '"]').value = value.min;
     root.querySelector('[data-price-max][data-scope="' + scope + '"]').value = value.max;
     const prices = items.map(item => item.price);
-    root.querySelector('[data-price-min][data-scope="' + scope + '"]').placeholder = Math.min(...prices).toLocaleString("ru-RU");
-    root.querySelector('[data-price-max][data-scope="' + scope + '"]').placeholder = Math.max(...prices).toLocaleString("ru-RU");
+    root.querySelector('[data-price-min][data-scope="' + scope + '"]').placeholder = prices.length ? Math.min(...prices).toLocaleString("ru-RU") : '';
+    root.querySelector('[data-price-max][data-scope="' + scope + '"]').placeholder = prices.length ? Math.max(...prices).toLocaleString("ru-RU") : '';
   }
   function syncControls() {
     syncInputs("desktop", state);
@@ -319,7 +319,7 @@ export function initCatalog(dialogs) {
     try {
       const beforeLoad = window.DesisanIntegrations?.beforeCatalogLoad;
       if (typeof beforeLoad === "function") await beforeLoad({ filters: clone(state), offset: state.shown, limit: count });
-      else await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      else await new Promise(resolve => setTimeout(resolve, 350));
       if (requestVersion !== version) return;
       state.shown += count;
       render();
@@ -341,7 +341,22 @@ export function initCatalog(dialogs) {
     try { sessionStorage.setItem(scrollKey(), String(window.scrollY)); } catch {}
   });
   const fromHistory = performance.getEntriesByType("navigation")[0]?.type === "back_forward";
+  const preview = root.dataset.catalogPreview;
+  if (!location.search) {
+    if (preview === 'empty') state.min = String(Math.max(...items.map(item => item.price)) + 1);
+    if (preview === 'applied') { state.gender = ['women']; state.type = ['bags', 'backpacks']; }
+    if (preview === 'end') state.shown = items.length;
+  }
   render();
+  if (preview === 'error') loadError.hidden = false;
+  if (preview === 'price' || preview === 'filters') {
+    const id = preview === 'price' ? 'price-popover' : 'type-popover';
+    if (desktop.matches) {
+      const trigger = root.querySelector(`[data-popover-toggle="${id}"]`);
+      if (trigger) togglePopover(id, trigger);
+    } else dialogs.open('catalog-filters', root.querySelector('.catalog-toolbar__mobile'));
+  }
+  if (preview === 'sort') root.querySelector('[data-sort-toggle]').click();
   if (fromHistory) {
     try {
       const top = Number(sessionStorage.getItem(scrollKey())) || 0;

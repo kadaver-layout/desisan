@@ -1,4 +1,4 @@
-<main class="main catalog-page" id="main-content" data-catalog data-page-size="24">
+<main class="main catalog-page" id="main-content" data-catalog data-page-size="24" data-catalog-preview="{{ catalogState | default('') }}">
   <div class="container catalog-page__heading">
     <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки"><ol>
       {% for crumb in catalogPage.breadcrumbs %}

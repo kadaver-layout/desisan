@@ -10,7 +10,7 @@
     <!-- Цена со скидкой:
     <p class="product-info__price"><span>12 990 ₽</span><del>15 990 ₽</del></p>
     -->
-    {% if productDetail.stock is defined %}<p class="product-info__stock">В наличии: {{ productDetail.stock }} шт.</p>
+    {% if productDetail.stock is defined and productDetail.isAuthenticated %}<p class="product-info__stock">В наличии: {{ productDetail.stock }} шт.</p>
     {% endif %}
     {% if productDetail.available %}
     {# Кнопка использует общую интеграцию корзины: window.DesisanIntegrations.addToCart. #}
