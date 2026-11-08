@@ -1,0 +1,59 @@
+@use "_vars" as *
+
+// Оформление остаётся у блоков. Splide отвечает только за движение и доступность.
+.desisan-slider
+  min-width: 0
+  width: 100%
+  visibility: visible
+  .splide__list
+    display: flex
+    overflow: visible
+    scroll-snap-type: none
+    grid-auto-flow: initial
+    padding: 0 !important
+    margin: 0 !important
+    gap: 0
+  .splide__slide
+    scroll-snap-align: none
+  .hero__track, .product-gallery__track, .product-gallery__thumbs
+    display: flex
+  .product-gallery__thumbs
+    @media ($tablet)
+      display: flex
+
+[data-rail] .desisan-slider
+  // Место для обводки фокуса сохраняется внутри viewport.
+  .splide__track
+    padding: 8px !important
+    margin: -8px
+  @media ($tablet)
+    &.splide.is-initialized:not(.is-active) .splide__list, .splide__list
+      display: grid
+      grid-auto-flow: row
+      gap: var(--card-gap)
+      row-gap: 32px
+    .splide__track
+      overflow: visible
+  @media ($mobile)
+    .splide__list
+      row-gap: 24px
+
+.product-gallery > .desisan-slider:has([data-gallery-thumbs])
+  .splide__track--nav > .splide__list > .splide__slide
+    border: 1px solid transparent
+    &[aria-pressed="true"]
+      border-color: $stroke-focus
+  @media ($tablet)
+    display: none
+
+.product-viewer__slider
+  height: 100%
+  .desisan-slider, .splide__track, .splide__list, .splide__slide
+    height: 100%
+  .splide__slide
+    position: relative
+  .product-viewer__zoom-toggle:checked + .product-viewer__photo
+    cursor: grab
+    img
+      width: 200%
+      height: 200%

@@ -16,7 +16,7 @@
       {% if contacts.address %}
       <section class="contacts-page__map" aria-labelledby="contacts-map-title">
         <h2 id="contacts-map-title">Как нас найти</h2><p>{{ contacts.address }}</p>
-        {# Изображение и адрес из макета демонстрационные; заменить перед запуском. #}
+        <!-- Изображение и адрес из макета демонстрационные; заменить перед запуском. -->
         <div class="contacts-map" data-contacts-map aria-busy="{{ 'true' if contacts_state == 'map-loading' else 'false' }}">
           <img src="{{ contacts.mapImage }}" alt="Карта расположения магазина: {{ contacts.address }}" data-contacts-map-image{% if contacts_state in ['map-error','map-loading'] %} hidden{% endif %}>
           <div class="contacts-map__state" data-contacts-map-error{% if contacts_state != 'map-error' %} hidden{% endif %}><h3>Карта временно недоступна</h3><p>Адрес указан выше. Откройте его в Яндекс Картах или попробуйте загрузить карту снова.</p><button class="button button--secondary" type="button" data-contacts-map-retry>Повторить загрузку</button></div>

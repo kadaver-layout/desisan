@@ -1,3 +1,16 @@
+/**
+ * Разработчику Битрикс: это единственный вход Webpack. На сайте подключается
+ * dist/assets/js/app.js; файлы из assets/js/raw отдельно не подключать.
+ * Серверные методы задаются в window.DesisanIntegrations до подключения app.js:
+ * загрузочные состояния могут вызвать их сразу на DOMContentLoaded.
+ * Полный контракт и порядок переноса: docs/bitrix-guide.html.
+ *
+ * Инициализация рассчитана на первоначальный DOMContentLoaded. После AJAX-замены
+ * HTML новые элементы сами не подключатся: нужна отдельная инициализация блока
+ * с защитой от повторных слушателей либо обычная серверная навигация.
+ * Нельзя повторно запускать весь app.js на прежнем DOM.
+ */
+import { initRails, initHero } from "./sliders.js";
 import { initProductGallery, initProductReview } from "./product.js";
 import { initCatalog } from "./catalog.js";
 import { initCartPage } from "./cart.js";
@@ -9,7 +22,7 @@ import { initSearchResults } from "./search-results.js";
 import { initOrderResult } from "./order-result.js";
 
 // Общая логика интерфейса. Серверные операции вынесены в window.DesisanIntegrations:
-// search(query, { signal }), addToCart(productId), setCity(city).
+// search(query, { signal }), addToCart(productId, { attemptId }), setCity(city).
 // Методы возвращают Promise. URL и протокол Битрикс задаёт интегратор, не вёрстка.
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -36,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Изолированные страницы состояний для приёмки макета. Общие данные меню не меняются.
 function initPagePreview(dialogs) {
+  // Только демонстрация состояний. В боевом layout не выводить data-page-preview:
+  // иначе можно принудительно показать тестовый toast или открыть окно при загрузке.
   const state = document.body.dataset.pagePreview;
   if (!state) return;
   const cookie = document.querySelector('[data-cookie-banner]');
@@ -63,8 +78,6 @@ function initPagePreview(dialogs) {
 }
 
 const desktopMedia = window.matchMedia("(min-width: 1280px)");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-const scrollBehavior = () => reducedMotion.matches ? "auto" : "smooth";
 
 // Геометрия шапки нужна панелям поверх страницы: они не сдвигают основной контент.
 function initHeader() {
@@ -166,63 +179,6 @@ function initDialogs() {
   return { open, close };
 }
 
-// У каждой ленты собственные кнопки и положение; на планшете это обычная сетка.
-function initRails() {
-  document.querySelectorAll("[data-rail]").forEach(section => {
-    const track = section.querySelector("[data-rail-track]");
-    const previous = section.querySelector("[data-rail-prev]");
-    const next = section.querySelector("[data-rail-next]");
-    if (!track || !previous || !next) return;
-
-    function update() {
-      previous.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-    }
-    function move(direction) {
-      const item = track.firstElementChild;
-      if (!item) return;
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      track.scrollBy({ left: direction * (item.getBoundingClientRect().width + gap), behavior: scrollBehavior() });
-    }
-    previous.addEventListener("click", () => move(-1));
-    next.addEventListener("click", () => move(1));
-    track.addEventListener("scroll", update, { passive: true });
-    // Доступ к карточкам за границей ленты через Tab не требует нажатия стрелок.
-    track.addEventListener("focusin", event => {
-      if (!desktopMedia.matches) return;
-      const card = event.target.closest("li");
-      if (!card) return;
-      const box = card.getBoundingClientRect();
-      const viewport = track.getBoundingClientRect();
-      if (box.left < viewport.left || box.right > viewport.right) card.scrollIntoView({ block: "nearest", inline: "nearest" });
-    });
-    new ResizeObserver(update).observe(track);
-    desktopMedia.addEventListener("change", () => { track.scrollLeft = 0; update(); });
-    update();
-  });
-}
-
-function initHero() {
-  document.querySelectorAll("[data-hero]").forEach(hero => {
-    const track = hero.querySelector("[data-hero-track]");
-    const previous = hero.querySelector("[data-hero-prev]");
-    const next = hero.querySelector("[data-hero-next]");
-    if (!track || !previous || !next) return;
-    function move(direction) {
-      track.scrollBy({ left: direction * track.clientWidth, behavior: scrollBehavior() });
-    }
-    function update() {
-      previous.disabled = track.scrollLeft <= 1;
-      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-    }
-    previous.addEventListener("click", () => move(-1));
-    next.addEventListener("click", () => move(1));
-    track.addEventListener("scroll", update, { passive: true });
-    new ResizeObserver(update).observe(track);
-    update();
-  });
-}
-
 // Резервный поиск по демонстрационным карточкам; Битрикс подставляет свой метод.
 // Нормализация поддерживает ё/е и распространённую транслитерацию.
 function normalizeSearch(value) {
@@ -282,6 +238,9 @@ function initSearch(dialogs) {
     try {
       let matches;
       if (typeof window.DesisanIntegrations?.search === "function") {
+        // Ожидается массив { title, url }. Передайте signal в транспорт запроса.
+        // Сервер проверяет наличие и возвращает безопасные URL своего каталога;
+        // этот код отменяет устаревший ответ и оставляет не более пяти подсказок.
         matches = await window.DesisanIntegrations.search(query, { signal: request.signal });
       } else {
         const terms = normalizeSearch(query).split(/\s+/);
@@ -367,6 +326,8 @@ function saveCookie(name, value) {
 }
 
 function initCookieConsent() {
+  // Баннер сохраняет выбор, но сам не управляет аналитикой и рекламными скриптами.
+  // Их подключение после согласия должен настроить интегратор отдельно.
   const banner = document.querySelector("[data-cookie-banner]");
   if (!banner) return;
   let sessionDismissed = false;
@@ -486,6 +447,9 @@ function initCart() {
         // Повтор после сетевой ошибки использует тот же ключ: сервер исключает дубли.
         button.dataset.cartAttempt ||= crypto.randomUUID();
         const response = await window.DesisanIntegrations.addToCart(button.dataset.addToCart, {attemptId:button.dataset.cartAttempt});
+        // count — полное количество единиц во всей корзине, не прирост и не число строк.
+        // data-add-to-cart должен содержать реальный ID товара/торгового предложения.
+        // При сетевом повторе сервер узнаёт тот же attemptId и не добавляет товар дважды.
         if (purchase && response?.status === 'price-changed') {
           delete button.dataset.cartAttempt;
           if (Number.isFinite(response.price)) purchase.querySelector('.product-info__price > span').textContent = new Intl.NumberFormat('ru-RU').format(response.price) + '\u00a0₽';

@@ -1,4 +1,12 @@
 // Локальные состояния формы. Создание заказа подключается отдельным адаптером Битрикс.
+/**
+ * Битрикс: форма #checkout-form; часть её элементов находится вне тега form,
+ * но связана через form="checkout-form". Используйте FormData(form), а не
+ * выборку только вложенных input. Снимать FormData нужно ДО блокировки полей:
+ * отключённые поля браузер не включает в отправку.
+ * Проверки JS помогают пользователю, но не заменяют серверную валидацию.
+ * Демонстрационные data-checkout-state не переносить в обычное оформление.
+ */
 export function initCheckout() {
   const loadingPage = document.querySelector('[data-checkout-loading-page]');
   if (loadingPage) {
@@ -144,6 +152,10 @@ export function initCheckout() {
     if (!consent.checked || unavailable) return;
     // До создания заказа подтверждаем актуальные цены и доступность.
     const validate = window.DesisanIntegrations?.validateCheckout;
+    // validateCheckout(FormData) возвращает valid/changed/available/message,
+    // числовые subtotal/discount/total в рублях и items [{ id, price }].
+    // ID должны совпадать с data-checkout-item-id. Сейчас там порядковые номера:
+    // замените их ID строк корзины. Сервер сам рассчитывает суммы и доступность.
     if (validate) {
       const draft = new FormData(form);
       setSubmitting(true);
@@ -182,6 +194,10 @@ export function initCheckout() {
     }
     const values = new FormData(form);
     const attemptId = crypto.randomUUID();
+    // Сервер атомарно связывает attemptId с результатом создания и владельцем.
+    // getOrderStatus проверяет ЭТУ ЖЕ попытку; это не повтор createOrder.
+    // Сейчас ключ живёт только в памяти страницы. В production предусмотрите
+    // восстановление незавершённой попытки после перезагрузки через сервер/сессию.
     setSubmitting(true);
     showStatus('');
     try {
@@ -200,6 +216,9 @@ export function initCheckout() {
     }
     showStatus('Проверяем, создан ли заказ. Не отправляйте его повторно.');
     const checkStatus = window.DesisanIntegrations?.getOrderStatus;
+    // Оба метода возвращают { status: 'created', url } или
+    // { status: 'not-created' }. Иной ответ/сетевая ошибка — неизвестный результат.
+    // url формирует сервер: проверяйте доступ к заказу и разрешённый адрес перехода.
     if (checkStatus) {
       try {
         const result = await checkStatus({ attemptId });

@@ -1,5 +1,15 @@
 // Каталог работает с HTML-карточками, собранными Nunjucks.
 // Битрикс может передать реальные данные в тот же шаблон; DOM не создаётся из JS-JSON.
+/**
+ * Битрикс: это локальная фильтрация заранее выведенных HTML-карточек.
+ * Снимок items создаётся ОДИН РАЗ при инициализации. beforeCatalogLoad —
+ * только Promise ожидания: он не принимает HTML и не добавляет ответ в items.
+ * Поэтому одного адаптера недостаточно для AJAX-каталога с серверной пагинацией.
+ * Перенесите выборку/сортировку/счётчики на сервер и согласуйте обновление DOM
+ * и снимка items; либо используйте обычные GET-переходы с серверным HTML.
+ * dialogs — объект open/close из app.js, нужен мобильным окнам фильтров.
+ * После AJAX не запускайте initCatalog на старом корне без снятия слушателей.
+ */
 export function initCatalog(dialogs) {
   const root = document.querySelector("[data-catalog]");
   if (!root) return;
@@ -29,6 +39,10 @@ export function initCatalog(dialogs) {
     return { ...value, gender: [...value.gender], type: [...value.type] };
   }
   function readAddress() {
+    // min/max — цены, discount=1, gender/type — коды через запятую,
+    // sort — код сортировки, shown — число раскрытых карточек.
+    // Это демонстрационная схема URL; при переносе согласуйте её с компонентом
+    // фильтра Битрикс. На сервере заново проверяйте значения и границы.
     const params = new URLSearchParams(location.search);
     const value = defaults();
     for (const key of ["min", "max"]) {

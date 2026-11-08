@@ -1,4 +1,11 @@
 // Повторно загружаем только видео: текст, прокрутка и остальные блоки сохраняются.
+/**
+ * Битрикс: data-video-src на [data-text-video] получает URL видео из CMS.
+ * Внутри обязательны player/error/loading/retry с соответствующими data-хуками.
+ * При отсутствии источника не выводите весь видеоблок на сервере.
+ * Повтор загружает только video, без перезагрузки текста и без автозапуска.
+ * Адрес источника должен иметь разрешённый протокол; реальный файл передаёт CMS.
+ */
 export function initTextMedia() {
   document.querySelectorAll('[data-text-video]').forEach(block => {
     const player = block.querySelector('[data-video-player]');

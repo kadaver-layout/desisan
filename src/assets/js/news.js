@@ -1,4 +1,12 @@
 // Карточки заранее собраны Nunjucks; JS управляет только ожиданием и догрузкой.
+/**
+ * Битрикс: beforeNewsLoad({ offset, limit: 6 }) только задерживает раскрытие
+ * уже существующих карточек. Возвращаемый HTML здесь не обрабатывается.
+ * Для серверной догрузки нужно обновить и DOM, и снимок cards, и общий счётчик.
+ * beforeNewsArticleLoad() — точка ожидания, а не полноценный загрузчик статьи:
+ * ниже пока задан переход на demo news-article-1.html, замените реальным URL.
+ * data-news-state и параметр shown обслуживают демонстрацию/восстановление списка.
+ */
 export function initNews() {
   document.querySelectorAll('[data-news-image]').forEach(image => {
     image.addEventListener('error', () => {

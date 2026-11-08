@@ -62,7 +62,7 @@
         <div data-cart-discount-row{% if not cart.discountValue %} hidden{% endif %}><dt>Скидка</dt><dd class="cart-summary__discount" data-cart-discount>{{ cart.discount }}</dd></div>
       </dl>
       <div class="cart-summary__total"><span>Итого</span><strong data-cart-total aria-live="polite" aria-atomic="true">{% if recalculatingCart %}Обновляем...{% else %}{{ cart.total }}{% endif %}</strong></div>
-      {# Перед переходом в Битрикс повторно проверяются состав и цены на сервере. #}
+      <!-- Перед переходом в Битрикс повторно проверяются состав и цены на сервере. -->
       {% if recalculatingCart %}<button type="button" class="button cart-summary__button" disabled aria-busy="true" aria-label="Обновляем количество и сумму"><img src="assets/img/product-loading.svg" width="34" height="24" alt=""></button>{% else %}<a class="button cart-summary__button" href="index4.html" data-cart-checkout{% if soldOutCart %} hidden{% endif %}>Оформить заказ</a><button type="button" class="button cart-summary__button" disabled data-cart-checkout-disabled{% if not soldOutCart %} hidden{% endif %}><span data-cart-checkout-label>Оформить заказ</span><img src="assets/img/product-loading.svg" width="34" height="24" alt="Обновляем количество и сумму" data-cart-checkout-loading hidden></button>{% endif %}
       <p data-cart-checkout-note>{% if soldOutCart %}Удалите недоступный товар, чтобы перейти к оформлению.{% else %}Способ доставки выберете при оформлении заказа.{% endif %}</p>
     </aside>

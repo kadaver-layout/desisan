@@ -13,7 +13,7 @@
     {% if productDetail.stock is defined and productDetail.isAuthenticated %}<p class="product-info__stock">В наличии: {{ productDetail.stock }} шт.</p>
     {% endif %}
     {% if productDetail.available %}
-    {# Кнопка использует общую интеграцию корзины: window.DesisanIntegrations.addToCart. #}
+    <!-- Кнопка использует общую интеграцию корзины: window.DesisanIntegrations.addToCart. -->
     <button class="button product-info__button" type="button" data-add-to-cart="{{ productDetail.id }}"
       data-product-title="{{ productDetail.title }}" {% if productDetail.inCart %}hidden{% endif %}><span data-purchase-label>В корзину</span><img class="product-info__loading" src="assets/img/product-loading.svg" width="34" height="24" alt="" hidden></button>
     <a class="button product-info__button" href="{{ site.cartUrl }}" data-product-in-cart {% if not productDetail.inCart %}hidden{% endif %}>Перейти в корзину</a>

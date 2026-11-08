@@ -1,4 +1,13 @@
 // Форма не имитирует успешную отправку: результат подтверждает серверный адаптер.
+/**
+ * Битрикс: sendContactMessage(FormData, { attemptId }) и
+ * getContactMessageStatus({ attemptId }) возвращают { status: 'sent' | 'not-sent' }.
+ * 'sent' означает подтверждённое принятие сервером, а не гарантированную доставку.
+ * При неизвестном результате форма остаётся заблокированной во избежание дублей.
+ * Сервер проверяет поля, согласие, сессию, частоту отправок и права.
+ * Карта ниже — статическое изображение с повтором загрузки, не API карт.
+ * Не инициализировать повторно существующий DOM; страницы состояний — примеры.
+ */
 export function initContacts() {
   const root = document.querySelector('[data-contacts-root]');
   if (!root) return;
@@ -110,6 +119,9 @@ export function initContacts() {
     const values = new FormData(form);
     const email = form.elements.email.value;
     const attemptId = crypto.randomUUID();
+    // Одна попытка отправки и её проверка используют один ключ.
+    // Для восстановления после reload ключ/результат нужно хранить на сервере:
+    // текущая верстка держит его только до закрытия страницы.
     setBusy(true);
     status.hidden = true;
     try {

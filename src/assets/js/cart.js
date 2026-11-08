@@ -1,5 +1,14 @@
 // Демонстрационный пересчёт корзины. В Битрикс обработчики заменяются ответом
 // корзины сервера: разметка и data-атрибуты оставлены точками интеграции.
+/**
+ * Битрикс: корень [data-cart-page], строки [data-cart-item].
+ * data-cart-price / data-cart-old-price — числовая цена ОДНОЙ единицы в рублях.
+ * Количество хранится отдельно; render() умножает цену на подтверждённое количество.
+ * Сейчас ID позиции берётся из href первой ссылки строки. При интеграции замените
+ * оба чтения ID и сопоставление validateCart на единый ID строки корзины:
+ * ссылка товара не различает несколько позиций одного SKU с разными свойствами.
+ * Не запускайте initCartPage повторно на том же DOM: слушатели продублируются.
+ */
 export function initCartPage() {
   const page = document.querySelector("[data-cart-page]");
   if (!page) return;
@@ -24,6 +33,9 @@ export function initCartPage() {
     try {
       // Интегратор подтверждает загрузку до показа подготовленной разметки.
       const adapter = window.DesisanIntegrations?.beforeCartLoad;
+      // Это ожидание, а не загрузчик HTML: возвращаемое значение здесь не читается.
+      // Ниже раскрывается готовый template. Для живой корзины замените эту ветку
+      // серверным HTML компонента и затем один раз инициализируйте новый корень.
       if (adapter) await adapter();
       else await new Promise(resolve => setTimeout(resolve, 450));
       const template = page.querySelector('[data-cart-ready]');
@@ -143,6 +155,9 @@ export function initCartPage() {
     item.querySelector('[data-cart-operation-error]').hidden = true;
     try {
       const adapter = window.DesisanIntegrations?.updateCartItem;
+      // Promise<{ quantity?, price?, oldPrice? }>: вернуть серверное количество
+      // и цены единицы. При отказе отклонить Promise — поле восстановится,
+      // повтор выполнит сохранённое желаемое количество, не перезагрузку страницы.
       const id = item.querySelector('a').getAttribute('href');
       if (adapter) {
         const result = await adapter({ id, quantity });
@@ -170,6 +185,8 @@ export function initCartPage() {
     setQuantityPending(item, true);
     try {
       const adapter = window.DesisanIntegrations?.removeCartItem;
+      // Удалять строку из DOM можно только после подтверждения сервера.
+      // Без адаптера действует локальная демонстрация; это не сохранение корзины.
       if (adapter) await adapter({ id: item.querySelector('a').getAttribute('href') });
       else await new Promise(resolve => setTimeout(resolve, 280));
       item.remove();
@@ -240,6 +257,9 @@ export function initCartPage() {
     render();
     try {
       const adapter = window.DesisanIntegrations?.validateCart;
+      // Ожидается { valid?, changed?, message?, items?: [{ id, price?, oldPrice?, available? }] }.
+      // При изменениях показываем новые данные и ждём повторного нажатия.
+      // Сервер также обязан проверять корзину при открытии оформления и создании заказа.
       if (adapter) {
         const result = await adapter();
         // Изменившиеся цены и остатки требуют повторного осознанного нажатия.

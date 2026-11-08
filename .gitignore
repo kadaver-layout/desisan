@@ -4,3 +4,9 @@ dist/
 .DS_Store
 Thumbs.db
 .idea/
+
+# Локальные инструкции и рабочие записи не входят в поставку.
+*.[mM][dD]
+/browser-qa.cjs
+/browser-flow-qa.cjs
+/email-audit-600.png
